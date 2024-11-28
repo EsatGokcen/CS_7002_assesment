@@ -1,9 +1,10 @@
+from src.model.gym_manager_model import GymManagerModel
 
 class GymLocationModel:
 
     initial_id = 100
 
-    def __init__(self, city: str, workout_zones: list[str], manager: str):
+    def __init__(self, city: str, workout_zones: list[str], manager: GymManagerModel):
         self.__gym_id = GymLocationModel.initial_id
         GymLocationModel.initial_id += 1
         self.__city = city
