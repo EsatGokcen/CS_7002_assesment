@@ -1,10 +1,12 @@
 from src.model.gym_manager_model import GymManagerModel
+from src.model.gym_workout_zone_model import WorkoutZoneModel
+
 
 class GymLocationModel:
 
     initial_id = 100
 
-    def __init__(self, city: str, workout_zones: list[str], manager: GymManagerModel):
+    def __init__(self, city: str, workout_zones: list[WorkoutZoneModel], manager: GymManagerModel):
         self.__gym_id = GymLocationModel.initial_id
         GymLocationModel.initial_id += 1
         self.__city = city
@@ -26,7 +28,7 @@ class GymLocationModel:
     def set_gym_city(self, city: str):
         self.__city = city
 
-    def set_workout_zone(self, new_workout_zone: str, index: int):
+    def set_workout_zone(self, new_workout_zone: WorkoutZoneModel, index: int):
             if new_workout_zone not in self.__workout_zones[index]:
                 self.__workout_zones.append(new_workout_zone)
 
