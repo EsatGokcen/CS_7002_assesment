@@ -5,10 +5,10 @@ from src.view.gym_location_view import GymLocationView
 
 class GymLocationController:
 
-    def __init__(self, gym_locations = None, gym_managers = None, workout_zones = None):
-        self.__gym_locations = gym_locations or []
-        self.__gym_managers = gym_managers or []
-        self.__workout_zones = workout_zones or []
+    def __init__(self):
+        self.__gym_locations = []
+        self.__gym_managers = []
+        self.__workout_zones = []
         self.__gym_location_views = []
 
         # self.__gym_location_views = [GymLocationView(gym_location) for gym_location in self.__gym_locations] - Did Not Work
