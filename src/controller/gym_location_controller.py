@@ -23,9 +23,8 @@ class GymLocationController:
         if all(zone in self.__workout_zones for zone in workout_zones) and manager in self.__gym_managers:
             gym_location = GymLocationModel(city, workout_zones, manager)
             self.__gym_locations.append(gym_location)
-            return gym_location
-        else:
-            raise ValueError("Workout_zones and/or manager not registered")
+        #else:
+            #raise ValueError("Workout_zones and/or manager not registered")
 
     def read_gym_location_views(self):
         for gym_location_view in self.__gym_location_views:
