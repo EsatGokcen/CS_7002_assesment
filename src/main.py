@@ -1,9 +1,4 @@
 from src.controller.gym_location_controller import GymLocationController
-from src.model.gym_location_model import GymLocationModel
-from src.model.gym_manager_model import GymManagerModel
-from src.model.gym_workout_zone_model import WorkoutZoneModel
-from src.view.gym_location_view import GymLocationView
-
 
 def main():
 

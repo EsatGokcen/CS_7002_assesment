@@ -9,7 +9,9 @@ class GymLocationController:
         self.__gym_locations = gym_locations or []
         self.__gym_managers = gym_managers or []
         self.__workout_zones = workout_zones or []
-        self.__gym_location_views = [GymLocationView(gym_location) for gym_location in self.__gym_locations]
+        self.__gym_location_views = []
+
+        # self.__gym_location_views = [GymLocationView(gym_location) for gym_location in self.__gym_locations] - Did Not Work
 
     def create_gym_manager(self, name: str):
         manager = GymManagerModel(name)
@@ -22,13 +24,15 @@ class GymLocationController:
     def create_gym_location(self, city: str, workout_zones: list[WorkoutZoneModel], manager: GymManagerModel):
         if all(zone in self.__workout_zones for zone in workout_zones) and manager in self.__gym_managers:
             gym_location = GymLocationModel(city, workout_zones, manager)
+            gym_location_view = GymLocationView(gym_location)
             self.__gym_locations.append(gym_location)
+            self.__gym_location_views.append(gym_location_view)
         #else:
             #raise ValueError("Workout_zones and/or manager not registered")
 
     def read_gym_location_views(self):
         for gym_location_view in self.__gym_location_views:
-            return gym_location_view
+            return gym_location_view.refresh()
 
 
 
