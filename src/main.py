@@ -8,10 +8,18 @@ from src.view.gym_location_view import GymLocationView
 def main():
 
     gym_location_controller = GymLocationController()
+
+    # Managers
     manager1 = gym_location_controller.create_gym_manager(GymManagerModel("Esat"))
-    workout_zone1 = gym_location_controller.create_workout_zone(WorkoutZoneModel())
+
+    # Workout Zones
+    workout_zone1 = gym_location_controller.create_workout_zone(WorkoutZoneModel("Yoga Zone", 15))
+    workout_zone2 = gym_location_controller.create_workout_zone(WorkoutZoneModel("Weight Lifting Zone", 20))
+    workout_zone3 = gym_location_controller.create_workout_zone(WorkoutZoneModel("Power Lifting Zone", 10))
+
+    workout_zones = [workout_zone1, workout_zone2, workout_zone3]
 
 
 
-    gym_location_model = GymLocationModel("London")
+    gym_location_model = GymLocationModel("London") # RELATIONSHIP BETWEEN LOCATION MODEL AND CONTROLLER NEEDS FIXING
     gym_location_view = GymLocationView(gym_location_model)
