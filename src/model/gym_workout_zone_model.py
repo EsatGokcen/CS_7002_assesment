@@ -1,7 +1,7 @@
 
 class WorkoutZoneModel:
 
-    def __init__(self, type, capacity):
+    def __init__(self, type: str, capacity: int):
         self.__type = type
         self.__capacity = capacity
 

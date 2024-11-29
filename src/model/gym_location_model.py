@@ -6,7 +6,7 @@ class GymLocationModel:
 
     initial_id = 100
 
-    def __init__(self, city: str, workout_zones: list[WorkoutZoneModel], manager: GymManagerModel):
+    def __init__(self, city: str, workout_zones: list[WorkoutZoneModel] = None, manager: GymManagerModel = None):
         self.__gym_id = GymLocationModel.initial_id
         GymLocationModel.initial_id += 1 # creates a unique id for each gym location instance
         self.__city = city
