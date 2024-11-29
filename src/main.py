@@ -10,7 +10,7 @@ def main():
     gym_location_controller = GymLocationController()
 
     # Managers
-    manager1 = gym_location_controller.create_gym_manager(GymManagerModel("Esat"))
+    manager1 = gym_location_controller.create_gym_manager("Esat")
 
     # Workout Zones
     workout_zone1 = gym_location_controller.create_workout_zone("Yoga Zone", 15)

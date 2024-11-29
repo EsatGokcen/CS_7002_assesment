@@ -11,7 +11,8 @@ class GymLocationController:
         self.__workout_zones = workout_zones or []
         self.__gym_location_views = [GymLocationView(gym_location) for gym_location in self.__gym_locations]
 
-    def create_gym_manager(self, manager: GymManagerModel):
+    def create_gym_manager(self, name: str):
+        manager = GymManagerModel(name)
         self.__gym_managers.append(manager)
 
     def create_workout_zone(self, type: str, capacity: int):
