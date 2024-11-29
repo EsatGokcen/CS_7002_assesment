@@ -5,7 +5,7 @@ class GymManagerModel:
 
     def __init__(self, name: str):
         self.__manager_id = GymManagerModel.initial_manager_id
-        GymManagerModel.initial_manager_id += 1
+        GymManagerModel.initial_manager_id += 1 # creates a unique id for each manager
         self.__name = name
 
     def get_manager_id(self):
