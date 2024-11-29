@@ -27,6 +27,10 @@ class GymLocationController:
         else:
             raise ValueError("Workout_zones and/or manager not registered")
 
+    def read_gym_location_views(self):
+        for gym_location_view in self.__gym_location_views:
+            return gym_location_view
+
 
 
 
