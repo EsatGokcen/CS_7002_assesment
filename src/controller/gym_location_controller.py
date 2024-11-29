@@ -14,7 +14,8 @@ class GymLocationController:
     def create_gym_manager(self, manager: GymManagerModel):
         self.__gym_managers.append(manager)
 
-    def create_workout_zone(self, workout_zone: WorkoutZoneModel):
+    def create_workout_zone(self, type: str, capacity: int):
+        workout_zone = WorkoutZoneModel(type, capacity)
         self.__workout_zones.append(workout_zone)
 
     def create_gym_location(self, city: str, workout_zones: list[WorkoutZoneModel], manager: GymManagerModel):

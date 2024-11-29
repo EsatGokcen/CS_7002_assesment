@@ -13,13 +13,9 @@ def main():
     manager1 = gym_location_controller.create_gym_manager(GymManagerModel("Esat"))
 
     # Workout Zones
-    workout_zone1 = gym_location_controller.create_workout_zone(WorkoutZoneModel("Yoga Zone", 15))
-    workout_zone2 = gym_location_controller.create_workout_zone(WorkoutZoneModel("Weight Lifting Zone", 20))
-    workout_zone3 = gym_location_controller.create_workout_zone(WorkoutZoneModel("Power Lifting Zone", 10))
+    workout_zone1 = gym_location_controller.create_workout_zone("Yoga Zone", 15)
+    workout_zone2 = gym_location_controller.create_workout_zone("Weight Lifting Zone", 20)
+    workout_zone3 = gym_location_controller.create_workout_zone("Power Lifting Zone", 10)
 
     workout_zones = [workout_zone1, workout_zone2, workout_zone3]
 
-
-
-    gym_location_model = GymLocationModel("London") # RELATIONSHIP BETWEEN LOCATION MODEL AND CONTROLLER NEEDS FIXING
-    gym_location_view = GymLocationView(gym_location_model)
