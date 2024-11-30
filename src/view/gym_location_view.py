@@ -8,8 +8,8 @@ class GymLocationView:
         zones = ", ".join(str(zone) for zone in self.__gym_location.get_gym_workout_zones())
         manager = self.__gym_location.get_gym_manager()
         return (
-            f"GYM ID: {self.__gym_location.get_gym_id()}"
-            f"GYM City: {self.__gym_location.get_gym_city()}"
+            f"GYM ID: {self.__gym_location.get_gym_id()}\n"
+            f"GYM City: {self.__gym_location.get_gym_city()}\n"
             f"Workout Zones: [{zones}]\n"
-            f"GYM Manager: {manager}"
+            f"GYM Manager: {manager}\n"
         )
