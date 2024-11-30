@@ -5,21 +5,23 @@ from src.view.gym_location_view import GymLocationView
 
 class GymLocationController:
 
+    # Handle CRUD (Create, Read, Update, Delete) operations for gym locations and workout zones.
+
     def __init__(self):
         self.__gym_locations = []
         self.__gym_managers = []
         self.__workout_zones = []
         self.__gym_location_views = []
 
-        # self.__gym_location_views = [GymLocationView(gym_location) for gym_location in self.__gym_locations] - Did Not Work
-
     def create_gym_manager(self, name: str):
         manager = GymManagerModel(name)
         self.__gym_managers.append(manager)
+        return manager
 
     def create_workout_zone(self, type: str, capacity: int):
         workout_zone = WorkoutZoneModel(type, capacity)
         self.__workout_zones.append(workout_zone)
+        return workout_zone
 
     def create_gym_location(self, city: str, workout_zones: list[WorkoutZoneModel], manager: GymManagerModel):
         if all(zone in self.__workout_zones for zone in workout_zones) and manager in self.__gym_managers:
@@ -27,6 +29,7 @@ class GymLocationController:
             gym_location_view = GymLocationView(gym_location)
             self.__gym_locations.append(gym_location)
             self.__gym_location_views.append(gym_location_view)
+            return gym_location
         #else:
             #raise ValueError("Workout_zones and/or manager not registered")
 
