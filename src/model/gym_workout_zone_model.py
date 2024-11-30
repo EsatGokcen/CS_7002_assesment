@@ -6,7 +6,7 @@ class WorkoutZoneModel:
         self.__capacity = capacity
 
     def __str__(self):
-        return f"Workout Zone Type: {self.__type},\nWorkout Zone Capacity: {self.__capacity}"
+        return f"{self.__type} with capacity: {self.__capacity}"
 
     def get_workout_zone_type(self):
         return self.__type

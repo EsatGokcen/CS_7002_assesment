@@ -9,7 +9,7 @@ class GymManagerModel:
         self.__name = name
 
     def __str__(self):
-        return f"Gym Manager: {self.__name}"
+        return f"Name: {self.__name}, ID: {self.__manager_id}"
 
     def get_manager_id(self):
         return self.__manager_id
