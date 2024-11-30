@@ -1,11 +1,15 @@
 
 class GymLocationView:
 
-    def __init__(self, gym_location_model):
-        self.__gym_location_model = gym_location_model
+    def __init__(self, gym_location):
+        self.__gym_location = gym_location
 
-    def refresh(self):
-        print(f"Gym ID: {self.__gym_location_model.get_gym_id()}")
-        print(f"Gym City: {self.__gym_location_model.get_gym_city()}")
-        print(f"Gym Workout Zones: {self.__gym_location_model.get_gym_workout_zones()}")
-        print(f"Gym Manager: {self.__gym_location_model.get_gym_manager()}")
+    def render(self):
+        zones = ", ".join(str(zone) for zone in self.__gym_location.get_gym_workout_zones())
+        manager = self.__gym_location.get_gym_manager()
+        return (
+            f"GYM ID: {self.__gym_location.get_gym_id()}"
+            f"GYM City: {self.__gym_location.get_gym_city()}"
+            f"Workout Zones: [{zones}]\n"
+            f"GYM Manager: {manager}"
+        )
