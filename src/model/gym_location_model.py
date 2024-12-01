@@ -28,7 +28,7 @@ class GymLocationModel:
     def set_gym_city(self, city: str):
         self.__city = city
 
-    def set_workout_zone(self, new_workout_zone: WorkoutZoneModel, index: int):
+    def add_workout_zone(self, new_workout_zone: WorkoutZoneModel, index: int):
             if new_workout_zone not in self.__workout_zones[index]:
                 self.__workout_zones.append(new_workout_zone)
 

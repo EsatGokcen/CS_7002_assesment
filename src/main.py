@@ -19,8 +19,8 @@ def main():
     workout_zones2 = [workout_zone3, workout_zone2]
 
     # Gym Locations
-    gym_location1 = gym_location_controller.create_gym_location("London", workout_zones1, manager1)
-    gym_location2 = gym_location_controller.create_gym_location("Istanbul", workout_zones2, manager2)
+    gym_location_controller.create_gym_location("London", workout_zones1, manager1)
+    gym_location_controller.create_gym_location("Istanbul", workout_zones2, manager2)
 
     # Call instances
 
