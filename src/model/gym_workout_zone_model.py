@@ -4,6 +4,7 @@ class WorkoutZoneModel:
     def __init__(self, type: str, capacity: int):
         self.__type = type
         self.__capacity = capacity
+        self.__equipment = None
 
     def __str__(self):
         return f"{self.__type} with capacity: {self.__capacity}"
