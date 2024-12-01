@@ -10,6 +10,10 @@ def main():
     manager1 = gym_location_controller.create_gym_manager("Esat")
     manager2 = gym_location_controller.create_gym_manager("Taha")
 
+    # Equipment
+
+    # equipment1 =
+
     # Workout Zones
     workout_zone1 = gym_location_controller.create_workout_zone("Yoga Zone", 15)
     workout_zone2 = gym_location_controller.create_workout_zone("Weight Lifting Zone", 20)

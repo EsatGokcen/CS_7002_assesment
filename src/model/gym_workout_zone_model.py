@@ -1,3 +1,4 @@
+from src.model.equipment_model import EquipmentModel
 
 class WorkoutZoneModel:
 
@@ -18,6 +19,6 @@ class WorkoutZoneModel:
     def get_list_of_equipments(self):
         return self.__list_of_equipments
 
-    def add_equipment(self, equipment: str):
+    def add_equipment(self, equipment: EquipmentModel):
         return self.__list_of_equipments.append(equipment)
 
