@@ -19,6 +19,12 @@ class WorkoutZoneModel:
     def get_list_of_equipments(self):
         return self.__list_of_equipments
 
+    def set_type(self, type):
+        self.__type = type
+
+    def set_capacity(self, capacity):
+        self.__capacity = capacity
+
     def add_equipment(self, equipment: EquipmentModel):
         return self.__list_of_equipments.append(equipment)
 
