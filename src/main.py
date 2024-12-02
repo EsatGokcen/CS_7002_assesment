@@ -1,6 +1,14 @@
+from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_location_controller import GymLocationController
 
 def main():
+
+    equipment_controller = EquipmentController()
+
+    equipment_controller.create_equipment("Bench Press", "Machine")
+    equipment_controller.read_equipment() # ERROR NO OUTPUT
+
+    """
 
     gym_location_controller = GymLocationController()
 
@@ -29,6 +37,8 @@ def main():
     # Call instances
 
     gym_location_controller.read_gym_location_views()
+    
+    """
 
 if __name__ == '__main__':
     main()

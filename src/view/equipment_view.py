@@ -6,6 +6,6 @@ class EquipmentView:
 
     def render(self):
         return(
-            f"Equipment Name: {self.__model.get_equipment_name()}"
-            f"Equipment Type: {self.__model.get_equipment_type()}"
+            f"\nEquipment Name: {self.__model.get_equipment_name()}"
+            f"\nEquipment Type: {self.__model.get_equipment_type()}"
         )

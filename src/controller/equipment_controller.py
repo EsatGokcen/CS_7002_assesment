@@ -13,4 +13,4 @@ class EquipmentController:
         self.__model.set_equipment_type(type)
 
     def read_equipment(self):
-        return self.__view.render()
+        print(self.__view.render())
