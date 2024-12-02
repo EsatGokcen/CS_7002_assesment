@@ -6,7 +6,7 @@ def main():
     equipment_controller = EquipmentController()
 
     equipment_controller.create_equipment("Bench Press", "Machine")
-    equipment_controller.read_equipment() # ERROR NO OUTPUT
+    equipment_controller.read_equipment()
 
     """
 
