@@ -1,5 +1,6 @@
 from src.model.gym_workout_zone_model import WorkoutZoneModel
 from src.view.workout_zone_view import WorkoutZoneView
+from src.controller.equipment_controller import EquipmentController
 
 
 class WorkoutZoneController:
@@ -12,6 +13,10 @@ class WorkoutZoneController:
     def create_workout_zone(self, type: str, capacity: int): # REMOVE FROM gym_location_controller
         self.__model.set_type(type)
         self.__model.set_capacity(capacity)
+
+    def add_equipment(self, create_equipment: EquipmentController, name: str, type: str):
+        equipment = create_equipment.create_equipment(name, type)
+        return self.__list_of_equipments.append(equipment)
 
 
     def read_workout_zone(self):
