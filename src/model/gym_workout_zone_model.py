@@ -16,9 +16,8 @@ class WorkoutZoneModel:
     def get_workout_zone_capacity(self):
         return self.__capacity
 
-    def get_equipment(self):
-        equipments = ", ".join(str(equipment) for equipment in self.__list_of_equipments)
-        return f"{equipments}"
+    def get_list_of_equipments(self):
+        return self.__list_of_equipments
 
     def set_type(self, type: str):
         self.__type = type

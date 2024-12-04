@@ -9,3 +9,7 @@ class WorkoutZoneView:
             f"\nWorkout Zone Capacity: {self.__model.get_workout_zone_capacity()}"
             f"\nAvailable Equipments: ... " # SHOULD I ADD LIST OF EQUIPMENTS TO MODEL OR CONTROLLER ?
         )
+
+    def equipment_render(self):
+        equipments = ", ".join(str(equipment) for equipment in self.__model.get_list_of_equipments())
+        return f"[{equipments}]"

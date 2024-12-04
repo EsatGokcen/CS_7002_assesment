@@ -6,9 +6,12 @@ from src.controller.workout_zone_controller import WorkoutZoneController
 def main():
 
     workout_zone_controller = WorkoutZoneController()
+    equipment_controller = EquipmentController()
 
     workout_zone_controller.create_workout_zone(type="Trampoline", capacity=32)
     workout_zone_controller.read_workout_zone()
+    workout_zone_controller.create_equipment(connection=equipment_controller, name="Trampoline", type="Bouncy things")
+    workout_zone_controller.read_equipment()
 
     """
 
