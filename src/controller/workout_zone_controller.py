@@ -22,7 +22,8 @@ class WorkoutZoneController:
         print(view_object.render())
 
     def read_equipment(self):
-        print(self.__view.equipment_render())
+        view_object = self.__view(self.__model)
+        print(view_object.equipment_render())
 
     # TO - DO :
 
