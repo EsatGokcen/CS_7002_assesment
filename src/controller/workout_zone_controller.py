@@ -20,7 +20,8 @@ class WorkoutZoneController:
 
 
     def read_workout_zone(self):
-        pass
+        view_object = self.__view(self.__model)
+        print(view_object.render())
 
     # TO - DO :
 

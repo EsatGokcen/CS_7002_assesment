@@ -1,14 +1,21 @@
 from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_location_controller import GymLocationController
+from src.controller.workout_zone_controller import WorkoutZoneController
+
 
 def main():
+
+    workout_zone_controller = WorkoutZoneController()
+
+    workout_zone_controller.create_workout_zone(type="Trampoline", capacity=32)
+    workout_zone_controller.read_workout_zone()
+
+    """
 
     equipment_controller = EquipmentController()
 
     equipment_controller.create_equipment("Bench Press", "Machine")
     equipment_controller.read_equipment()
-
-    """
 
     gym_location_controller = GymLocationController()
 
