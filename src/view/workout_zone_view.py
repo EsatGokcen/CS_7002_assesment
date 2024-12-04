@@ -4,4 +4,7 @@ class WorkoutZoneView:
         self.__model = workout_zone_model
 
     def render(self):
-        pass
+        return (
+            f"\nWorkout Zone Type: {self.__model.get_workout_zone_type()}"
+            f"\nWorkout Zone Capacity: {self.__model.get_workout_zone_capacity()}"
+        )
