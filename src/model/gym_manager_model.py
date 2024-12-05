@@ -8,7 +8,7 @@ class GymManagerModel:
         GymManagerModel.initial_manager_id += 1 # creates a unique id for each manager
         self.__name = name
 
-    def __str__(self):
+    def __str__(self):  # DO I NEED THIS ??
         return f"Name: {self.__name}, ID: {self.__manager_id}"
 
     def get_manager_id(self):
