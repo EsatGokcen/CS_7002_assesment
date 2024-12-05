@@ -7,7 +7,7 @@ class WorkoutZoneController:
 
     def __init__(self):
         self.__model = WorkoutZoneModel("Yoga Zone", 15)
-        self.__view = WorkoutZoneView
+        self.__view = WorkoutZoneView(self.__model)
 
     def create_workout_zone(self, type: str, capacity: int): # REMOVE FROM gym_location_controller
         self.__model.set_type(type)
@@ -18,12 +18,10 @@ class WorkoutZoneController:
         self.__model.set_equipment(equipment)
 
     def read_workout_zone(self):
-        view_object = self.__view(self.__model)
-        print(view_object.render())
+        print(self.__view.render())
 
     def read_equipment(self):
-        view_object = self.__view(self.__model)
-        print(view_object.equipment_render())
+        print(self.__view.equipment_render())
 
     # TO - DO :
 
