@@ -5,6 +5,7 @@ from src.controller.workout_zone_controller import WorkoutZoneController
 
 
 def main():
+    """
 
     manager1 = ManagerController()
     manager2 = ManagerController()
@@ -18,17 +19,24 @@ def main():
     """
 
     workout_zone_controller = WorkoutZoneController()
-    equipment_controller = EquipmentController()
+    equipment1 = EquipmentController()
+    equipment2 = EquipmentController()
 
     workout_zone_controller.create_workout_zone(type="Trampoline", capacity=32)
+
+    workout_zone_controller.create_equipment(connection=equipment1, name="Trampoline", type="Bouncy things")
+    workout_zone_controller.create_equipment(connection=equipment2, name="Bench Press", type="Weight Lifting")
+
     workout_zone_controller.read_workout_zone()
-    workout_zone_controller.create_equipment(connection=equipment_controller, name="Trampoline", type="Bouncy things")
-    workout_zone_controller.read_equipment()
+
+    """
 
     equipment_controller = EquipmentController()
 
     equipment_controller.create_equipment("Bench Press", "Machine")
     equipment_controller.read_equipment()
+
+    
 
     gym_location_controller = GymLocationController()
 

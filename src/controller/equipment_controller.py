@@ -11,6 +11,7 @@ class EquipmentController:
     def create_equipment(self, name: str, type: str):
         self.__model.set_equipment_name(name)
         self.__model.set_equipment_type(type)
+        return self.__model
 
     def read_equipment(self):
         print(self.__view.render())
