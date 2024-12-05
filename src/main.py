@@ -1,9 +1,21 @@
 from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_location_controller import GymLocationController
+from src.controller.manager_controller import ManagerController
 from src.controller.workout_zone_controller import WorkoutZoneController
 
 
 def main():
+
+    manager1 = ManagerController()
+    manager2 = ManagerController()
+
+    manager1.create_manager("Esat")
+    manager2.create_manager("Eda")
+
+    manager1.read_manager()
+    manager2.read_manager()
+
+    """
 
     workout_zone_controller = WorkoutZoneController()
     equipment_controller = EquipmentController()
@@ -12,8 +24,6 @@ def main():
     workout_zone_controller.read_workout_zone()
     workout_zone_controller.create_equipment(connection=equipment_controller, name="Trampoline", type="Bouncy things")
     workout_zone_controller.read_equipment()
-
-    """
 
     equipment_controller = EquipmentController()
 
