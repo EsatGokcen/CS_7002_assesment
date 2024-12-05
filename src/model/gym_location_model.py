@@ -1,5 +1,5 @@
-from src.model.gym_manager_model import GymManagerModel
-from src.model.gym_workout_zone_model import WorkoutZoneModel
+from src.model.manager_model import GymManagerModel
+from src.model.workout_zone_model import WorkoutZoneModel
 
 
 class GymLocationModel:

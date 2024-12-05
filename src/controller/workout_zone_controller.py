@@ -1,4 +1,4 @@
-from src.model.gym_workout_zone_model import WorkoutZoneModel
+from src.model.workout_zone_model import WorkoutZoneModel
 from src.view.workout_zone_view import WorkoutZoneView
 from src.controller.equipment_controller import EquipmentController
 

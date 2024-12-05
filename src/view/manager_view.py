@@ -1,4 +1,4 @@
-from src.model.gym_manager_model import GymManagerModel
+from src.model.manager_model import GymManagerModel
 
 class ManagerView:
 
