@@ -18,3 +18,6 @@ class TrialMemberModel(MemberModel):
         self.__email = email
         self.__health_info = health_info
         self.__trial_period = trial_period
+
+    def set_trial_period(self, trial_period: int):
+        self.__trial_period = trial_period
