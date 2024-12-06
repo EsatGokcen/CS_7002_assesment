@@ -16,5 +16,5 @@ class MemberModel(ABC):
         pass
 
     @abstractmethod
-    def set_details(self, name: str, email: str, health_info: str):
+    def set_details(self, *args): # FIX PLS
         pass
