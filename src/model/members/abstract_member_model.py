@@ -16,5 +16,5 @@ class MemberModel(ABC):
         pass
 
     @abstractmethod
-    def set_details(self, *args): # FIX PLS
+    def set_details(self, *args):
         pass
