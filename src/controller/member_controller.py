@@ -39,4 +39,4 @@ class MemberController:
     def read_member(self):
         for member in self.__members:
             view_object = self.__view(member)
-            print(view_object)
+            print(view_object.render())
