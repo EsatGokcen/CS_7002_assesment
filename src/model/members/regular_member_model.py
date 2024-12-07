@@ -9,7 +9,11 @@ class RegularMemberModel(MemberModel):
 
     def get_details(self):
         return (
-            self.__id, self.__name, self.__email, self.__health_info, self.__membership_status
+            self.id,
+            self.name,
+            self.email,
+            self.health_info,
+            self.__membership_status
         )
 
     def set_details(self, name: str, email: str, health_info: str):

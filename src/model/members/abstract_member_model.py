@@ -11,6 +11,22 @@ class MemberModel(ABC):
         self.__email = email
         self.__health_info = health_info
 
+    @property # allows access to methods as if they were attributes
+    def id(self):
+        return self.__id
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def email(self):
+        return self.__email
+
+    @property
+    def health_info(self):
+        return self.__health_info
+
     @abstractmethod
     def get_details(self):
         pass
