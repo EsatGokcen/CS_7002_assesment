@@ -1,10 +1,20 @@
 from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_location_controller import GymLocationController
 from src.controller.manager_controller import ManagerController
+from src.controller.member_controller import MemberController
 from src.controller.workout_zone_controller import WorkoutZoneController
 
 
 def main():
+
+    member_controller = MemberController()
+
+    member_controller.create_member("premium", "Esat", "esat@mail.com", "Blind", True)
+    member_controller.create_member("regular", "Taha", "taha@hotmail.com", "Healthy", "y") # ERROR EXTRA ARGUMENT
+    member_controller.create_member("trial", "Tahsin", "tahsin@gmail.com", "Deaf", 7, 8)    # ERROR EXTRA ARGUMENT
+
+    member_controller.read_member() # ERROR PRINTS OBJECT LOCATION INSTEAD OF STRING
+
     """
 
     manager1 = ManagerController()
@@ -16,7 +26,7 @@ def main():
     manager1.read_manager()
     manager2.read_manager()
 
-    """
+
 
     workout_zone_controller = WorkoutZoneController()
     equipment1 = EquipmentController()
@@ -29,7 +39,6 @@ def main():
 
     workout_zone_controller.read_workout_zone()
 
-    """
 
     equipment_controller = EquipmentController()
 
