@@ -10,7 +10,7 @@ def main():
     member_controller = MemberController()
 
     member_controller.create_member("premium", "Esat", "esat@mail.com", "Blind", True)
-    member_controller.create_member("regular", "Taha", "taha@hotmail.com", "Healthy", "y") # ERROR EXTRA ARGUMENT
+    member_controller.create_member("regular", "Taha", "taha@hotmail.com", "Healthy" , "fat") # ERROR EXTRA ARGUMENT
     member_controller.create_member("trial", "Tahsin", "tahsin@gmail.com", "Deaf", 7, 8)    # ERROR EXTRA ARGUMENT
 
     member_controller.read_member() # ERROR PRINTS OBJECT LOCATION INSTEAD OF STRING

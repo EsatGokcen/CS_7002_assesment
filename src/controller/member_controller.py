@@ -15,22 +15,22 @@ class MemberController:
         self.__members = []
         self.__view = MemberView
 
-    def create_member(self, member_type: str, *args):
+    def create_member(self, member_type: str, *args): #name: str, email: str, health_info: str,
         if member_type == "premium":
             member_factory = self.__factories.get(member_type)
-            member_object = member_factory.create_member(*args)
+            member_object = member_factory.create_member(*args) # name, email, health_info,
             self.__members.append(member_object)
             return member_object
 
         elif member_type == "regular":
             member_factory = self.__factories.get(member_type)
-            member_object = member_factory.create_member(*args)
+            member_object = member_factory.create_member(*args) # name, email, health_info
             self.__members.append(member_object)
             return member_object
 
         elif member_type == "trial":
             member_factory = self.__factories.get(member_type)
-            member_object = member_factory.create_member(*args)
+            member_object = member_factory.create_member(*args) # name, email, health_info,
             self.__members.append(member_object)
             return member_object
         else:
