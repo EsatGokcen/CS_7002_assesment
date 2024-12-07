@@ -20,12 +20,8 @@ class WorkoutZoneController:
     def read_workout_zone(self):
         print(self.__view.render())
 
-    def read_equipment(self):
-        print(self.__view.equipment_render())
 
-    # TO - DO :
 
-    # MAKE SURE THE REST OF THE CODE USES THE NEW CONTROLLER AND VIEWER APPROPRIATELY
 
 
 
