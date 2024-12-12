@@ -16,7 +16,7 @@ def main():
     member_controller.read_member() # ERROR PRINTS OBJECT LOCATION INSTEAD OF STRING
 
     """
-
+ 
     manager1 = ManagerController()
     manager2 = ManagerController()
 
