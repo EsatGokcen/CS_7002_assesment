@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: mac-latest
+    runs-on: macos-latest
 
     steps:
       # Step 1: Check out the code
