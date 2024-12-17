@@ -6,16 +6,16 @@ from src.controller.equipment_controller import EquipmentController
 class WorkoutZoneController:
 
     def __init__(self):
-        self.__model = WorkoutZoneModel("Yoga Zone", 15)
-        self.__view = WorkoutZoneView(self.__model)
+        self.model = WorkoutZoneModel("Yoga Zone", 15)
+        self.__view = WorkoutZoneView(self.model)
 
     def create_workout_zone(self, type: str, capacity: int): # REMOVE FROM gym_location_controller
-        self.__model.set_type(type)
-        self.__model.set_capacity(capacity)
+        self.model.set_type(type)
+        self.model.set_capacity(capacity)
 
     def create_equipment(self, connection: EquipmentController, name: str, type: str):
         equipment = connection.create_equipment(name, type)
-        self.__model.set_equipment(equipment)
+        self.model.set_equipment(equipment)
 
     def read_workout_zone(self):
         print(self.__view.render())
