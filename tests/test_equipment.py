@@ -6,8 +6,12 @@ class TestEquipment(unittest.TestCase):
 
     def test_create_equipment(self):
         equipment_controller = EquipmentController()
-        equipment_controller.create_equipment(name="Bench Press", type="Barbell Weights")
+        equipment = equipment_controller.create_equipment(name="Bench Press", type="Barbell Weights")
 
         # Validate that equipment creation was successful
-        self.assertTrue(equipment_controller.model.get_equipment_name(), "Bench Press")
-        self.assertTrue(equipment_controller.model.get_equipment_type(), "Barbell Weights")
+
+        self.assertEqual(equipment_controller.model, equipment, "Equipment is not created as expected!")
+
+        # These are unnecessary here as they only check if method returns True
+        #self.assertTrue(equipment_controller.model.get_equipment_name(), "Bench Press")
+        #self.assertTrue(equipment_controller.model.get_equipment_type(), "Barbell Weights")
