@@ -9,10 +9,13 @@ class TestGym(unittest.TestCase):
         gym_controller = GymController()
         gym_controller.create_manager("Esat")
 
-        self.assertTrue(gym_controller.model.get_gym_manager(), "Esat") # NOT WORKING -> RETURNS NONE INSTEAD ?
+        self.assertEqual(gym_controller.model.get_gym_manager() == '', "Manager not created successfully!")
+        # USE ASSERT EQUAL INSTEAD OF TRUE AS YOU CAN CHECK RETURN VALUES MORE ACCURATELY
 
     def test_create_workout_zone(self):
         gym_controller = GymController()
         gym_controller.create_workout_zone("Strength Training", 15)
 
-        self.assertTrue(gym_controller.model.get_gym_workout_zones(), ) # NOT SURE WHAT ARGS TO PUT THROUGH HERE AS msg:
+        self.assertEqual(len(gym_controller.model.get_gym_workout_zones()), 1, "Gym workout zone is not created!" )
+        workout_zone = gym_controller.model.get_gym_workout_zones()[0]
+

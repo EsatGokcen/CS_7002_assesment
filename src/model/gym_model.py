@@ -26,20 +26,16 @@ class GymModel:
         return self.__manager
 
     def get_gym_workout_zones(self):
-        for workout_zone in self.__workout_zones:
-            return workout_zone
+        return self.__workout_zones
 
     def get_list_of_staff(self):
-        for staff in self.__list_of_staff:
-            return staff
+        return self.__list_of_staff
 
     def get_list_of_members(self):
-        for member in self.__list_of_members:
-            return member
+        return self.__list_of_members
 
     def get_list_of_classes(self):
-        for gym_class in self.__list_of_classes:
-            return gym_class
+        return self.__list_of_classes
 
     def set_gym_city(self, city: str):
         self.__city = city
