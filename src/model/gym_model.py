@@ -16,25 +16,25 @@ class GymModel:
         self.__list_of_members = []
         self.__list_of_classes = []
 
-    def get_gym_id(self):
+    def get_gym_id(self) -> int:
         return self.__id
 
-    def get_gym_city(self):
+    def get_gym_city(self) -> str:
         return self.__city
 
-    def get_gym_manager(self):
+    def get_gym_manager(self) -> GymManagerModel:
         return self.__manager
 
-    def get_gym_workout_zones(self):
+    def get_gym_workout_zones(self) -> list[WorkoutZoneModel]:
         return self.__workout_zones
 
-    def get_list_of_staff(self):
+    def get_list_of_staff(self) -> list:
         return self.__list_of_staff
 
-    def get_list_of_members(self):
+    def get_list_of_members(self) -> list:
         return self.__list_of_members
 
-    def get_list_of_classes(self):
+    def get_list_of_classes(self) -> list:
         return self.__list_of_classes
 
     def set_gym_city(self, city: str):
