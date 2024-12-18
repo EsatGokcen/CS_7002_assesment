@@ -15,10 +15,10 @@ class WorkoutZoneController:
         self.model.set_capacity(capacity)
         return self.model
 
-    def create_equipment(self, connection: EquipmentController, name: str, type: str) -> list[EquipmentModel]:
+    def create_equipment(self, connection: EquipmentController, name: str, type: str) -> EquipmentModel:
         equipment = connection.create_equipment(name, type)
         self.model.set_equipment(equipment)
-        return self.model.get_list_of_equipments()
+        return equipment
 
     def read_workout_zone(self):
         print(self.__view.render())

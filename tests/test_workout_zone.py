@@ -1,5 +1,6 @@
 import unittest
 
+from src.controller.equipment_controller import EquipmentController
 from src.controller.workout_zone_controller import WorkoutZoneController
 
 
@@ -18,4 +19,15 @@ class TestWorkoutZone(unittest.TestCase):
         #self.assertTrue(workout_zone_controller.model.get_workout_zone_capacity(), 20)
 
     def test_create_equipment(self):
-        pass
+        workout_zone_controller = WorkoutZoneController()
+        workout_zone = workout_zone_controller.create_workout_zone(type="cardio", capacity=20)
+
+        equipment_controller = EquipmentController()
+        equipment = workout_zone_controller.create_equipment(connection=equipment_controller ,name="Treadmill", type="cardio")
+
+        self.assertEqual(workout_zone_controller.model.get_list_of_equipments()[0], equipment,
+                         "Equipment not created and added to workout zone as expected!")
+
+
+
+
