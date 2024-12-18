@@ -11,10 +11,10 @@ class GymManagerModel:
     def __str__(self):  # DO I NEED THIS ??
         return f"Name: {self.__name}, ID: {self.__manager_id}"
 
-    def get_manager_id(self):
+    def get_manager_id(self) -> int:
         return self.__manager_id
 
-    def get_manager_name(self):
+    def get_manager_name(self) -> str:
         return self.__name
 
     def set_manager_name(self, name: str):
