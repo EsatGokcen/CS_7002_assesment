@@ -8,7 +8,7 @@ class ManagerController:
         self.model = GymManagerModel(name="Placeholder")
         self.__view = ManagerView(self.model)
 
-    def create_manager(self, name: str):
+    def create_manager(self, name: str) -> GymManagerModel:
         self.model.set_manager_name(name)
         return self.model
 
