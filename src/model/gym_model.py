@@ -6,7 +6,7 @@ class GymModel:
 
     initial_id = 100
 
-    def __init__(self, city: str, manager: GymManagerModel):
+    def __init__(self, city: str, manager: GymManagerModel = None):
         self.__id = GymModel.initial_id
         GymModel.initial_id += 1
         self.__city = city
