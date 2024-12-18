@@ -1,7 +1,6 @@
 import unittest
 
-from src.controller.member_controller import MemberController
-from src.model.members.regular_member_model import RegularMemberModel
+from garbage.member_controller import MemberController
 
 
 class TestMembers(unittest.TestCase):

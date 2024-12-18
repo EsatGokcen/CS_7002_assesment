@@ -1,5 +1,5 @@
-from src.factories.abstract_member_factory import MemberFactory
-from src.model.members.trial_member_model import TrialMemberModel
+from garbage.factories.abstract_member_factory import MemberFactory
+from garbage.members.trial_member_model import TrialMemberModel
 
 
 class TrialMemberFactory(MemberFactory):

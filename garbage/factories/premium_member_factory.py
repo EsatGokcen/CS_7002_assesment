@@ -1,5 +1,5 @@
-from src.factories.abstract_member_factory import MemberFactory
-from src.model.members.premium_member_model import PremiumMemberModel
+from garbage.factories.abstract_member_factory import MemberFactory
+from garbage.members.premium_member_model import PremiumMemberModel
 
 
 class PremiumMemberFactory(MemberFactory):

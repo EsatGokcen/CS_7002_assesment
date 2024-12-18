@@ -1,7 +1,7 @@
-from src.factories.premium_member_factory import PremiumMemberFactory
-from src.factories.regular_member_factory import RegularMemberFactory
-from src.factories.trial_member_factory import TrialMemberFactory
-from src.view.member_view import MemberView
+from garbage.factories.premium_member_factory import PremiumMemberFactory
+from garbage.factories.regular_member_factory import RegularMemberFactory
+from garbage.factories.trial_member_factory import TrialMemberFactory
+from garbage.member_view import MemberView
 
 
 class MemberController:

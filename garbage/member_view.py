@@ -1,4 +1,4 @@
-from src.model.members.abstract_member_model import MemberModel
+from garbage.members import MemberModel
 
 
 class MemberView:

@@ -1,4 +1,4 @@
-from src.controller.member_controller import MemberController
+from garbage.member_controller import MemberController
 
 
 def main():
