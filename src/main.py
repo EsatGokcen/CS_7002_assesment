@@ -1,8 +1,4 @@
-from src.controller.equipment_controller import EquipmentController
-from src.controller.gym_location_controller import GymLocationController
-from src.controller.manager_controller import ManagerController
 from src.controller.member_controller import MemberController
-from src.controller.workout_zone_controller import WorkoutZoneController
 
 
 def main():
