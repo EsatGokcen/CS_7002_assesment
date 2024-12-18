@@ -12,6 +12,7 @@ class WorkoutZoneController:
     def create_workout_zone(self, type: str, capacity: int): # REMOVE FROM gym_location_controller
         self.model.set_type(type)
         self.model.set_capacity(capacity)
+        return self.model
 
     def create_equipment(self, connection: EquipmentController, name: str, type: str):
         equipment = connection.create_equipment(name, type)

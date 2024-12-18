@@ -10,6 +10,7 @@ class ManagerController:
 
     def create_manager(self, name: str):
         self.model.set_manager_name(name)
+        return self.model
 
     def read_manager(self):
         print(self.__view.render())
