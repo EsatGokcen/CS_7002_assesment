@@ -8,10 +8,10 @@ class EquipmentModel:
     def __str__(self):
         return f"{self.__name} for {self.__type}"
 
-    def get_equipment_name(self):
+    def get_equipment_name(self) -> str:
         return self.__name
 
-    def get_equipment_type(self):
+    def get_equipment_type(self) -> str:
         return self.__type
 
     def set_equipment_name(self, name):
