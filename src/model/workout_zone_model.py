@@ -10,13 +10,13 @@ class WorkoutZoneModel:
     def __str__(self):
         return f"{self.__type} with capacity: {self.__capacity}"
 
-    def get_workout_zone_type(self):
+    def get_workout_zone_type(self) -> str:
         return self.__type
 
-    def get_workout_zone_capacity(self):
+    def get_workout_zone_capacity(self) -> int:
         return self.__capacity
 
-    def get_list_of_equipments(self):
+    def get_list_of_equipments(self) -> list[EquipmentModel]:
         return self.__list_of_equipments
 
     def set_type(self, type: str):
