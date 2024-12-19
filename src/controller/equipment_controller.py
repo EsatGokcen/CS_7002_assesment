@@ -9,7 +9,7 @@ class EquipmentController:
         self.__view = EquipmentView(self.model)
 
     def create_equipment(self, name: str, type: str) -> EquipmentModel:
-        equipment = self.model(name, type)
+        equipment = self.model(name=name, type=type)
         return equipment
 
     def read_equipment(self):

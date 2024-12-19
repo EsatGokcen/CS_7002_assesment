@@ -1,5 +1,6 @@
 import unittest
 
+from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_controller import GymController
 
 
@@ -13,8 +14,12 @@ class TestGym(unittest.TestCase):
         # USE ASSERT EQUAL INSTEAD OF TRUE AS YOU CAN CHECK RETURN VALUES MORE ACCURATELY
 
     def test_create_workout_zone(self):
+        equipment_controller = EquipmentController
+        equipment1 = equipment_controller.create_equipment(name="Bench Press", type="Strength Training")
+        list_of_equipments = [equipment1]
+
         gym_controller = GymController()
-        workout_zones = gym_controller.create_workout_zone("Strength Training", 15)
+        workout_zones = gym_controller.create_workout_zone("Strength Training", 15, list_of_equipments)
 
         self.assertEqual(len(gym_controller.model.get_gym_workout_zones()), 1, "Gym workout zone is not created!" )
 
