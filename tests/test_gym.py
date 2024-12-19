@@ -2,6 +2,7 @@ import unittest
 
 from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_controller import GymController
+from src.model.equipment_model import EquipmentModel
 
 
 class TestGym(unittest.TestCase):
@@ -14,9 +15,13 @@ class TestGym(unittest.TestCase):
         # USE ASSERT EQUAL INSTEAD OF TRUE AS YOU CAN CHECK RETURN VALUES MORE ACCURATELY
 
     def test_create_workout_zone(self):
-        equipment_controller = EquipmentController
-        equipment1 = equipment_controller.create_equipment(name="Bench Press", type="Strength Training")
-        list_of_equipments = [equipment1]
+        # equipment_controller = EquipmentController
+        # equipment1 = equipment_controller.create_equipment(name="Bench Press", type="Strength Training")
+        # ERROR: Parameter 'self' unfilled
+        equipment1 = EquipmentModel(name="Bench Press", type="Strength Training")
+        equipment2 = EquipmentModel(name="Squat Rack", type="Strength Training")
+        equipment3 = EquipmentModel(name="Dead-lift Platform", type="Strength Training")
+        list_of_equipments = [equipment1, equipment2, equipment3]
 
         gym_controller = GymController()
         workout_zones = gym_controller.create_workout_zone("Strength Training", 15, list_of_equipments)
