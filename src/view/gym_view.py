@@ -19,7 +19,7 @@ class GymView:
             f"\nGYM ID: {id}"
             f"\nGYM City: {city}"
             f"\nGYM Manager: {manager}"
-            f"\nGYM workout zones: {workout_zones}"
+            f"\nGYM workout zones: {workout_zones}" # returns location instead of items , should list equipments as well
             f"\nGYM staff: {staff}"
             f"\nGYM members: {members}"
             f"\nGYM classes: {classes}"
