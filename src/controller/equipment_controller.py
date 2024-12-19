@@ -5,13 +5,12 @@ from src.view.equipment_view import EquipmentView
 class EquipmentController:
 
     def __init__(self):
-        self.model = EquipmentModel(name="Dumbbell", type="Weight")
+        self.model = EquipmentModel
         self.__view = EquipmentView(self.model)
 
     def create_equipment(self, name: str, type: str) -> EquipmentModel:
-        self.model.set_equipment_name(name)
-        self.model.set_equipment_type(type)
-        return self.model
+        equipment = self.model(name, type)
+        return equipment
 
     def read_equipment(self):
         print(self.__view.render())
