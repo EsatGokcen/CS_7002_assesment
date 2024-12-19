@@ -26,9 +26,12 @@ class TestGym(unittest.TestCase):
         gym_controller = GymController()
         workout_zones = gym_controller.create_workout_zone("Strength Training", 15, list_of_equipments)
 
+        # CHECKS IF GYM CONTROLLER HAS A WORKOUT ZONE IN ITS LIST
         self.assertEqual(len(gym_controller.model.get_gym_workout_zones()), 1, "Gym workout zone is not created!" )
 
+        # CHECKS IF WORKOUT ZONE IS THE CORRECT ONE IN GYM CONTROLLERS WORKOUT ZONES LIST
         workout_zone = gym_controller.model.get_gym_workout_zones()[0]
         self.assertEqual(workout_zones, workout_zone, "gym workout zone does not have suspected values")
 
-
+        # CHECKS IF LIST OF EQUIPMENTS IS IN WORKOUT ZONE OBJECT
+        self.assertEqual(len(workout_zone.get_list_of_equipments()), 3, "List of equipments not created as expected")
