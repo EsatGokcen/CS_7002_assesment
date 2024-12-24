@@ -1,4 +1,6 @@
 from src.model.equipment_model import EquipmentModel
+from src.model.staff_model import StaffModel
+
 
 class WorkoutZoneModel:
 
@@ -20,7 +22,7 @@ class WorkoutZoneModel:
     def get_list_of_equipments(self) -> list[EquipmentModel]:
         return self.__list_of_equipments
 
-    def get_attendant(self): # UNFINSIHED - Link to staff model
+    def get_attendant(self) -> StaffModel:
         return self.__attendant
 
     def set_type(self, type: str):
@@ -32,7 +34,7 @@ class WorkoutZoneModel:
     def set_equipment(self, equipment: EquipmentModel):
         self.__list_of_equipments.append(equipment)
 
-    def set_attendant(self, attendant: str): # UNFINSIHED - Link to staff model
+    def set_attendant(self, attendant: StaffModel):
         self.__attendant = attendant
 
 
