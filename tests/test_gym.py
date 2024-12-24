@@ -15,6 +15,8 @@ class TestGym(unittest.TestCase):
         # USE ASSERT EQUAL INSTEAD OF TRUE AS YOU CAN CHECK RETURN VALUES MORE ACCURATELY
 
     def test_create_workout_zone(self):
+
+        # Create Equipments for workout zone
         equipment1 = EquipmentController()
         equipment1.create_equipment(name="Bench Press", type="Strength Training")
 
@@ -26,6 +28,7 @@ class TestGym(unittest.TestCase):
 
         list_of_equipments = [equipment1.model, equipment2.model, equipment3.model]
 
+        # Create Workout Zone for gym
         gym_controller = GymController()
         workout_zones = gym_controller.create_workout_zone("Strength Training", 15, list_of_equipments)
 
