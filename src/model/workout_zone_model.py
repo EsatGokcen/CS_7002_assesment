@@ -6,9 +6,10 @@ class WorkoutZoneModel:
         self.__type = type
         self.__capacity = capacity
         self.__list_of_equipments = []
+        self.__attendant = None
 
     def __str__(self):
-        return f"{self.__type} with capacity: {self.__capacity}"
+        return f"{self.__type} with capacity: {self.__capacity}. Attendant: {self.__attendant}"
 
     def get_workout_zone_type(self) -> str:
         return self.__type
@@ -19,6 +20,9 @@ class WorkoutZoneModel:
     def get_list_of_equipments(self) -> list[EquipmentModel]:
         return self.__list_of_equipments
 
+    def get_attendant(self): # UNFINSIHED - Link to staff model
+        return self.__attendant
+
     def set_type(self, type: str):
         self.__type = type
 
@@ -27,5 +31,8 @@ class WorkoutZoneModel:
 
     def set_equipment(self, equipment: EquipmentModel):
         self.__list_of_equipments.append(equipment)
+
+    def set_attendant(self, attendant: str): # UNFINSIHED - Link to staff model
+        self.__attendant = attendant
 
 
