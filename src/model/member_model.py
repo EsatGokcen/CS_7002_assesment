@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class Member(ABC):
+class MemberModel(ABC):
 
     def __init__(self, name: str, email: str, phone_number: str):
         self.__name = name
