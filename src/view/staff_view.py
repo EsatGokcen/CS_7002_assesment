@@ -8,5 +8,8 @@ class StaffView:
 
     def render(self):
         return (
-            f""
+            f"\nStaff ID: {self.__model.get_staff_id()}"
+            f"\nStaff Name: {self.__model.get_name()}"
+            f"\nStaff Email: {self.__model.get_email()}"
+            f"\nJob Title: {self.__model.get_job_title()}"
         )
