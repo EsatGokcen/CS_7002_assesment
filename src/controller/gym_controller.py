@@ -1,8 +1,10 @@
 from src.controller.manager_controller import ManagerController
+from src.controller.staff_controller import StaffController
 from src.controller.workout_zone_controller import WorkoutZoneController
 from src.model.equipment_model import EquipmentModel
 from src.model.gym_model import GymModel
 from src.model.manager_model import GymManagerModel
+from src.model.staff_model import StaffModel
 from src.model.workout_zone_model import WorkoutZoneModel
 from src.view.gym_view import GymView
 
@@ -31,6 +33,12 @@ class GymController:
             workout_zone.set_equipment(equipment)
 
         return workout_zone
+
+    def create_staff(self, name: str, email: str, job_title: str) -> StaffModel:
+        staff_controller = StaffController()
+        staff = staff_controller.create_staff(name, email, job_title)
+        self.model.add_staff(staff)
+        return staff
 
     def update_city(self, city: str) -> str:
         self.model.set_gym_city(city)

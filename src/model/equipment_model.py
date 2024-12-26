@@ -6,7 +6,7 @@ class EquipmentModel:
         self.__type = type
 
     def __str__(self):
-        return f"{self.__name} for {self.__type}"
+        return f"\n{self.__name} for {self.__type}"
 
     def get_equipment_name(self) -> str:
         return self.__name
