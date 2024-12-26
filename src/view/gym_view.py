@@ -11,12 +11,14 @@ class GymView:
         city = self.__model.get_gym_city()
         manager = self.__model.get_gym_manager()
         workout_zones = self.__model.get_gym_workout_zones()
+        equipments_list = self.__model.get_equipments_for_workout_zones()
         staff_list = self.__model.get_list_of_staff()
         members_list = self.__model.get_list_of_members()
         classes_list = self.__model.get_list_of_classes()
 
         # Gets each workout zone in the list as a string
         zones = ", ".join(str(zone) for zone in workout_zones)
+        equipments = ", ".join(str(equipment) for equipment in equipments_list)
         staffs = ", ".join(str(staff) for staff in staff_list)
         members = ", ".join(str(member) for member in members_list)
         classes = ", ".join(str(clas) for clas in classes_list)
@@ -26,6 +28,7 @@ class GymView:
             f"\nGYM City: {city}"
             f"\nGYM Manager: {manager}"
             f"\nGYM workout zones: {zones}" 
+            f"\nEquipments: {equipments}"
             f"\nGYM staff: {staffs}"
             f"\nGYM members: {members}"
             f"\nGYM classes: {classes}"

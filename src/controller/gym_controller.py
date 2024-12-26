@@ -19,7 +19,6 @@ class GymController:
         self.model.set_gym_manager(manager)
         return manager
 
-    # NEED TO BE ABLE TO ADD EQUIPMENT TO WORKOUT ZONES
     def create_workout_zone(self, type: str, capacity: int, list_of_equipments: list[EquipmentModel]) -> WorkoutZoneModel:
 
         # CREATE WORKOUT ZONE

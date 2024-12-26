@@ -1,3 +1,4 @@
+from src.model.equipment_model import EquipmentModel
 from src.model.manager_model import GymManagerModel
 from src.model.staff_model import StaffModel
 from src.model.workout_zone_model import WorkoutZoneModel
@@ -28,6 +29,10 @@ class GymModel:
 
     def get_gym_workout_zones(self) -> list[WorkoutZoneModel]:
         return self.__workout_zones
+
+    def get_equipments_for_workout_zones(self) -> list[EquipmentModel]:
+        for workout_zone in self.__workout_zones:
+            return workout_zone.get_list_of_equipments()
 
     def get_list_of_staff(self) -> list[StaffModel]:
         return self.__list_of_staff
