@@ -21,11 +21,13 @@ class GymController:
         self.model.set_gym_manager(manager)
         return manager
 
-    def create_workout_zone(self, type: str, capacity: int, list_of_equipments: list[EquipmentModel]) -> WorkoutZoneModel:
+    def create_workout_zone(self, type: str, capacity: int, attendant: StaffModel, list_of_equipments: list[EquipmentModel]) -> WorkoutZoneModel:
 
         # CREATE WORKOUT ZONE
         workout_zone_controller = WorkoutZoneController()
         workout_zone = workout_zone_controller.create_workout_zone(type, capacity)
+        workout_zone.set_attendant(attendant)
+
         self.model.add_workout_zone(workout_zone)
 
         # ADD LIST OF EQUIPMENTS TO WORKOUT ZONE

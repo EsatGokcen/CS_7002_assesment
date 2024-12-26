@@ -19,10 +19,10 @@ def main():
     gym_controller = GymController()
     gym_controller.create_manager("Esat")
 
-    gym_controller.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
+    personal_trainer = gym_controller.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
     gym_controller.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")
 
-    gym_controller.create_workout_zone("Strength Training", 20, list_of_equipments)
+    gym_controller.create_workout_zone("Strength Training", 20, personal_trainer, list_of_equipments)
 
     gym_controller.read_gym()
 

@@ -1,4 +1,5 @@
 from src.model.equipment_model import EquipmentModel
+from src.model.staff_model import StaffModel
 from src.model.workout_zone_model import WorkoutZoneModel
 from src.view.workout_zone_view import WorkoutZoneView
 from src.controller.equipment_controller import EquipmentController
@@ -19,6 +20,10 @@ class WorkoutZoneController:
         equipment = connection.create_equipment(name, type)
         self.model.set_equipment(equipment)
         return equipment
+
+    def update_attendant(self, attendant: StaffModel) -> StaffModel:
+        self.model.set_attendant(attendant)
+        return attendant
 
     def read_workout_zone(self):
         print(self.__view.render())
