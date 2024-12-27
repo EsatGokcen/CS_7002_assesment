@@ -8,6 +8,9 @@ class TrialMemberModel(MemberModel):
         self.__member_type = "trial"
         self.__trial_period = 7 # DAYS
 
+    def __str__(self):
+        return f"\nMember ID: x, Name: {self.get_name()}, Member Type: {self.get_member_type()}"
+
     def get_member_type(self) -> str:
         return self.__member_type
 

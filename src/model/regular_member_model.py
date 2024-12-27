@@ -8,6 +8,9 @@ class RegularMemberModel(MemberModel):
         self.__member_type = "regular"
         self.__fee = 30.00 # £ per month
 
+    def __str__(self):
+        return f"\nMember ID: x, Name: {self.get_name()}, Member Type: {self.get_member_type()}"
+
     def get_member_type(self) -> str:
         return self.__member_type
 
