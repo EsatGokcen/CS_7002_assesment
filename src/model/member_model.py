@@ -2,7 +2,11 @@ from abc import ABC, abstractmethod
 
 class MemberModel(ABC):
 
+    initial_member_id = 111111 # 6 digit
+
     def __init__(self, name: str, email: str, phone_number: str):
+        self.__id = MemberModel.initial_member_id
+        MemberModel.initial_member_id += 1
         self.__name = name
         self.__email = email
         self.__phone_number = phone_number
@@ -13,6 +17,9 @@ class MemberModel(ABC):
     @abstractmethod
     def get_member_type(self) -> str:
         pass
+
+    def get_id(self) -> int:
+        return self.__id
 
     def get_name(self) -> str:
         return self.__name
