@@ -22,7 +22,7 @@ def main():
     personal_trainer = gym_controller.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
     gym_controller.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")
 
-    gym_controller.create_workout_zone("Strength Training", 20, personal_trainer, list_of_equipments)
+    gym_controller.create_workout_zone(type="Strength Training", capacity=20, attendant=personal_trainer, list_of_equipments=list_of_equipments)
 
     gym_controller.read_gym()
 
