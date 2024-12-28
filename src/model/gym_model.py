@@ -1,5 +1,6 @@
 from src.model.equipment_model import EquipmentModel
 from src.model.manager_model import GymManagerModel
+from src.model.member_model import MemberModel
 from src.model.staff_model import StaffModel
 from src.model.workout_zone_model import WorkoutZoneModel
 
@@ -37,7 +38,7 @@ class GymModel:
     def get_list_of_staff(self) -> list[StaffModel]:
         return self.__list_of_staff
 
-    def get_list_of_members(self) -> list:
+    def get_list_of_members(self) -> list[MemberModel]:
         return self.__list_of_members
 
     def get_list_of_classes(self) -> list:
@@ -55,8 +56,8 @@ class GymModel:
     def add_staff(self, staff: StaffModel):
         self.__list_of_staff.append(staff)
 
-    def add_member(self, member):
-        self.__list_of_members.append(member) # NEED TO CREATE A NEW WORKING MEMBER CLASS
+    def add_member(self, member: MemberModel):
+        self.__list_of_members.append(member)
 
     def add_class(self, gym_class):
         self.__list_of_classes.append(gym_class) # NEED TO CREATE A CLASS FOR GYM CLASSES

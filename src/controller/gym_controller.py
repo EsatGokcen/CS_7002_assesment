@@ -1,3 +1,4 @@
+from garbage.members.abstract_member_model import MemberModel
 from src.controller.manager_controller import ManagerController
 from src.controller.staff_controller import StaffController
 from src.controller.workout_zone_controller import WorkoutZoneController
@@ -41,6 +42,10 @@ class GymController:
         staff = staff_controller.create_staff(name, email, job_title)
         self.model.add_staff(staff)
         return staff
+
+    def create_member(self, member: MemberModel) -> MemberModel: # adds an already created member to the list
+        self.model.add_member(member)
+        return member
 
     def update_city(self, city: str) -> str:
         self.model.set_gym_city(city)
