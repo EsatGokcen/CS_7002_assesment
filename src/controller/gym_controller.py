@@ -1,4 +1,3 @@
-from garbage.members.abstract_member_model import MemberModel
 from src.controller.manager_controller import ManagerController
 from src.controller.staff_controller import StaffController
 from src.controller.workout_zone_controller import WorkoutZoneController
@@ -7,6 +6,7 @@ from src.model.equipment_model import EquipmentModel
 from src.model.gym_model import GymModel
 from src.model.manager_model import GymManagerModel
 from src.model.staff_model import StaffModel
+from src.model.member_model import MemberModel
 from src.model.workout_zone_model import WorkoutZoneModel
 from src.view.gym_view import GymView
 from typing import Type

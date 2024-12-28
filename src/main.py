@@ -1,3 +1,4 @@
+from src.controller.classes_controller import ClassesController
 from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_controller import GymController
 from src.controller.member_controller import MemberController
@@ -55,7 +56,18 @@ def main():
     gym_controller.create_member(regular_member1)
     gym_controller.create_member(premium_member1)
 
-    gym_controller.create_workout_zone(type="Strength Training", capacity=20, attendant=personal_trainer, list_of_equipments=list_of_equipments)
+    strength_zone = gym_controller.create_workout_zone(type="Strength Training",
+                                                       capacity=20,
+                                                       attendant=personal_trainer,
+                                                       list_of_equipments=list_of_equipments)
+
+    # CREATE A CLASS FOR GYM
+    bench_press_class = ClassesController()
+    bench_press_class.create_class("Bench Press Class", "28/12/24", 10,
+                                   teacher=personal_trainer, location= strength_zone)
+
+    #bench_press_class.read_class()
+    gym_controller.create_class(bench_press_class.model)
 
     gym_controller.read_gym()
 
