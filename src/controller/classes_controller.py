@@ -15,9 +15,9 @@ class ClassesController:
     def create_class(self, name: str, date: str, capacity: int, teacher: StaffModel, location: WorkoutZoneModel) -> ClassesModel:
         self.model.set_name(name)
         self.model.set_date(date)
+        self.model.set_location(location)
         self.model.set_capacity(capacity)
         self.model.set_teacher(teacher)
-        self.model.set_location(location)
         return self.model
 
     def add_attendee(self, attendee: Type[MemberModel]) -> Type[MemberModel]:
