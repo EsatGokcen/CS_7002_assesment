@@ -9,7 +9,7 @@ class MemberController:
 
     def __init__(self):
         self.model = None
-        self.__view = MemberView(self.model)
+        self.__view = MemberView()
 
     def create_trial_member(self, name: str, email: str, phone_number: str, username: str, password: str) -> TrialMemberModel:
         self.model = TrialMemberModel(name=name, email=email, phone_number=phone_number)
@@ -29,5 +29,5 @@ class MemberController:
         self.model.set_password(password)
         return self.model
 
-    def read_member(self):
-        print(self.__view.render())
+    def read_member(self, member_model: MemberModel):
+        print(self.__view.render(member_model))

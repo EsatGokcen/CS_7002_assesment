@@ -3,10 +3,12 @@ from src.model.member_model import MemberModel
 
 class MemberView:
 
-    def __init__(self, member_model: MemberModel):
+    def __init__(self):
+        self.__model = None
+
+    def render(self, member_model: MemberModel) -> str:
         self.__model = member_model
 
-    def render(self) -> str:
         return (
             f"\nMember ID: {self.__model.get_id()}"
             f"\nMember Name: {self.__model.get_name()}"

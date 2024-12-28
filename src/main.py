@@ -1,10 +1,12 @@
 from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_controller import GymController
+from src.controller.member_controller import MemberController
 from src.controller.staff_controller import StaffController
 
 
 def main():
 
+    # EQUIPMENT CREATION
     equipment1 = EquipmentController()
     equipment1.create_equipment(name="Bench Press", type="Strength Training")
 
@@ -16,6 +18,33 @@ def main():
 
     list_of_equipments = [equipment1.model, equipment2.model, equipment3.model]
 
+    # MEMBER CREATION
+    member_controller = MemberController()
+    trial_member1 = member_controller.create_trial_member(name="Tim",
+                                                          email="tim@gmail.com",
+                                                          phone_number="7393313233",
+                                                          username="timsaxaphonist",
+                                                          password="Soprano35!")
+
+    member_controller.read_member(trial_member1)
+
+    regular_member1 = member_controller.create_regular_member(name="Jack",
+                                                              email="jack@gmail.com",
+                                                              phone_number="7494414244",
+                                                              username="strongjack",
+                                                              password="BenchPress120kg!")
+
+    member_controller.read_member(regular_member1)
+
+    premium_member1 = member_controller.create_premium_member(name="Lucy",
+                                                              email="lucy@gmail.com",
+                                                              phone_number="7595515255",
+                                                              username="Lucy_does_yoga",
+                                                              password="India130798")
+
+    member_controller.read_member(premium_member1)
+
+    # GYM CREATION
     gym_controller = GymController()
     gym_controller.create_manager("Esat")
 
