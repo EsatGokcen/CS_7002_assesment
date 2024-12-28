@@ -8,6 +8,7 @@ from src.model.manager_model import GymManagerModel
 from src.model.staff_model import StaffModel
 from src.model.workout_zone_model import WorkoutZoneModel
 from src.view.gym_view import GymView
+from typing import Type
 
 
 class GymController:
@@ -43,7 +44,7 @@ class GymController:
         self.model.add_staff(staff)
         return staff
 
-    def create_member(self, member: MemberModel) -> MemberModel: # adds an already created member to the list
+    def create_member(self, member: Type[MemberModel]) -> Type[MemberModel]: # adds an already created member to the list
         self.model.add_member(member)
         return member
 
