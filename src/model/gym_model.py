@@ -1,3 +1,4 @@
+from src.model.classes_model import ClassesModel
 from src.model.equipment_model import EquipmentModel
 from src.model.manager_model import GymManagerModel
 from src.model.member_model import MemberModel
@@ -42,7 +43,7 @@ class GymModel:
     def get_list_of_members(self) -> list[Type[MemberModel]]:
         return self.__list_of_members
 
-    def get_list_of_classes(self) -> list:
+    def get_list_of_classes(self) -> list[ClassesModel]:
         return self.__list_of_classes
 
     def set_gym_city(self, city: str):
@@ -60,5 +61,5 @@ class GymModel:
     def add_member(self, member: Type[MemberModel]): # Type[] helps Python accept the use of subclasses
         self.__list_of_members.append(member)
 
-    def add_class(self, gym_class):
-        self.__list_of_classes.append(gym_class) # NEED TO CREATE A CLASS FOR GYM CLASSES
+    def add_class(self, gym_class: ClassesModel):
+        self.__list_of_classes.append(gym_class)

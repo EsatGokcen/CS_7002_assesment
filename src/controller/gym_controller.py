@@ -2,6 +2,7 @@ from garbage.members.abstract_member_model import MemberModel
 from src.controller.manager_controller import ManagerController
 from src.controller.staff_controller import StaffController
 from src.controller.workout_zone_controller import WorkoutZoneController
+from src.model.classes_model import ClassesModel
 from src.model.equipment_model import EquipmentModel
 from src.model.gym_model import GymModel
 from src.model.manager_model import GymManagerModel
@@ -47,6 +48,10 @@ class GymController:
     def create_member(self, member: Type[MemberModel]) -> Type[MemberModel]: # adds an already created member to the list
         self.model.add_member(member)
         return member
+
+    def create_class(self, gym_class: ClassesModel) -> ClassesModel: # adds an already created class to the list
+        self.model.add_class(gym_class)
+        return gym_class
 
     def update_city(self, city: str) -> str:
         self.model.set_gym_city(city)
