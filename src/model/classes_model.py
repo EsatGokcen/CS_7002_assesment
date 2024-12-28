@@ -1,5 +1,7 @@
+from src.model.member_model import MemberModel
 from src.model.staff_model import StaffModel
 from src.model.workout_zone_model import WorkoutZoneModel
+from typing import Type
 
 
 class ClassesModel:
@@ -10,6 +12,7 @@ class ClassesModel:
         self.__location = None #: WorkoutZoneModel
         self.__capacity = None # < WorkoutZoneModel.get_capacity()
         self.__teacher = None #: StaffModel
+        self.__attendees = [] #: list[Type[MemberModel]]
 
     def get_name(self) -> str:
         return self.__name
@@ -25,6 +28,9 @@ class ClassesModel:
 
     def get_teacher(self) -> StaffModel:
         return self.__teacher
+
+    def get_attendees(self) -> list[Type[MemberModel]]:
+        return self.__attendees
 
     def set_name(self, name: str):
         self.__name = name
@@ -50,3 +56,6 @@ class ClassesModel:
             return "Teacher set successfully!"
         else:
             return "Teacher is not registered!"
+
+    def add_attendee(self, attendee: Type[MemberModel]):
+        self.__attendees.append(attendee)
