@@ -66,6 +66,9 @@ def main():
     bench_press_class.create_class("Bench Press Class", "28/12/24", 10,
                                    teacher=personal_trainer, location= strength_zone)
 
+    bench_press_class.add_attendee(premium_member1)
+    bench_press_class.add_attendee(regular_member1)
+
     #bench_press_class.read_class()
     gym_controller.create_class(bench_press_class.model)
 
