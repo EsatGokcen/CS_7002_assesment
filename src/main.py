@@ -26,7 +26,7 @@ def main():
                                                           username="timsaxaphonist",
                                                           password="Soprano35!")
 
-    member_controller.read_member(trial_member1)
+    #member_controller.read_member(trial_member1)
 
     regular_member1 = member_controller.create_regular_member(name="Jack",
                                                               email="jack@gmail.com",
@@ -34,7 +34,7 @@ def main():
                                                               username="strongjack",
                                                               password="BenchPress120kg!")
 
-    member_controller.read_member(regular_member1)
+    #member_controller.read_member(regular_member1)
 
     premium_member1 = member_controller.create_premium_member(name="Lucy",
                                                               email="lucy@gmail.com",
@@ -42,7 +42,7 @@ def main():
                                                               username="Lucy_does_yoga",
                                                               password="India130798")
 
-    member_controller.read_member(premium_member1)
+    #member_controller.read_member(premium_member1)
 
     # GYM CREATION
     gym_controller = GymController()
