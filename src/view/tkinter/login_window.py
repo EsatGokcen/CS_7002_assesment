@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
+from src.model.gym_model import GymModel
 from src.view.tkinter.registration_window import RegistrationWindow
 
 
@@ -11,6 +12,14 @@ class LoginWindow:
         self.master.title("Login")
         self.master.geometry("600x400")
         #self.master.configure(bg="#b0c4de") # For colour
+
+        # Gym Selection Label and Dropdown
+        tk.Label(master, text="Select Gym:").pack(pady=5)
+        self.gym_var = tk.StringVar(master)
+        self.gym_var.set("Select a gym")  # Default value
+        self.gyms = []  # Example gym list
+        self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gyms)
+        self.gym_dropdown.pack(pady=5)
 
         # Username Label and Entry
         tk.Label(master, text="Username:").pack(pady=5)
@@ -43,3 +52,6 @@ class LoginWindow:
         self.master.destroy()
         root = tk.Tk()
         RegistrationWindow(root)
+
+    def get_gyms_list(self) -> list[GymModel]:
+        return self.gyms

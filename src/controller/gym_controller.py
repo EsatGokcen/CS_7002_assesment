@@ -11,6 +11,8 @@ from src.model.workout_zone_model import WorkoutZoneModel
 from src.view.gym_view import GymView
 from typing import Type
 
+from src.view.tkinter.login_window import LoginWindow
+
 
 class GymController:
 
@@ -65,3 +67,7 @@ class GymController:
 
     def read_gym(self):
         print(self.__view.render())
+
+    def add_gym_to_login(self, login: LoginWindow):
+        gyms = login.get_gyms_list()
+        gyms.append(self.model)
