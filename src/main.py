@@ -2,7 +2,9 @@ from src.controller.classes_controller import ClassesController
 from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_controller import GymController
 from src.controller.member_controller import MemberController
-from src.controller.staff_controller import StaffController
+import tkinter as tk
+
+from src.view.tkinter.login_window import LoginWindow
 
 
 def main():
@@ -73,6 +75,10 @@ def main():
     gym_controller.create_class(bench_press_class.model)
 
     gym_controller.read_gym()
+
+    root = tk.Tk()
+    gym_controller.add_gym_to_login(LoginWindow(root))
+    root.mainloop()
 
 if __name__ == '__main__':
     main()
