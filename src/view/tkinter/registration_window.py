@@ -1,13 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox
 
-from src.view.tkinter.login_window import LoginWindow
-from src.view.tkinter.tk_controller import TkController
-
 
 class RegistrationWindow:
 
-    def __init__(self, master, controller: TkController):
+    def __init__(self, master, controller):
         self.master = master
         self.controller = controller
         self.master.title("Registration")

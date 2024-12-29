@@ -1,13 +1,12 @@
 import tkinter as tk
 from tkinter import messagebox
-
+from typing import Union
 from src.model.gym_model import GymModel
-from src.view.tkinter.tk_controller import TkController
 
 
 class LoginWindow:
 
-    def __init__(self, master, controller: TkController):
+    def __init__(self, master, controller):
         self.master = master
         self.controller = controller
         self.master.title("Login")
@@ -18,7 +17,7 @@ class LoginWindow:
         tk.Label(master, text="Select Gym:").pack(pady=5)
         self.gym_var = tk.StringVar(master)
         self.gym_var.set("Select a gym")  # Default value
-        self.gyms = []  # Example gym list
+        self.gyms = ["Other"]  # Example gym list
         self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gyms)
         self.gym_dropdown.pack(pady=5)
 
@@ -52,5 +51,5 @@ class LoginWindow:
         messagebox.showinfo("Redirect", "Redirecting to Registration...")
         self.controller.show_registration_window()
 
-    def get_gyms_list(self) -> list[GymModel]:
+    def get_gyms_list(self) -> list[Union[GymModel, str]]:
         return self.gyms

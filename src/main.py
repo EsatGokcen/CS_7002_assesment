@@ -4,7 +4,7 @@ from src.controller.gym_controller import GymController
 from src.controller.member_controller import MemberController
 import tkinter as tk
 
-from src.view.tkinter.login_window import LoginWindow
+from src.view.tkinter.tk_controller import TkController
 
 
 def main():
@@ -76,9 +76,9 @@ def main():
 
     gym_controller.read_gym()
 
-    root = tk.Tk()
-    gym_controller.add_gym_to_login(LoginWindow(root))
-    root.mainloop()
+    app = TkController()
+    login = app.start()
+    gym_controller.add_gym_to_login(login)
 
 if __name__ == '__main__':
     main()

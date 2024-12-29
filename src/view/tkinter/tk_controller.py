@@ -1,18 +1,20 @@
 import tkinter as tk
-from login_window import LoginWindow
-from registration_window import RegistrationWindow
+from src.view.tkinter.login_window import LoginWindow
+from src.view.tkinter.registration_window import RegistrationWindow
 
 class TkController:
     def __init__(self):
         self.root = tk.Tk()
 
-    def start(self):
-        self.show_login_window()
+    def start(self) -> LoginWindow:
+        login = self.show_login_window()
         self.root.mainloop()
+        return login
 
-    def show_login_window(self):
+    def show_login_window(self) -> LoginWindow:
         self.clear_window()
-        LoginWindow(self.root, self)
+        login = LoginWindow(self.root, self)
+        return login
 
     def show_registration_window(self):
         self.clear_window()
