@@ -76,9 +76,10 @@ def main():
 
     gym_controller.read_gym()
 
+    # TKINTER
     app = TkController()
     login = app.start()
-    gym_controller.add_gym_to_login(login)
+    gym_controller.add_gym_to_login(login) # DOES NOT WORK
 
 if __name__ == '__main__':
     main()
