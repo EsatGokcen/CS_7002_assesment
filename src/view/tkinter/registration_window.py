@@ -1,56 +1,55 @@
 import tkinter as tk
 from tkinter import messagebox
 
-def register():
-    username = username_entry.get()
-    password = password_entry.get()
-    confirm_password = confirm_password_entry.get()
+from src.view.tkinter.login_window import LoginWindow
 
-    if not username or not password or not confirm_password:
-        messagebox.showerror("Registration Failed", "All fields are required")
-        return
 
-    if password != confirm_password:
-        messagebox.showerror("Registration Failed", "Passwords do not match")
-        return
+class RegistrationWindow:
 
-    # Placeholder for actual registration logic
-    messagebox.showinfo("Registration Success", "Account created successfully")
-    registration_window.destroy()  # Close the registration window after success
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Registration")
+        self.master.geometry("600x400")
+        #self.master.configure(bg="#b0c4de") # For colour
 
-def go_back():
-    registration_window.destroy()  # Close registration window
+        # Username Label and Entry
+        tk.Label(master, text="Username:").pack(pady=5)
+        self.username_entry = tk.Entry(master)
+        self.username_entry.pack(pady=5)
 
-# Initialize Tkinter Window
-registration_window = tk.Tk()
-registration_window.title("Registration")
-registration_window.geometry("600x400")
+        # Password Label and Entry
+        tk.Label(master, text="Password:").pack(pady=5)
+        self.password_entry = tk.Entry(master, show="*")
+        self.password_entry.pack(pady=5)
 
-# Username Label and Entry
-username_label = tk.Label(registration_window, text="Username:")
-username_label.pack(pady=5)
-username_entry = tk.Entry(registration_window)
-username_entry.pack(pady=5)
+        # Confirm Password Label and Entry
+        tk.Label(master, text="Confirm Password:").pack(pady=5)
+        self.confirm_password_entry = tk.Entry(master, show="*")
+        self.confirm_password_entry.pack(pady=5)
 
-# Password Label and Entry
-password_label = tk.Label(registration_window, text="Password:")
-password_label.pack(pady=5)
-password_entry = tk.Entry(registration_window, show="*")
-password_entry.pack(pady=5)
+        # Register Button
+        tk.Button(master, text="Register", command=self.register).pack(pady=10)
 
-# Confirm Password Label and Entry
-confirm_password_label = tk.Label(registration_window, text="Confirm Password:")
-confirm_password_label.pack(pady=5)
-confirm_password_entry = tk.Entry(registration_window, show="*")
-confirm_password_entry.pack(pady=5)
+        # Back Button
+        tk.Button(master, text="Back", command=self.go_back).pack(pady=5)
 
-# Register Button
-register_button = tk.Button(registration_window, text="Register", command=register)
-register_button.pack(pady=10)
+    def register(self):
+        username = self.username_entry.get()
+        password = self.password_entry.get()
+        confirm_password = self.confirm_password_entry.get()
 
-# Back Button
-back_button = tk.Button(registration_window, text="Back", command=go_back)
-back_button.pack(pady=5)
+        if not username or not password or not confirm_password:
+            messagebox.showerror("Registration Failed", "All fields are required")
+            return
 
-# Run the Tkinter Main Loop
-registration_window.mainloop()
+        if password != confirm_password:
+            messagebox.showerror("Registration Failed", "Passwords do not match")
+            return
+
+        messagebox.showinfo("Registration Success", "Account created successfully")
+        self.go_back()
+
+    def go_back(self):
+        self.master.destroy()
+        root = tk.Tk()
+        LoginWindow(root)

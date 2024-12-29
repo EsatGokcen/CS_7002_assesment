@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import messagebox
 
+from src.view.tkinter.registration_window import RegistrationWindow
+
+
 class LoginWindow:
 
     def __init__(self, master):
@@ -36,5 +39,7 @@ class LoginWindow:
             messagebox.showerror("Login Failed", "Invalid Username or Password")
 
     def open_register_window(self):
-        # Logic to open the Registration Window
         messagebox.showinfo("Redirect", "Redirecting to Registration...")
+        self.master.destroy()
+        root = tk.Tk()
+        RegistrationWindow(root)
