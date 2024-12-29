@@ -2,12 +2,14 @@ import tkinter as tk
 from tkinter import messagebox
 
 from src.view.tkinter.login_window import LoginWindow
+from src.view.tkinter.tk_controller import TkController
 
 
 class RegistrationWindow:
 
-    def __init__(self, master):
+    def __init__(self, master, controller: TkController):
         self.master = master
+        self.controller = controller
         self.master.title("Registration")
         self.master.geometry("600x400")
         #self.master.configure(bg="#b0c4de") # For colour
@@ -50,6 +52,4 @@ class RegistrationWindow:
         self.go_back()
 
     def go_back(self):
-        self.master.destroy()
-        root = tk.Tk()
-        LoginWindow(root)
+        self.controller.show_login_window()

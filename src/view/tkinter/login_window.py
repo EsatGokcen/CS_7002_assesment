@@ -2,13 +2,14 @@ import tkinter as tk
 from tkinter import messagebox
 
 from src.model.gym_model import GymModel
-from src.view.tkinter.registration_window import RegistrationWindow
+from src.view.tkinter.tk_controller import TkController
 
 
 class LoginWindow:
 
-    def __init__(self, master):
+    def __init__(self, master, controller: TkController):
         self.master = master
+        self.controller = controller
         self.master.title("Login")
         self.master.geometry("600x400")
         #self.master.configure(bg="#b0c4de") # For colour
@@ -49,9 +50,7 @@ class LoginWindow:
 
     def open_register_window(self):
         messagebox.showinfo("Redirect", "Redirecting to Registration...")
-        self.master.destroy()
-        root = tk.Tk()
-        RegistrationWindow(root)
+        self.controller.show_registration_window()
 
     def get_gyms_list(self) -> list[GymModel]:
         return self.gyms
