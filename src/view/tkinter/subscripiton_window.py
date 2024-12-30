@@ -45,6 +45,13 @@ class SubscriptionWindow:
         # Back Button
         tk.Button(master, text="Back", command=self.go_back).pack(pady=5)
 
+        # Payment Amount for Duration Label
+        self.amount_label = tk.Label(master, text=f"Payment Amount: ")
+        self.amount_label.pack(pady=5)
+        self.duration_label = tk.Label(master, text=f"Subscription duration: ")
+        self.duration_label.pack(pady=5)
+        tk.Button(master, text="Reveal", command=self.get_payment_amount_and_duration).pack(pady=10)
+
     def confirm_subscription(self):
         selected_gym_str = self.gym_var.get()
         selected_subscription = self.subscription_var.get()
@@ -94,3 +101,37 @@ class SubscriptionWindow:
 
     def go_back(self):
         self.controller.show_registration_window()
+
+    def get_payment_amount_and_duration(self):
+        amount = "£0"
+        duration = "0 days"
+
+        selected_subscription = self.subscription_var.get()
+        selected_payment = self.payment_var.get()
+
+        if selected_subscription == "Trial":
+            amount = "£0"
+            duration = "7 days"
+        elif selected_subscription == "Regular":
+            if selected_payment == "Monthly":
+                amount = "£30"
+                duration = "1 month"
+            elif selected_payment == "Quarterly":
+                amount = "£90"
+                duration = "3 months"
+            elif selected_payment == "Annually":
+                amount = "£330"
+                duration = "12 months"
+        elif selected_subscription == "Premium":
+            if selected_payment == "Monthly":
+                amount = "£50"
+                duration = "1 month"
+            elif selected_payment == "Quarterly":
+                amount = "£150"
+                duration = "3 months"
+            elif selected_payment == "Annually":
+                amount = "£550"
+                duration = "12 months"
+
+        self.amount_label.config(text=f"Payment Amount: {amount}")
+        self.duration_label.config(text=f"Subscription duration: {duration}")
