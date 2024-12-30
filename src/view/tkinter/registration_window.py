@@ -55,6 +55,8 @@ class RegistrationWindow:
         password = self.password_entry.get()
         confirm_password = self.confirm_password_entry.get()
 
+        registration_details = [name, email, phone_number, username, password]
+
         if not name or not email or not phone_number or not username or not password or not confirm_password:
             messagebox.showerror("Registration Failed", "All fields are required")
             return
@@ -64,11 +66,11 @@ class RegistrationWindow:
             return
 
         messagebox.showinfo("Registration Success", "Account created successfully")
-        self.open_subscription_window()
+        self.open_subscription_window(registration_details)
 
-    def open_subscription_window(self):
+    def open_subscription_window(self, registration_details: list):
         messagebox.showinfo("Subscribe", "Complete your subscription...")
-        self.controller.show_subscription_window()
+        self.controller.show_subscription_window(registration_details)
 
     def go_back(self):
         self.controller.show_login_window()

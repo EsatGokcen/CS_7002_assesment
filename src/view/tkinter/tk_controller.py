@@ -23,9 +23,9 @@ class TkController:
         self.clear_window()
         RegistrationWindow(self.root, self)
 
-    def show_subscription_window(self):
+    def show_subscription_window(self, registration_details: list):
         self.clear_window()
-        SubscriptionWindow(self.root, self, self.gyms)
+        SubscriptionWindow(self.root, self, registration_details, self.gyms)
 
     def clear_window(self):
         for widget in self.root.winfo_children():

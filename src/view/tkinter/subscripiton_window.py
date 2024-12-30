@@ -2,12 +2,14 @@ import tkinter as tk
 from tkinter import messagebox
 
 from src.controller.gym_controller import GymController
+from src.controller.member_controller import MemberController
 
 
 class SubscriptionWindow:
-    def __init__(self, master, controller, gyms: list[GymController]):
+    def __init__(self, master, controller, registration_details: list, gyms: list[GymController]):
         self.master = master
         self.controller = controller
+        self.registration_details = registration_details
         self.gyms = gyms
         self.master.title("Gym Subscription")
         self.master.geometry("600x600")
@@ -57,8 +59,25 @@ class SubscriptionWindow:
             )
             # Navigate to the next window or dashboard
 
-    def create_member_object(self):
-        pass
+    def create_member_object(self, selected_subscription: str):
+        name = self.registration_details[0]
+        email = self.registration_details[1]
+        phone_number = self.registration_details[2]
+        username =  self.registration_details[3]
+        password = self.registration_details[4]
+
+        member_controller = MemberController()
+
+        if selected_subscription == "Trial":
+            member = member_controller.create_trial_member(name, email, phone_number, username, password)
+        elif selected_subscription == "Regular":
+            member = member_controller.create_regular_member(name, email, phone_number, username, password)
+        elif selected_subscription == "Premium":
+            member = member_controller.create_premium_member(name, email, phone_number, username, password)
+        else:
+            raise ValueError("Incorrect input, chosen subscription does not exist!")
+
+        return member
 
     def go_back(self):
         self.controller.show_registration_window()
