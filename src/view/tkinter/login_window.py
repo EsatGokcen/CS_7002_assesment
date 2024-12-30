@@ -13,14 +13,6 @@ class LoginWindow:
         self.master.geometry("600x400")
         #self.master.configure(bg="#b0c4de") # For colour
 
-        # Gym Selection Label and Dropdown
-        tk.Label(master, text="Select Gym:").pack(pady=5)
-        self.gym_var = tk.StringVar(master)
-        self.gym_var.set("Select a gym")  # Default value
-        self.gyms = ["Other"]  # Example gym list
-        self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gyms)
-        self.gym_dropdown.pack(pady=5)
-
         # Username Label and Entry
         tk.Label(master, text="Username:").pack(pady=5)
         self.username_entry = tk.Entry(master)

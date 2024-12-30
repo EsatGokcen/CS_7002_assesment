@@ -21,3 +21,12 @@ class TkController:
     def clear_window(self):
         for widget in self.root.winfo_children():
             widget.destroy()
+
+    def might_be_useful_later(self, master):
+        # Gym Selection Label and Dropdown
+        tk.Label(master, text="Select Gym:").pack(pady=5)
+        self.gym_var = tk.StringVar(master)
+        self.gym_var.set("Select a gym")  # Default value
+        self.gyms = ["Other"]  # Example gym list
+        self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gyms)
+        self.gym_dropdown.pack(pady=5)
