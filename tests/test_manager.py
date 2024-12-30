@@ -7,7 +7,7 @@ class TestManager(unittest.TestCase):
 
     def test_create_manager(self):
         manager_controller = ManagerController()
-        manager = manager_controller.create_manager(name="Esat")
+        manager = manager_controller.create_manager(name="Esat", username="AdminEsat", password="Admin1000!")
 
         # Validate that manager creation was successful
 

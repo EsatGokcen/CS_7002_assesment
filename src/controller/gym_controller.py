@@ -20,9 +20,9 @@ class GymController:
         self.model = GymModel(city="London", manager=None)
         self.__view = GymView(self.model)
 
-    def create_manager(self, name: str) -> GymManagerModel:
+    def create_manager(self, name: str, username: str, password: str) -> GymManagerModel:
         manager_controller = ManagerController()
-        manager = manager_controller.create_manager(name)
+        manager = manager_controller.create_manager(name, username, password)
         self.model.set_gym_manager(manager)
         return manager
 
@@ -59,9 +59,9 @@ class GymController:
         self.model.set_gym_city(city)
         return self.model.get_gym_city()
 
-    def update_manager(self, name: str) -> GymManagerModel:
+    def update_manager(self, name: str, username: str, password: str) -> GymManagerModel:
         manager_controller = ManagerController()
-        manager = manager_controller.create_manager(name)
+        manager = manager_controller.create_manager(name, username, password)
         self.model.set_gym_manager(manager)
         return manager
 
