@@ -78,8 +78,8 @@ def main():
 
     # TKINTER
     app = TkController()
-    login = app.start()
-    gym_controller.add_gym_to_login(login) # DOES NOT WORK
+    app.start()
+
     # IDEA pick gym when registering and not in log in
     # when logging in it should already know the gym you've picked at register!
 

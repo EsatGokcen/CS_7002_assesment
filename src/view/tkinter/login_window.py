@@ -51,5 +51,3 @@ class LoginWindow:
         messagebox.showinfo("Redirect", "Redirecting to Registration...")
         self.controller.show_registration_window()
 
-    def get_gyms_list(self) -> list[Union[GymModel, str]]:
-        return self.gyms

@@ -6,15 +6,13 @@ class TkController:
     def __init__(self):
         self.root = tk.Tk()
 
-    def start(self) -> LoginWindow:
-        login = self.show_login_window()
+    def start(self):
+        self.show_login_window()
         self.root.mainloop()
-        return login
 
-    def show_login_window(self) -> LoginWindow:
+    def show_login_window(self):
         self.clear_window()
-        login = LoginWindow(self.root, self)
-        return login
+        LoginWindow(self.root, self)
 
     def show_registration_window(self):
         self.clear_window()

@@ -68,6 +68,3 @@ class GymController:
     def read_gym(self):
         print(self.__view.render())
 
-    def add_gym_to_login(self, login: LoginWindow):
-        gyms = login.get_gyms_list()
-        gyms.append(self.model)
