@@ -49,7 +49,7 @@ def main():
 
     # GYM CREATION
     gym_controller = GymController()
-    gym_controller.create_manager("Esat")
+    gym_controller.create_manager(name="Esat",username="AdminEsat", password="Admin1000!")
 
     personal_trainer = gym_controller.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
     gym_controller.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")

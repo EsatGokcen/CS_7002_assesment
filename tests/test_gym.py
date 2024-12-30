@@ -9,7 +9,7 @@ class TestGym(unittest.TestCase):
 
     def test_create_manager(self):
         gym_controller = GymController()
-        manager = gym_controller.create_manager("Esat")
+        manager = gym_controller.create_manager(name="Esat",username="AdminEsat", password="Admin1000!")
 
         self.assertEqual(gym_controller.model.get_gym_manager() ,manager ,"Manager not created successfully!")
         # USE ASSERT EQUAL INSTEAD OF TRUE AS YOU CAN CHECK RETURN VALUES MORE ACCURATELY
