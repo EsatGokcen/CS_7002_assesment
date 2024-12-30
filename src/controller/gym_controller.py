@@ -20,6 +20,9 @@ class GymController:
         self.model = GymModel(city="London", manager=None)
         self.__view = GymView(self.model)
 
+    def __str__(self):
+        return f"{self.model.get_gym_city()} GYM"
+
     def create_manager(self, name: str, username: str, password: str) -> GymManagerModel:
         manager_controller = ManagerController()
         manager = manager_controller.create_manager(name, username, password)

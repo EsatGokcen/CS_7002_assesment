@@ -1,12 +1,15 @@
 import tkinter as tk
+
+from src.controller.gym_controller import GymController
 from src.view.tkinter.login_window import LoginWindow
 from src.view.tkinter.registration_window import RegistrationWindow
 from src.view.tkinter.subscripiton_window import SubscriptionWindow
 
 
 class TkController:
-    def __init__(self):
+    def __init__(self, gyms: list[GymController]):
         self.root = tk.Tk()
+        self.gyms = gyms
 
     def start(self):
         self.show_login_window()
@@ -22,17 +25,8 @@ class TkController:
 
     def show_subscription_window(self):
         self.clear_window()
-        SubscriptionWindow(self.root, self)
+        SubscriptionWindow(self.root, self, self.gyms)
 
     def clear_window(self):
         for widget in self.root.winfo_children():
             widget.destroy()
-
-    def might_be_useful_later(self, master):
-        # Gym Selection Label and Dropdown
-        tk.Label(master, text="Select Gym:").pack(pady=5)
-        self.gym_var = tk.StringVar(master)
-        self.gym_var.set("Select a gym")  # Default value
-        self.gyms = ["Other"]  # Example gym list
-        self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gyms)
-        self.gym_dropdown.pack(pady=5)

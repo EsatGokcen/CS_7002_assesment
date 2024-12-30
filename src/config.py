@@ -136,4 +136,4 @@ def create_data():
 
     gym2.create_class(cardio_class.model)
 
-    return [gym1.read_gym(), gym2.read_gym()]
+    return [gym1, gym2]

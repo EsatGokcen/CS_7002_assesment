@@ -8,7 +8,7 @@ class RegistrationWindow:
         self.master = master
         self.controller = controller
         self.master.title("Registration")
-        self.master.geometry("600x400")
+        self.master.geometry("600x600")
         #self.master.configure(bg="#b0c4de") # For colour
 
         # Name Label and Entry

@@ -1,10 +1,14 @@
 import tkinter as tk
 from tkinter import messagebox
 
+from src.controller.gym_controller import GymController
+
+
 class SubscriptionWindow:
-    def __init__(self, master, controller):
+    def __init__(self, master, controller, gyms: list[GymController]):
         self.master = master
         self.controller = controller
+        self.gyms = gyms
         self.master.title("Gym Subscription")
         self.master.geometry("600x600")
         #self.master.configure(bg="#b0c4de") # for colour
@@ -13,7 +17,7 @@ class SubscriptionWindow:
         tk.Label(master, text="Select Gym:").pack(pady=5)
         self.gym_var = tk.StringVar(master)
         self.gym_var.set("Select a gym")
-        self.gyms = ["Gym A", "Gym B", "Gym C"]
+        self.gym_names = [gym.model.get_gym_city() for gym in self.gyms]  # Extract gym names from objects
         self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gyms)
         self.gym_dropdown.pack(pady=5)
 
@@ -52,6 +56,9 @@ class SubscriptionWindow:
                 f"You have selected {selected_subscription} subscription at {selected_gym} with {selected_payment} payments."
             )
             # Navigate to the next window or dashboard
+
+    def create_member_object(self):
+        pass
 
     def go_back(self):
         self.controller.show_registration_window()
