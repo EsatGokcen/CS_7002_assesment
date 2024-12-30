@@ -19,7 +19,7 @@ class SubscriptionWindow:
         tk.Label(master, text="Select Gym:").pack(pady=5)
         self.gym_var = tk.StringVar(master)
         self.gym_var.set("Select a gym")
-        self.gym_names = [gym.model.get_gym_city() for gym in self.gyms]  # Extract gym names from objects
+        self.gym_names = [str(gym) for gym in self.gyms]  # Extract gym names from objects
         self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gyms)
         self.gym_dropdown.pack(pady=5)
 
@@ -46,15 +46,15 @@ class SubscriptionWindow:
         tk.Button(master, text="Back", command=self.go_back).pack(pady=5)
 
     def confirm_subscription(self):
-        selected_gym_name = self.gym_var.get()
+        selected_gym_str = self.gym_var.get()
         selected_subscription = self.subscription_var.get()
         selected_payment = self.payment_var.get()
 
-        if selected_gym_name == "Select a gym" or selected_subscription == "Select a type" or selected_payment == "Select a frequency":
+        if selected_gym_str == "Select a gym" or selected_subscription == "Select a type" or selected_payment == "Select a frequency":
             messagebox.showerror("Error", "All fields must be selected.")
         else:
-            # Find the corresponding GymController object
-            selected_gym = next((gym for gym in self.gyms if gym.model.get_gym_city() == selected_gym_name), None)
+            # Find the corresponding GymController object using the __str__ representation
+            selected_gym = next((gym for gym in self.gyms if str(gym) == selected_gym_str), None)
 
             if not selected_gym:
                 messagebox.showerror("Error", "Selected gym not found.")
@@ -64,9 +64,11 @@ class SubscriptionWindow:
             member = self.create_member_object(selected_subscription)
             selected_gym.create_member(member)
 
+            selected_gym.read_gym()
+
             messagebox.showinfo(
                 "Subscription Confirmed",
-                f"You have selected {selected_subscription} subscription at {selected_gym_name} with {selected_payment} payments."
+                f"You have selected {selected_subscription} subscription at {selected_gym_str} with {selected_payment} payments."
             )
             # Navigate to the next window or dashboard
 
