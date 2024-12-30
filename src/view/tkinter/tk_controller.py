@@ -1,6 +1,8 @@
 import tkinter as tk
 from src.view.tkinter.login_window import LoginWindow
 from src.view.tkinter.registration_window import RegistrationWindow
+from src.view.tkinter.subscripiton_window import SubscriptionWindow
+
 
 class TkController:
     def __init__(self):
@@ -17,6 +19,10 @@ class TkController:
     def show_registration_window(self):
         self.clear_window()
         RegistrationWindow(self.root, self)
+
+    def show_subscription_window(self):
+        self.clear_window()
+        SubscriptionWindow(self.root, self)
 
     def clear_window(self):
         for widget in self.root.winfo_children():

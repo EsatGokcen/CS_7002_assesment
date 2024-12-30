@@ -64,7 +64,11 @@ class RegistrationWindow:
             return
 
         messagebox.showinfo("Registration Success", "Account created successfully")
-        self.go_back()
+        self.open_subscription_window()
+
+    def open_subscription_window(self):
+        messagebox.showinfo("Subscribe", "Complete your subscription...")
+        self.controller.show_subscription_window()
 
     def go_back(self):
         self.controller.show_login_window()

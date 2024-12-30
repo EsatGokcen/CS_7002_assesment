@@ -1,7 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox
-from typing import Union
-from src.model.gym_model import GymModel
 
 
 class LoginWindow:
