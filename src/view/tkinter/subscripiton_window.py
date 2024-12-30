@@ -57,6 +57,8 @@ class SubscriptionWindow:
                 "Subscription Confirmed",
                 f"You have selected {selected_subscription} subscription at {selected_gym} with {selected_payment} payments."
             )
+            member = self.create_member_object(selected_subscription)
+            return print(member)
             # Navigate to the next window or dashboard
 
     def create_member_object(self, selected_subscription: str):
