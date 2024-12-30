@@ -6,6 +6,8 @@ from src.controller.member_controller import MemberController
 
 def create_data():
 
+    # GYM 1 DATA ;
+
     # EQUIPMENT CREATION
     equipment1 = EquipmentController()
     equipment1.create_equipment(name="Bench Press", type="Strength Training")
@@ -45,17 +47,17 @@ def create_data():
     #member_controller.read_member(premium_member1)
 
     # GYM CREATION
-    gym_controller = GymController()
-    gym_controller.create_manager(name="Esat",username="AdminEsat", password="Admin1000!")
+    gym1 = GymController()
+    gym1.create_manager(name="Esat",username="AdminEsat", password="Admin1000!")
 
-    personal_trainer = gym_controller.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
-    gym_controller.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")
+    personal_trainer = gym1.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
+    gym1.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")
 
-    gym_controller.create_member(trial_member1)
-    gym_controller.create_member(regular_member1)
-    gym_controller.create_member(premium_member1)
+    gym1.create_member(trial_member1)
+    gym1.create_member(regular_member1)
+    gym1.create_member(premium_member1)
 
-    strength_zone = gym_controller.create_workout_zone(type="Strength Training",
+    strength_zone = gym1.create_workout_zone(type="Strength Training",
                                                        capacity=20,
                                                        attendant=personal_trainer,
                                                        list_of_equipments=list_of_equipments)
@@ -69,6 +71,69 @@ def create_data():
     bench_press_class.add_attendee(regular_member1)
 
     #bench_press_class.read_class()
-    gym_controller.create_class(bench_press_class.model)
+    gym1.create_class(bench_press_class.model)
 
-    return gym_controller.read_gym()
+    # GYM 2 DATA ;
+
+    # EQUIPMENT CREATION
+    equipment4 = EquipmentController()
+    equipment4.create_equipment("Treadmill", "Cardio")
+
+    equipment5 = EquipmentController()
+    equipment5.create_equipment("Stationary Bicycle", "Cardio")
+
+    equipment6 = EquipmentController()
+    equipment6.create_equipment("Rowing Machine", "Cardio")
+
+    list_of_equipments2 = [equipment4.model, equipment5.model, equipment6.model]
+
+    # MEMBER CREATION
+    trial_member2 = member_controller.create_trial_member(name="Derek",
+                                                          email="derek@hotmail.com",
+                                                          phone_number="7949957763",
+                                                          username="fitDerek",
+                                                          password="ILoveMyMum!")
+
+    regular_member2 = member_controller.create_regular_member(name="Alice",
+                                                              email="alice@gmail.com",
+                                                              phone_number="7292325587",
+                                                              username="AliceMalice",
+                                                              password="CottonCandy!")
+
+    premium_member2 = member_controller.create_premium_member(name="David",
+                                                              email="david@outlook.com",
+                                                              phone_number="7595345543",
+                                                              username="DavidMalt",
+                                                              password="TechCEO!")
+
+    # GYM CREATION
+    gym2 = GymController()
+    gym2.model.set_gym_city("Manchester")
+    gym2.create_manager(name="Zak", username="ZakAfron", password="KittyCat!")
+
+    personal_trainer2 = gym2.create_staff(name="Jocy", email="jocy@fitness.com", job_title="Personal Trainer")
+    gym2.create_staff(name="Bob", email="bob@eathealthy.com", job_title="Nutritionist")
+
+    gym2.create_member(trial_member2)
+    gym2.create_member(regular_member2)
+    gym2.create_member(premium_member2)
+
+    cardio_zone = gym2.create_workout_zone(type="Cardio",
+                                           capacity=20,
+                                           attendant=personal_trainer2,
+                                           list_of_equipments= list_of_equipments2)
+
+    # CLASS CREATION
+    cardio_class = ClassesController()
+    cardio_class.create_class(name="Cardio Class",
+                              date="01/01/2025",
+                              capacity=15,
+                              teacher=personal_trainer2,
+                              location=cardio_zone)
+
+    cardio_class.add_attendee(regular_member2)
+    cardio_class.add_attendee(premium_member2)
+
+    gym2.create_class(cardio_class.model)
+
+    return [gym1.read_gym(), gym2.read_gym()]
