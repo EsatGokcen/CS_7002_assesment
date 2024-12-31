@@ -18,7 +18,7 @@ class GymView:
 
         # Gets each workout zone in the list as a string
         zones = ", ".join(str(zone) for zone in workout_zones)
-        equipments = ", ".join(str(equipment) for equipment in equipments_list)
+        equipments = "\n".join(str(equipment) for equipment in equipments_list)
         staffs = ", ".join(str(staff) for staff in staff_list)
         members = ", ".join(str(member) for member in members_list)
         classes = ", ".join(str(clas) for clas in classes_list)
