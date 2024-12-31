@@ -1,12 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox
 
-from src.controller.gym_controller import GymController
-
 
 class LoginWindow:
 
-    def __init__(self, master, controller, gyms: list[[GymController]]):
+    def __init__(self, master, controller, gyms):
         self.master = master
         self.controller = controller
         self.gyms = gyms
@@ -39,7 +37,7 @@ class LoginWindow:
         tk.Button(master, text="Register", command=self.open_register_window).pack(pady=5)
 
     def login(self):
-        if self.get_username_password_data():
+        if self.get_login_data():
             messagebox.showinfo("Login Success", "Welcome to the Dashboard!")
             # Logic to transition to the Dashboard Window
         else:
@@ -49,10 +47,19 @@ class LoginWindow:
         messagebox.showinfo("Redirect", "Redirecting to Registration...")
         self.controller.show_registration_window()
 
-    def get_username_password_data(self):
+    def get_login_data(self):
         selected_gym_str = self.gym_var.get()
         username_entry = self.username_entry.get()
         password_entry = self.password_entry.get()
+
+        # Demand data entry
+        if selected_gym_str == "Select a gym":
+            messagebox.showerror("Error", "Please select a gym.")
+            return False
+
+        if not username_entry or not password_entry:
+            messagebox.showerror("Error", "Username and Password cannot be empty.")
+            return False
 
         # Find the corresponding GymController object using the __str__ representation
         selected_gym = next((gym for gym in self.gyms if str(gym) == selected_gym_str), None)
@@ -61,6 +68,7 @@ class LoginWindow:
             messagebox.showerror("Error", "Selected gym not found.")
             return
 
+        # Compare the username and password to existing data
         members_list = selected_gym.model.get_list_of_members()
         for member in members_list:
             username = member.get_username()
