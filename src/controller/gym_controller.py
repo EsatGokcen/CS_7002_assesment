@@ -11,9 +11,6 @@ from src.model.workout_zone_model import WorkoutZoneModel
 from src.view.gym_view import GymView
 from typing import Type
 
-from src.view.tkinter.login_window import LoginWindow
-
-
 class GymController:
 
     def __init__(self):

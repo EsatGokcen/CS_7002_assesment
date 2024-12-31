@@ -3,7 +3,7 @@ from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_controller import GymController
 from src.controller.member_controller import MemberController
 from src.controller.workout_zone_controller import WorkoutZoneController
-
+import copy
 
 def create_workout_zone_data():
     # WORKOUT ZONE 1 - Strength Training
@@ -189,10 +189,10 @@ def create_gym_data():
     gym1.create_member(members[4])
 
     # WORKOUT ZONE ADDITION
-    gym1.add_workout_zone(workout_zones[0])
-    gym1.add_workout_zone(workout_zones[1])
-    gym1.add_workout_zone(workout_zones[2])
-    gym1.add_workout_zone(workout_zones[4])
+    gym1.add_workout_zone(copy.deepcopy(workout_zones[0]))
+    gym1.add_workout_zone(copy.deepcopy(workout_zones[1]))
+    gym1.add_workout_zone(copy.deepcopy(workout_zones[2]))
+    gym1.add_workout_zone(copy.deepcopy(workout_zones[4]))
 
     # CREATE A CLASS FOR GYM
     bench_press_class = ClassesController()
@@ -221,11 +221,11 @@ def create_gym_data():
     gym2.create_member(members[5])
 
     # WORKOUT ZONE ADDITION
-    gym1.add_workout_zone(workout_zones[0])
-    gym1.add_workout_zone(workout_zones[1])
-    gym1.add_workout_zone(workout_zones[2])
-    gym1.add_workout_zone(workout_zones[3])
-    gym1.add_workout_zone(workout_zones[5])
+    gym2.add_workout_zone(copy.deepcopy(workout_zones[0]))
+    gym2.add_workout_zone(copy.deepcopy(workout_zones[1]))
+    gym2.add_workout_zone(copy.deepcopy(workout_zones[2]))
+    gym2.add_workout_zone(copy.deepcopy(workout_zones[3]))
+    gym2.add_workout_zone(copy.deepcopy(workout_zones[5]))
 
     # CLASS CREATION
     cardio_class = ClassesController()

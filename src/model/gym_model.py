@@ -36,8 +36,8 @@ class GymModel:
     def get_equipments_for_workout_zones(self) -> list[EquipmentModel]:
         equipment_list = []
         for workout_zone in self.__workout_zones:
-             equipment_list.append(workout_zone.get_list_of_equipments())
-        return equipment_list # BROKEN
+            equipment_list.append(workout_zone.get_list_of_equipments())
+        return equipment_list
 
     def get_list_of_staff(self) -> list[StaffModel]:
         return self.__list_of_staff
