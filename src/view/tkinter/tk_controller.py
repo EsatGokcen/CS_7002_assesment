@@ -27,6 +27,12 @@ class TkController:
         self.clear_window()
         SubscriptionWindow(self.root, self, registration_details, self.gyms)
 
+    def show_dashboard_window(self):
+        pass
+
+    def show_admin_dashboard_window(self):
+        pass
+
     def clear_window(self):
         for widget in self.root.winfo_children():
             widget.destroy()

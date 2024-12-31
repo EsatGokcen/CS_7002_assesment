@@ -39,16 +39,22 @@ class LoginWindow:
     def login(self):
         if self.get_login_data() == "member":
             messagebox.showinfo("Login Success", "Welcome to the Dashboard!")
-            # Logic to transition to the Dashboard Window
+            self.open_dashboard_window()
         elif self.get_login_data() == "manager":
             messagebox.showinfo("Login Success", "Welcome to Admin Dashboard!")
-            # Logic to transition to the Admin Dashboard Window
+            self.open_admin_dashboard_window()
         else:
             messagebox.showerror("Login Failed", "Invalid Username or Password")
 
     def open_register_window(self):
         messagebox.showinfo("Redirect", "Redirecting to Registration...")
         self.controller.show_registration_window()
+
+    def open_dashboard_window(self):
+        self.controller.show_dashboard_window()
+
+    def open_admin_dashboard_window(self):
+        self.controller.show_admin_dashboard_window()
 
     def get_login_data(self):
         selected_gym_str = self.gym_var.get()
