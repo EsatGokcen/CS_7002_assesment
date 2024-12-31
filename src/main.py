@@ -1,11 +1,11 @@
-from src.config import create_data
+from src.config import create_gym_data
 from src.view.tkinter.tk_controller import TkController
 
 
 def main():
 
     # TKINTER
-    app = TkController(create_data())
+    app = TkController(create_gym_data())
     app.start()
 
     # IDEA pick gym when registering and not in log in

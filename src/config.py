@@ -120,18 +120,13 @@ def create_workout_zone_data():
                                            capacity=15,
                                            list_of_equipments=list_of_equipments6)
 
+    list_of_workout_zones = [strength_zone.model, cardio_zone.model, free_weights_zone.model,
+                             stretching_zone.model, combat_zone.model, group_fitness_zone.model]
+
+    return list_of_workout_zones
 
 def create_member_data():
-    pass
 
-
-def create_gym_data():
-
-    # GYM 1 DATA ;
-
-
-
-    # MEMBER CREATION
     member_controller = MemberController()
     trial_member1 = member_controller.create_trial_member(name="Tim",
                                                           email="tim@gmail.com",
@@ -139,15 +134,11 @@ def create_gym_data():
                                                           username="timsaxaphonist",
                                                           password="Soprano35!")
 
-    #member_controller.read_member(trial_member1)
-
     regular_member1 = member_controller.create_regular_member(name="Jack",
                                                               email="jack@gmail.com",
                                                               phone_number="7494414244",
                                                               username="strongjack",
                                                               password="BenchPress120kg!")
-
-    #member_controller.read_member(regular_member1)
 
     premium_member1 = member_controller.create_premium_member(name="Lucy",
                                                               email="lucy@gmail.com",
@@ -155,33 +146,6 @@ def create_gym_data():
                                                               username="Lucy_does_yoga",
                                                               password="India130798")
 
-    #member_controller.read_member(premium_member1)
-
-    # GYM CREATION
-    gym1 = GymController()
-    gym1.create_manager(name="Esat",username="AdminEsat", password="Admin1000!")
-
-    personal_trainer = gym1.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
-    gym1.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")
-
-    gym1.create_member(trial_member1)
-    gym1.create_member(regular_member1)
-    gym1.create_member(premium_member1)
-
-    # CREATE A CLASS FOR GYM
-    bench_press_class = ClassesController()
-    bench_press_class.create_class("Bench Press Class", "28/12/24", 10,
-                                   teacher=personal_trainer, location= strength_zone)
-
-    bench_press_class.add_attendee(premium_member1)
-    bench_press_class.add_attendee(regular_member1)
-
-    #bench_press_class.read_class()
-    gym1.create_class(bench_press_class.model)
-
-    # GYM 2 DATA ;
-
-    # MEMBER CREATION
     trial_member2 = member_controller.create_trial_member(name="Derek",
                                                           email="derek@hotmail.com",
                                                           phone_number="7949957763",
@@ -200,18 +164,68 @@ def create_gym_data():
                                                               username="DavidMalt",
                                                               password="TechCEO!")
 
+    list_of_members = [trial_member1, trial_member2, regular_member1, regular_member2, premium_member1, premium_member2]
+
+    return list_of_members
+
+def create_gym_data():
+
+    members = create_member_data()
+    workout_zones = create_workout_zone_data()
+
+    # GYM 1 DATA ;
+
+    # GYM CREATION
+    gym1 = GymController()
+    gym1.create_manager(name="Esat",username="AdminEsat", password="Admin1000!")
+
+    # STAFF CREATION
+    personal_trainer = gym1.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
+    gym1.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")
+
+    # MEMBER ADDITION
+    gym1.create_member(members[0])
+    gym1.create_member(members[2])
+    gym1.create_member(members[4])
+
+    # WORKOUT ZONE ADDITION
+    gym1.add_workout_zone(workout_zones[0])
+    gym1.add_workout_zone(workout_zones[1])
+    gym1.add_workout_zone(workout_zones[2])
+    gym1.add_workout_zone(workout_zones[4])
+
+    # CREATE A CLASS FOR GYM
+    bench_press_class = ClassesController()
+    bench_press_class.create_class("Bench Press Class", "28/12/24", 10,
+                                   teacher=personal_trainer, location= workout_zones[0])
+
+    bench_press_class.add_attendee(members[2])
+    bench_press_class.add_attendee(members[4])
+
+    gym1.create_class(bench_press_class.model)
+
+    # GYM 2 DATA ;
+
     # GYM CREATION
     gym2 = GymController()
     gym2.model.set_gym_city("Manchester")
     gym2.create_manager(name="Zak", username="ZakAfron", password="KittyCat!")
 
+    # STAFF CREATION
     personal_trainer2 = gym2.create_staff(name="Jocy", email="jocy@fitness.com", job_title="Personal Trainer")
     gym2.create_staff(name="Bob", email="bob@eathealthy.com", job_title="Nutritionist")
 
-    gym2.create_member(trial_member2)
-    gym2.create_member(regular_member2)
-    gym2.create_member(premium_member2)
+    # MEMBER ADDITION
+    gym2.create_member(members[1])
+    gym2.create_member(members[3])
+    gym2.create_member(members[5])
 
+    # WORKOUT ZONE ADDITION
+    gym1.add_workout_zone(workout_zones[0])
+    gym1.add_workout_zone(workout_zones[1])
+    gym1.add_workout_zone(workout_zones[2])
+    gym1.add_workout_zone(workout_zones[3])
+    gym1.add_workout_zone(workout_zones[5])
 
     # CLASS CREATION
     cardio_class = ClassesController()
@@ -219,10 +233,10 @@ def create_gym_data():
                               date="01/01/2025",
                               capacity=15,
                               teacher=personal_trainer2,
-                              location=cardio_zone)
+                              location=workout_zones[1])
 
-    cardio_class.add_attendee(regular_member2)
-    cardio_class.add_attendee(premium_member2)
+    cardio_class.add_attendee(members[3])
+    cardio_class.add_attendee(members[5])
 
     gym2.create_class(cardio_class.model)
 

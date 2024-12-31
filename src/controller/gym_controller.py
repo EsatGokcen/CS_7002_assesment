@@ -44,6 +44,9 @@ class GymController:
 
         return workout_zone
 
+    def add_workout_zone(self, workout_zone: WorkoutZoneModel):
+        self.model.add_workout_zone(workout_zone)
+
     def create_staff(self, name: str, email: str, job_title: str) -> StaffModel:
         staff_controller = StaffController()
         staff = staff_controller.create_staff(name, email, job_title)
