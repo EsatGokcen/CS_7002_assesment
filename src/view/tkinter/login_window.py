@@ -37,9 +37,11 @@ class LoginWindow:
         tk.Button(master, text="Register", command=self.open_register_window).pack(pady=5)
 
     def login(self):
-        if self.get_login_data():
+        if self.get_login_data() == "member":
             messagebox.showinfo("Login Success", "Welcome to the Dashboard!")
             # Logic to transition to the Dashboard Window
+        elif self.get_login_data() == "manager":
+            messagebox.showinfo("Login Success", "Welcome to Admin Dashboard!")
         else:
             messagebox.showerror("Login Failed", "Invalid Username or Password")
 
@@ -70,10 +72,17 @@ class LoginWindow:
 
         # Compare the username and password to existing data
         members_list = selected_gym.model.get_list_of_members()
+        manager = selected_gym.model.get_gym_manager()
+        manager_username = manager.get_username()
+        manager_password = manager.get_password()
+
+        if manager_username == username_entry and manager_password == password_entry:
+            return "manager"
+
         for member in members_list:
             username = member.get_username()
             password = member.get_password()
             if username == username_entry and password == password_entry:
-                return True
+                return "member"
         return False
 
