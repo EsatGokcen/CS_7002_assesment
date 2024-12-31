@@ -1,15 +1,26 @@
 import tkinter as tk
 from tkinter import messagebox
 
+from src.controller.gym_controller import GymController
+
 
 class LoginWindow:
 
-    def __init__(self, master, controller):
+    def __init__(self, master, controller, gyms: list[[GymController]]):
         self.master = master
         self.controller = controller
+        self.gyms = gyms
         self.master.title("Login")
         self.master.geometry("600x400")
         #self.master.configure(bg="#b0c4de") # For colour
+
+        # Gym Selection Label and Dropdown
+        tk.Label(master, text="Select Gym:").pack(pady=5)
+        self.gym_var = tk.StringVar(master)
+        self.gym_var.set("Select a gym")
+        self.gym_names = [str(gym) for gym in self.gyms]  # Extract gym names from objects
+        self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gyms)
+        self.gym_dropdown.pack(pady=5)
 
         # Username Label and Entry
         tk.Label(master, text="Username:").pack(pady=5)
@@ -28,10 +39,7 @@ class LoginWindow:
         tk.Button(master, text="Register", command=self.open_register_window).pack(pady=5)
 
     def login(self):
-        username = self.username_entry.get()
-        password = self.password_entry.get()
-
-        if username == "admin" and password == "password":
+        if self.get_username_password_data():
             messagebox.showinfo("Login Success", "Welcome to the Dashboard!")
             # Logic to transition to the Dashboard Window
         else:
@@ -40,4 +48,24 @@ class LoginWindow:
     def open_register_window(self):
         messagebox.showinfo("Redirect", "Redirecting to Registration...")
         self.controller.show_registration_window()
+
+    def get_username_password_data(self):
+        selected_gym_str = self.gym_var.get()
+        username_entry = self.username_entry.get()
+        password_entry = self.password_entry.get()
+
+        # Find the corresponding GymController object using the __str__ representation
+        selected_gym = next((gym for gym in self.gyms if str(gym) == selected_gym_str), None)
+
+        if not selected_gym:
+            messagebox.showerror("Error", "Selected gym not found.")
+            return
+
+        members_list = selected_gym.model.get_list_of_members()
+        for member in members_list:
+            username = member.get_username()
+            password = member.get_password()
+            if username == username_entry and password == password_entry:
+                return True
+        return False
 

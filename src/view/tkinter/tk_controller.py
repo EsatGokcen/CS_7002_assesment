@@ -17,7 +17,7 @@ class TkController:
 
     def show_login_window(self):
         self.clear_window()
-        LoginWindow(self.root, self)
+        LoginWindow(self.root, self, self.gyms)
 
     def show_registration_window(self):
         self.clear_window()
