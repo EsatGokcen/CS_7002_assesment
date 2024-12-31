@@ -78,6 +78,10 @@ class SubscriptionWindow:
                 f"You have selected {selected_subscription} subscription at {selected_gym_str} with {selected_payment} payments."
             )
             # Navigate to the next window or dashboard
+            self.open_dashboard_window()
+
+    def open_dashboard_window(self):
+        self.controller.show_dashboard_window()
 
     def create_member_object(self, selected_subscription: str):
         name = self.registration_details[0]
