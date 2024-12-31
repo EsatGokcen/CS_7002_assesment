@@ -42,6 +42,7 @@ class LoginWindow:
             # Logic to transition to the Dashboard Window
         elif self.get_login_data() == "manager":
             messagebox.showinfo("Login Success", "Welcome to Admin Dashboard!")
+            # Logic to transition to the Admin Dashboard Window
         else:
             messagebox.showerror("Login Failed", "Invalid Username or Password")
 
