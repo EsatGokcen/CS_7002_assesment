@@ -11,9 +11,14 @@ class WorkoutZoneController:
         self.model = WorkoutZoneModel("Yoga Zone", 15)
         self.__view = WorkoutZoneView(self.model)
 
-    def create_workout_zone(self, type: str, capacity: int) -> WorkoutZoneModel:
+    def create_workout_zone(self, type: str, capacity: int, list_of_equipments: list[EquipmentModel]) -> WorkoutZoneModel:
         self.model.set_type(type)
         self.model.set_capacity(capacity)
+
+        # ADD LIST OF EQUIPMENTS TO WORKOUT ZONE
+        for equipment in list_of_equipments:
+            self.model.set_equipment(equipment)
+
         return self.model
 
     def create_equipment(self, connection: EquipmentController, name: str, type: str) -> EquipmentModel:

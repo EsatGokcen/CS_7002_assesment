@@ -2,11 +2,11 @@ from src.controller.classes_controller import ClassesController
 from src.controller.equipment_controller import EquipmentController
 from src.controller.gym_controller import GymController
 from src.controller.member_controller import MemberController
+from src.controller.workout_zone_controller import WorkoutZoneController
 
 
-def create_data():
-
-    # GYM 1 DATA ;
+def create_workout_zone_data():
+    # WORKOUT ZONE 1 - Strength Training
 
     # EQUIPMENT CREATION
     equipment1 = EquipmentController()
@@ -19,6 +19,117 @@ def create_data():
     equipment3.create_equipment(name="Dead-lift Platform", type="Strength Training")
 
     list_of_equipments = [equipment1.model, equipment2.model, equipment3.model]
+
+    strength_zone = WorkoutZoneController()
+    strength_zone.create_workout_zone(type="Strength Training",
+                                      capacity=10,
+                                      list_of_equipments=list_of_equipments)
+
+    # WORKOUT ZONE 2 - Cardio
+
+    # EQUIPMENT CREATION
+    equipment4 = EquipmentController()
+    equipment4.create_equipment("Treadmill", "Cardio")
+
+    equipment5 = EquipmentController()
+    equipment5.create_equipment("Stationary Bicycle", "Cardio")
+
+    equipment6 = EquipmentController()
+    equipment6.create_equipment("Rowing Machine", "Cardio")
+
+    list_of_equipments2 = [equipment4.model, equipment5.model, equipment6.model]
+
+    cardio_zone = WorkoutZoneController()
+    cardio_zone.create_workout_zone(type="Cardio",
+                                    capacity=20,
+                                    list_of_equipments= list_of_equipments2)
+
+    # WORKOUT ZONE 3 - Free Weights
+
+    # EQUIPMENT CREATION
+    equipment7 = EquipmentController()
+    equipment7.create_equipment("Dumbbells", "Free Weights")
+
+    equipment8 = EquipmentController()
+    equipment8.create_equipment("Barbells", "Free Weights")
+
+    equipment9 = EquipmentController()
+    equipment9.create_equipment("Weight Trees", "Free Weights")
+
+    list_of_equipments3 = [equipment7.model, equipment8.model, equipment9.model]
+
+    free_weights_zone = WorkoutZoneController()
+    free_weights_zone.create_workout_zone(type="Free Weights",
+                                          capacity=25,
+                                          list_of_equipments=list_of_equipments3)
+
+    # WORKOUT ZONE 4 - Stretching
+
+    # EQUIPMENT CREATION
+    equipment10 = EquipmentController()
+    equipment10.create_equipment("Yoga Mats", "Stretching")
+
+    equipment11 = EquipmentController()
+    equipment11.create_equipment("Medicine Balls", "Stretching")
+
+    equipment12 = EquipmentController()
+    equipment12.create_equipment("Stretching Straps", "Stretching")
+
+    list_of_equipments4 = [equipment10.model, equipment11.model, equipment12.model]
+
+    stretching_zone = WorkoutZoneController()
+    stretching_zone.create_workout_zone(type="Stretching",
+                                        capacity=15,
+                                        list_of_equipments=list_of_equipments4)
+
+    # WORKOUT ZONE 5 - Combat Zone
+
+    # EQUIPMENT CREATION
+    equipment13 = EquipmentController()
+    equipment13.create_equipment("Punching Bags", "Combat")
+
+    equipment14 = EquipmentController()
+    equipment14.create_equipment("Sparring Rings", "Combat")
+
+    equipment15 = EquipmentController()
+    equipment15.create_equipment("Skipping Ropes", "Combat")
+
+    list_of_equipments5 = [equipment13.model, equipment14.model, equipment15.model]
+
+    combat_zone = WorkoutZoneController()
+    combat_zone.create_workout_zone(type="Combat Zone",
+                                    capacity=10,
+                                    list_of_equipments=list_of_equipments5)
+
+    # WORKOUT ZONE 6 - Group Fitness
+
+    # EQUIPMENT CREATION
+    equipment16 = EquipmentController()
+    equipment16.create_equipment("Spin Bikes", "Group Fitness")
+
+    equipment17 = EquipmentController()
+    equipment17.create_equipment("Stability Balls", "Group Fitness")
+
+    equipment18 = EquipmentController()
+    equipment18.create_equipment("Sound System and Mirrors", "Group Fitness")
+
+    list_of_equipments6 = [equipment16.model, equipment17.model, equipment18.model]
+
+    group_fitness_zone = WorkoutZoneController()
+    group_fitness_zone.create_workout_zone(type="Group Fitness",
+                                           capacity=15,
+                                           list_of_equipments=list_of_equipments6)
+
+
+def create_member_data():
+    pass
+
+
+def create_gym_data():
+
+    # GYM 1 DATA ;
+
+
 
     # MEMBER CREATION
     member_controller = MemberController()
@@ -57,11 +168,6 @@ def create_data():
     gym1.create_member(regular_member1)
     gym1.create_member(premium_member1)
 
-    strength_zone = gym1.create_workout_zone(type="Strength Training",
-                                                       capacity=20,
-                                                       attendant=personal_trainer,
-                                                       list_of_equipments=list_of_equipments)
-
     # CREATE A CLASS FOR GYM
     bench_press_class = ClassesController()
     bench_press_class.create_class("Bench Press Class", "28/12/24", 10,
@@ -74,18 +180,6 @@ def create_data():
     gym1.create_class(bench_press_class.model)
 
     # GYM 2 DATA ;
-
-    # EQUIPMENT CREATION
-    equipment4 = EquipmentController()
-    equipment4.create_equipment("Treadmill", "Cardio")
-
-    equipment5 = EquipmentController()
-    equipment5.create_equipment("Stationary Bicycle", "Cardio")
-
-    equipment6 = EquipmentController()
-    equipment6.create_equipment("Rowing Machine", "Cardio")
-
-    list_of_equipments2 = [equipment4.model, equipment5.model, equipment6.model]
 
     # MEMBER CREATION
     trial_member2 = member_controller.create_trial_member(name="Derek",
@@ -118,10 +212,6 @@ def create_data():
     gym2.create_member(regular_member2)
     gym2.create_member(premium_member2)
 
-    cardio_zone = gym2.create_workout_zone(type="Cardio",
-                                           capacity=20,
-                                           attendant=personal_trainer2,
-                                           list_of_equipments= list_of_equipments2)
 
     # CLASS CREATION
     cardio_class = ClassesController()
