@@ -32,6 +32,12 @@ class AdminDashboardWindow:
         self.teacher_names = [str(teacher) for teacher in self.selected_gym.model.get_list_of_staff()]
         self.teacher_dropdown = tk.OptionMenu(master, self.teacher_var, *self.teacher_names)
         self.teacher_dropdown.pack(pady=5)
+        tk.Label(master, text="Select Location:").pack(pady=5)
+        self.location_var = tk.StringVar(master)
+        self.location_var.set("Select a location")
+        self.location_names = [str(location) for location in self.selected_gym.model.get_gym_workout_zones()]
+        self.location_dropdown = tk.OptionMenu(master, self.location_var, *self.location_names)
+        self.location_dropdown.pack(pady=5)
         tk.Button(master, text="Add Class", command=self.add_class).pack(pady=10)
 
         # Attendance Tracking Section
@@ -55,14 +61,15 @@ class AdminDashboardWindow:
         class_schedule = self.class_schedule_entry.get()
         class_capacity = self.class_capacity_entry.get()
         class_teacher = self.teacher_var.get()
-        if not class_name or not class_schedule or not class_capacity or not class_teacher:
-            messagebox.showerror("Error", "Class Name and Schedule cannot be empty.")
+        class_location = self.location_var.get()
+        if not class_name or not class_schedule or not class_capacity or not class_teacher or not class_location:
+            messagebox.showerror("Error", "Class Attributes cannot be empty.")
             return
 
         # Logic to add class to the gym
         class_controller = ClassesController()
         created_class = class_controller.create_class(name=class_name,date=class_schedule,capacity=class_capacity,
-                                                      teacher=class_teacher,location=None)
+                                                      teacher=class_teacher,location=class_location)
         self.selected_gym.create_class(created_class)
         messagebox.showinfo("Success", f"Class '{class_name}' added successfully with schedule '{class_schedule}'.")
 
