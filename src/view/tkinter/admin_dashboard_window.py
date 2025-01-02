@@ -26,6 +26,12 @@ class AdminDashboardWindow:
         tk.Label(master, text="Class Capacity").pack(pady=5)
         self.class_capacity_entry = tk.Entry(master)
         self.class_capacity_entry.pack(pady=5)
+        tk.Label(master, text="Select Teacher:").pack(pady=5)
+        self.teacher_var = tk.StringVar(master)
+        self.teacher_var.set("Select a teacher")
+        self.teacher_names = [str(teacher) for teacher in self.selected_gym.model.get_list_of_staff()]
+        self.teacher_dropdown = tk.OptionMenu(master, self.teacher_var, *self.teacher_names)
+        self.teacher_dropdown.pack(pady=5)
         tk.Button(master, text="Add Class", command=self.add_class).pack(pady=10)
 
         # Attendance Tracking Section
@@ -48,14 +54,15 @@ class AdminDashboardWindow:
         class_name = self.class_name_entry.get()
         class_schedule = self.class_schedule_entry.get()
         class_capacity = self.class_capacity_entry.get()
-        if not class_name or not class_schedule:
+        class_teacher = self.teacher_var.get()
+        if not class_name or not class_schedule or not class_capacity or not class_teacher:
             messagebox.showerror("Error", "Class Name and Schedule cannot be empty.")
             return
 
         # Logic to add class to the gym
         class_controller = ClassesController()
         created_class = class_controller.create_class(name=class_name,date=class_schedule,capacity=class_capacity,
-                                                      teacher=None,location=None)
+                                                      teacher=class_teacher,location=None)
         self.selected_gym.create_class(created_class)
         messagebox.showinfo("Success", f"Class '{class_name}' added successfully with schedule '{class_schedule}'.")
 
