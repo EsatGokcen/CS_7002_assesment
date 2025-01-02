@@ -20,9 +20,12 @@ class AdminDashboardWindow:
         tk.Label(master, text="Class Name:").pack(pady=5)
         self.class_name_entry = tk.Entry(master)
         self.class_name_entry.pack(pady=5)
-        tk.Label(master, text="Class Schedule (e.g., Monday 6PM):").pack(pady=5)
+        tk.Label(master, text="Class Schedule (e.g., 13/01/25 - 6PM):").pack(pady=5)
         self.class_schedule_entry = tk.Entry(master)
         self.class_schedule_entry.pack(pady=5)
+        tk.Label(master, text="Class Capacity").pack(pady=5)
+        self.class_capacity_entry = tk.Entry(master)
+        self.class_capacity_entry.pack(pady=5)
         tk.Button(master, text="Add Class", command=self.add_class).pack(pady=10)
 
         # Attendance Tracking Section
@@ -44,13 +47,15 @@ class AdminDashboardWindow:
     def add_class(self):
         class_name = self.class_name_entry.get()
         class_schedule = self.class_schedule_entry.get()
+        class_capacity = self.class_capacity_entry.get()
         if not class_name or not class_schedule:
             messagebox.showerror("Error", "Class Name and Schedule cannot be empty.")
             return
 
         # Logic to add class to the gym
         class_controller = ClassesController()
-        created_class = class_controller.create_class(name=class_name,date=class_schedule,capacity=0,teacher=None,location=None)
+        created_class = class_controller.create_class(name=class_name,date=class_schedule,capacity=class_capacity,
+                                                      teacher=None,location=None)
         self.selected_gym.create_class(created_class)
         messagebox.showinfo("Success", f"Class '{class_name}' added successfully with schedule '{class_schedule}'.")
 
