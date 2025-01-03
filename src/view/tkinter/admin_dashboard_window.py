@@ -10,7 +10,7 @@ class AdminDashboardWindow:
         self.controller = controller
         self.selected_gym = selected_gym
         self.master.title("Admin Dashboard")
-        self.master.geometry("1000x600")
+        self.master.geometry("500x1000")
 
         # Title Label
         tk.Label(master, text=f"Admin Dashboard - {str(selected_gym)}", font=("Arial", 24)).pack(pady=10)
@@ -23,7 +23,7 @@ class AdminDashboardWindow:
         tk.Label(master, text="Class Schedule (e.g., 13/01/25 - 6PM):").pack(pady=5)
         self.class_schedule_entry = tk.Entry(master)
         self.class_schedule_entry.pack(pady=2)
-        tk.Label(master, text="Class Capacity").pack(pady=5)
+        tk.Label(master, text="Class Capacity:").pack(pady=5)
         self.class_capacity_entry = tk.Entry(master)
         self.class_capacity_entry.pack(pady=2)
 
@@ -52,7 +52,7 @@ class AdminDashboardWindow:
         tk.Button(master, text="Analyze Peak Hours", command=self.analyze_peak_hours).pack(pady=5)
 
         # Navigation Section
-        tk.Label(master, text="Navigation Section", font=("Arial", 18)).pack(pady=15)
+        tk.Label(master, text="Navigation Section:", font=("Arial", 18)).pack(pady=15)
         # Staff Management Dashboard Button
         tk.Button(master, text="Staff Management", command=self.open_staff_management_dashboard).pack(pady=5)
         # Back Button
@@ -66,7 +66,7 @@ class AdminDashboardWindow:
         class_location_str = self.location_var.get()
 
         # Make sure each field has been filled
-        if not class_name or not class_schedule or not class_capacity or not class_teacher_str == "Select a teacher" or class_location_str == "Select a location":
+        if not class_name or not class_schedule or not class_capacity or not class_teacher_str == "Select a teacher" or not class_location_str == "Select a location":
             messagebox.showerror("Error", "Class Attributes cannot be empty.")
             return
 

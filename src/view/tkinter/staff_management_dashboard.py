@@ -7,10 +7,10 @@ class StaffManagementWindow:
         self.controller = controller
         self.selected_gym = selected_gym
         self.master.title("Admin Dashboard")
-        self.master.geometry("800x600")
+        self.master.geometry("500x600")
 
         # Staff Management Section
-        tk.Label(master, text="Staff Management Dashboard:", font=("Arial", 12)).pack(pady=20)
+        tk.Label(master, text="Staff Management Dashboard:", font=("Arial", 24)).pack(pady=20)
         tk.Button(master, text="View Membership Growth", command=self.view_membership_growth).pack(pady=5)
         tk.Button(master, text="View Revenue Trends", command=self.view_revenue_trends).pack(pady=5)
         tk.Button(master, text="View Trainer Schedules", command=self.view_trainer_schedules).pack(pady=5)
