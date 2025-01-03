@@ -11,7 +11,7 @@ class WorkoutZoneModel:
         self.__attendant = None
 
     def __str__(self):
-        return f"\n{self.__type} with capacity: {self.__capacity}."
+        return f"{self.__type} with capacity: {self.__capacity}."
 
     def get_workout_zone_type(self) -> str:
         return self.__type
