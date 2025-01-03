@@ -26,18 +26,23 @@ class AdminDashboardWindow:
         tk.Label(master, text="Class Capacity").pack(pady=5)
         self.class_capacity_entry = tk.Entry(master)
         self.class_capacity_entry.pack(pady=5)
+
+        # Teacher Dropdown
         tk.Label(master, text="Select Teacher:").pack(pady=5)
         self.teacher_var = tk.StringVar(master)
         self.teacher_var.set("Select a teacher")
-        self.teacher_names = [str(teacher) for teacher in self.selected_gym.model.get_list_of_staff()]
-        self.teacher_dropdown = tk.OptionMenu(master, self.teacher_var, *self.teacher_names)
+        self.teacher_map = {str(teacher): teacher for teacher in self.selected_gym.model.get_list_of_staff()}
+        self.teacher_dropdown = tk.OptionMenu(master, self.teacher_var, *self.teacher_map.keys())
         self.teacher_dropdown.pack(pady=5)
+
+        # Location Dropdown
         tk.Label(master, text="Select Location:").pack(pady=5)
         self.location_var = tk.StringVar(master)
         self.location_var.set("Select a location")
-        self.location_names = [str(location) for location in self.selected_gym.model.get_gym_workout_zones()]
-        self.location_dropdown = tk.OptionMenu(master, self.location_var, *self.location_names)
+        self.location_map = {str(location): location for location in self.selected_gym.model.get_gym_workout_zones()}
+        self.location_dropdown = tk.OptionMenu(master, self.location_var, *self.location_map.keys())
         self.location_dropdown.pack(pady=5)
+
         tk.Button(master, text="Add Class", command=self.add_class).pack(pady=10)
 
         # Attendance Tracking Section
@@ -60,15 +65,25 @@ class AdminDashboardWindow:
         class_name = self.class_name_entry.get()
         class_schedule = self.class_schedule_entry.get()
         class_capacity = self.class_capacity_entry.get()
-        class_teacher = self.teacher_var.get()
-        class_location = self.location_var.get()
-        if not class_name or not class_schedule or not class_capacity or not class_teacher or not class_location:
+        class_teacher_str = self.teacher_var.get()
+        class_location_str = self.location_var.get()
+
+        # Make sure each field has been filled
+        if not class_name or not class_schedule or not class_capacity or not class_teacher_str == "Select a teacher" or class_location_str == "Select a location":
             messagebox.showerror("Error", "Class Attributes cannot be empty.")
+            return
+
+        # Get object values of teacher and location string
+        try:
+            class_teacher = self.teacher_map[class_teacher_str]
+            class_location = self.location_map[class_location_str]
+        except KeyError:
+            messagebox.showerror("Error", "Invalid selection.")
             return
 
         # Logic to add class to the gym
         class_controller = ClassesController()
-        created_class = class_controller.create_class(name=class_name,date=class_schedule,capacity=class_capacity,
+        created_class = class_controller.create_class(name=class_name,date=class_schedule,capacity=int(class_capacity),
                                                       teacher=class_teacher,location=class_location)
         self.selected_gym.create_class(created_class)
         messagebox.showinfo("Success", f"Class '{class_name}' added successfully with schedule '{class_schedule}'.")
