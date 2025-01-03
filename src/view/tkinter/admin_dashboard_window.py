@@ -65,11 +65,6 @@ class AdminDashboardWindow:
         class_teacher_str = self.teacher_var.get()
         class_location_str = self.location_var.get()
 
-        # Make sure each field has been filled
-        if not class_name or not class_schedule or not class_capacity or not class_teacher_str == "Select a teacher" or not class_location_str == "Select a location":
-            messagebox.showerror("Error", "Class Attributes cannot be empty.")
-            return
-
         # Get object values of teacher and location string
         try:
             class_teacher = self.teacher_map[class_teacher_str]
