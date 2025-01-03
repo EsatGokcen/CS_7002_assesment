@@ -16,8 +16,8 @@ class LoginWindow:
         tk.Label(master, text="Select Gym:").pack(pady=5)
         self.gym_var = tk.StringVar(master)
         self.gym_var.set("Select a gym")
-        self.gym_names = [str(gym) for gym in self.gyms]  # Extract gym names from objects
-        self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gyms)
+        self.gym_map = {str(gym): gym for gym in self.gyms}  # Extract gym names from objects
+        self.gym_dropdown = tk.OptionMenu(master, self.gym_var, *self.gym_map.keys())
         self.gym_dropdown.pack(pady=5)
 
         # Username Label and Entry
@@ -54,7 +54,14 @@ class LoginWindow:
         self.controller.show_dashboard_window()
 
     def open_admin_dashboard_window(self):
-        self.controller.show_admin_dashboard_window()
+        selected_gym_str = self.gym_var.get()
+        # Get object values of gym string
+        try:
+            selected_gym = self.gym_map[selected_gym_str]
+        except KeyError:
+            messagebox.showerror("Error", "Invalid GYM selection.")
+            return
+        self.controller.show_admin_dashboard_window(selected_gym)
 
     def get_login_data(self):
         selected_gym_str = self.gym_var.get()

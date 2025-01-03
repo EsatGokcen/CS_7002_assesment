@@ -1,6 +1,7 @@
 import tkinter as tk
 
 from src.controller.gym_controller import GymController
+from src.view.tkinter.admin_dashboard_window import AdminDashboardWindow
 from src.view.tkinter.login_window import LoginWindow
 from src.view.tkinter.registration_window import RegistrationWindow
 from src.view.tkinter.subscripiton_window import SubscriptionWindow
@@ -30,8 +31,9 @@ class TkController:
     def show_dashboard_window(self):
         pass
 
-    def show_admin_dashboard_window(self):
-        pass
+    def show_admin_dashboard(self, selected_gym: GymController):
+        self.clear_window()
+        AdminDashboardWindow(self.root, self, selected_gym)
 
     def clear_window(self):
         for widget in self.root.winfo_children():
