@@ -31,7 +31,7 @@ class TkController:
     def show_dashboard_window(self):
         pass
 
-    def show_admin_dashboard(self, selected_gym: GymController):
+    def show_admin_dashboard_window(self, selected_gym: GymController):
         self.clear_window()
         AdminDashboardWindow(self.root, self, selected_gym)
 
