@@ -16,6 +16,9 @@ class StaffManagementWindow:
         tk.Button(master, text="View Trainer Schedules", command=self.view_trainer_schedules).pack(pady=5)
         tk.Button(master, text="Check Equipment Maintenance", command=self.check_equipment_maintenance).pack(pady=5)
 
+        # Back Button
+        tk.Button(master, text="Back", command=self.go_back).pack(pady=20)
+
 
     def view_membership_growth(self):
         # Logic to view membership growth
@@ -35,3 +38,6 @@ class StaffManagementWindow:
     def check_equipment_maintenance(self):
         # Logic to check equipment maintenance
         messagebox.showinfo("Equipment Maintenance", "Checking equipment maintenance (placeholder).")
+
+    def go_back(self):
+        self.controller.show_admin_dashboard_window(self.selected_gym)

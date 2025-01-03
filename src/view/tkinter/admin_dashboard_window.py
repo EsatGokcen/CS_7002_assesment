@@ -51,8 +51,11 @@ class AdminDashboardWindow:
         tk.Button(master, text="Generate Class Popularity Report", command=self.generate_class_popularity_report).pack(pady=5)
         tk.Button(master, text="Analyze Peak Hours", command=self.analyze_peak_hours).pack(pady=5)
 
+        # Staff Management Dashboard Button
+        tk.Button(master, text="Staff Management", command=self.open_staff_management_dashboard).pack(pady=20)
+
         # Back Button
-        tk.Button(master, text="Back", command=self.go_back).pack(pady=20)
+        tk.Button(master, text="Back", command=self.go_back).pack(pady=10)
 
     def add_class(self):
         class_name = self.class_name_entry.get()
@@ -92,6 +95,10 @@ class AdminDashboardWindow:
     def analyze_peak_hours(self):
         # Logic to analyze peak hours
         messagebox.showinfo("Peak Hours Analysis", "Analyzing peak hours (placeholder).")
+
+    def open_staff_management_dashboard(self):
+        messagebox.showinfo("Open", "Opening staff management dashboard.")
+        self.controller.show_staff_management_dashboard(self.selected_gym)
 
     def go_back(self):
         self.controller.show_login_window()
