@@ -10,3 +10,12 @@ class DashboardWindow:
         self.password = password
         self.master.title("Dashboard")
         self.master.geometry("500x1000")
+
+        # Show Member Details
+        tk.Label(master, text="Member Details:", font=("Arial", 24)).pack(pady=10)
+        tk.Label(master, text=f"Name: {self.get_name()}").pack(pady=5)
+
+    def get_name(self):
+        pass
+
+

@@ -51,7 +51,17 @@ class LoginWindow:
         self.controller.show_registration_window()
 
     def open_dashboard_window(self):
-        self.controller.show_dashboard_window()
+        username_entry = self.username_entry.get()
+        password_entry = self.password_entry.get()
+        selected_gym_str = self.gym_var.get()
+        # Get object values of gym string
+        try:
+            selected_gym = self.gym_map[selected_gym_str]
+        except KeyError:
+            messagebox.showerror("Error", "Invalid GYM selection.")
+            return
+
+        self.controller.show_dashboard_window(selected_gym, username_entry, password_entry)
 
     def open_admin_dashboard_window(self):
         selected_gym_str = self.gym_var.get()
