@@ -77,8 +77,8 @@ class AdminDashboardWindow:
         class_controller = ClassesController()
         created_class = class_controller.create_class(name=class_name,date=class_schedule,capacity=int(class_capacity),
                                                       teacher=class_teacher,location=class_location)
+        # Add created class to selected gym
         self.selected_gym.create_class(created_class)
-        self.selected_gym.read_gym()
         messagebox.showinfo("Success", f"Class '{class_name}' added successfully with schedule '{class_schedule}'.")
 
     def view_attendance(self):
