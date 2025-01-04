@@ -22,7 +22,9 @@ class DashboardWindow:
         # Navigation section
         tk.Label(master, text="Navigation Section:", font=("Arial", 18)).pack(pady=15)
         # Edit Member Details section
+        tk.Button(master, text="Edit Member Details", command=self.open_edit_member_details_window).pack(pady=5)
         # Payment information section
+        tk.Button(master, text="Payment Information", command=self.open_payment_information_window).pack(pady=5)
         # Back Button
         tk.Button(master, text="Back", command=self.go_back).pack(pady=5)
 
@@ -34,6 +36,12 @@ class DashboardWindow:
 
     def get_booked_classes(self):
         pass
+
+    def open_payment_information_window(self):
+        self.controller.show_payment_information_window()
+
+    def open_edit_member_details_window(self):
+        self.controller.show_member_details_window()
 
     def go_back(self):
         self.controller.show_login_window()
