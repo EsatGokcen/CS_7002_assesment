@@ -34,6 +34,10 @@ class TkController:
         self.clear_window()
         DashboardWindow(self.root, self, selected_gym, username, password)
 
+    def show_booking_management_window(self):
+        self.clear_window()
+        # functionality for booking management window
+
     def show_payment_information_window(self):
         self.clear_window()
         # functionality for payment information window

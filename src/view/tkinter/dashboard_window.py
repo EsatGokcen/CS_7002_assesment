@@ -17,10 +17,10 @@ class DashboardWindow:
         tk.Label(master, text=f"Membership status: {self.get_membership_status()}").pack(pady=5)
         tk.Label(master, text=f"Booked classes: {self.get_booked_classes()}").pack(pady=5)
 
-        # Book a class
-
         # Navigation section
         tk.Label(master, text="Navigation Section:", font=("Arial", 18)).pack(pady=15)
+        # Booking Management section
+        tk.Button(master, text="Booking Management", command=self.open_booking_management_window).pack(pady=5)
         # Edit Member Details section
         tk.Button(master, text="Edit Member Details", command=self.open_edit_member_details_window).pack(pady=5)
         # Payment information section
@@ -36,6 +36,9 @@ class DashboardWindow:
 
     def get_booked_classes(self):
         pass
+
+    def open_booking_management_window(self):
+        self.controller.show_booking_management_window()
 
     def open_payment_information_window(self):
         self.controller.show_payment_information_window()
