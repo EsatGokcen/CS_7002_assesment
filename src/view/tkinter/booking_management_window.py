@@ -9,7 +9,7 @@ class BookingManagementWindow:
         self.selected_gym = selected_gym
         self.member = member
         self.master.title("Booking Management")
-        self.master.geometry("600x600")
+        self.master.geometry("600x800")
 
         # Title
         tk.Label(master, text="Booking Management", font=("Arial", 24)).pack(pady=10)
@@ -28,7 +28,14 @@ class BookingManagementWindow:
         tk.Label(master, text="Available Nutritionists and Personal Trainers:", font=("Arial", 18)).pack(pady=10)
         self.sessions_listbox = tk.Listbox(master, width=50, height=10)
         self.sessions_listbox.pack(pady=5)
-        # logic to select staff
+        self.staff_list = self.selected_gym.model.get_list_of_staff()
+        self.nutritionists = [staff for staff in self.staff_list if staff.get_job_title() == "Nutritionist"]
+        self.personal_trainers = [staff for staff in self.staff_list if staff.get_job_title() == "Personal Trainer"]
+
+        for nutritionist in self.nutritionists:
+            self.sessions_listbox.insert(tk.END, f"Nutritionist: {nutritionist}")
+        for trainer in self.personal_trainers:
+            self.sessions_listbox.insert(tk.END, f"Personal Trainer: {trainer}")
 
         # Book a Session Button
         tk.Button(master, text="Book Selected Session", command=self.book_session).pack(pady=5)
