@@ -6,6 +6,7 @@ from src.view.tkinter.admin_dashboard_window import AdminDashboardWindow
 from src.view.tkinter.dashboard_window import DashboardWindow
 from src.view.tkinter.login_window import LoginWindow
 from src.view.tkinter.member_details_window import MemberDetailsWindow
+from src.view.tkinter.payment_information_window import PaymentInformationWindow
 from src.view.tkinter.registration_window import RegistrationWindow
 from src.view.tkinter.staff_management_dashboard import StaffManagementWindow
 from src.view.tkinter.subscripiton_window import SubscriptionWindow
@@ -40,9 +41,9 @@ class TkController:
         self.clear_window()
         # functionality for booking management window
 
-    def show_payment_information_window(self):
+    def show_payment_information_window(self, member: MemberModel):
         self.clear_window()
-        # functionality for payment information window
+        PaymentInformationWindow(self.root, self, member)
 
     def show_member_details_window(self, member: MemberModel):
         self.clear_window()

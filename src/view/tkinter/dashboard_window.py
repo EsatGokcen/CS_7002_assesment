@@ -49,7 +49,7 @@ class DashboardWindow:
 
     def open_payment_information_window(self):
         messagebox.showinfo("Opening...", "Opening payment information window")
-        self.controller.show_payment_information_window()
+        self.controller.show_payment_information_window(self.member)
 
     def open_edit_member_details_window(self):
         messagebox.showinfo("Opening...", "Opening edit member details window")
