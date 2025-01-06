@@ -24,5 +24,8 @@ class ClassesController:
         self.model.add_attendee(attendee)
         return attendee
 
+    def update_teacher(self, teacher: StaffModel):
+        self.model.set_teacher(teacher)
+
     def read_class(self):
         print(self.__view.render())
