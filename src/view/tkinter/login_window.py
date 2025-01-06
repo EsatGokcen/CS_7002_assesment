@@ -37,10 +37,12 @@ class LoginWindow:
         tk.Button(master, text="Register", command=self.open_register_window).pack(pady=5)
 
     def login(self):
-        if self.get_login_data() == "member":
+        user_type, user_object = self.get_login_data()
+
+        if user_type == "member":
             messagebox.showinfo("Login Success", "Welcome to the Dashboard!")
-            self.open_dashboard_window()
-        elif self.get_login_data() == "manager":
+            self.open_dashboard_window(user_object)
+        elif user_type == "manager":
             messagebox.showinfo("Login Success", "Welcome to Admin Dashboard!")
             self.open_admin_dashboard_window()
         else:
@@ -50,18 +52,15 @@ class LoginWindow:
         messagebox.showinfo("Redirect", "Redirecting to Registration...")
         self.controller.show_registration_window()
 
-    def open_dashboard_window(self):
-        username_entry = self.username_entry.get()
-        password_entry = self.password_entry.get()
+    def open_dashboard_window(self, member):
         selected_gym_str = self.gym_var.get()
-        # Get object values of gym string
         try:
             selected_gym = self.gym_map[selected_gym_str]
         except KeyError:
             messagebox.showerror("Error", "Invalid GYM selection.")
             return
 
-        self.controller.show_dashboard_window(selected_gym, username_entry, password_entry)
+        self.controller.show_dashboard_window(selected_gym, member)
 
     def open_admin_dashboard_window(self):
         selected_gym_str = self.gym_var.get()
@@ -81,18 +80,18 @@ class LoginWindow:
         # Demand data entry
         if selected_gym_str == "Select a gym":
             messagebox.showerror("Error", "Please select a gym.")
-            return False
+            return None, None
 
         if not username_entry or not password_entry:
             messagebox.showerror("Error", "Username and Password cannot be empty.")
-            return False
+            return None, None
 
         # Find the corresponding GymController object using the __str__ representation
         selected_gym = next((gym for gym in self.gyms if str(gym) == selected_gym_str), None)
 
         if not selected_gym:
             messagebox.showerror("Error", "Selected gym not found.")
-            return
+            return None, None
 
         # Compare the username and password to existing data
         members_list = selected_gym.model.get_list_of_members()
@@ -101,12 +100,12 @@ class LoginWindow:
         manager_password = manager.get_password()
 
         if manager_username == username_entry and manager_password == password_entry:
-            return "manager"
+            return "manager", None
 
         for member in members_list:
-            username = member.get_username()
-            password = member.get_password()
-            if username == username_entry and password == password_entry:
-                return "member"
-        return False
+            if member.get_username() == username_entry and member.get_password() == password_entry:
+                return "member", member
+
+        return None, None
+
 
