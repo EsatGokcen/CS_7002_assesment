@@ -13,6 +13,8 @@ class MemberModel(ABC):
         self.__username = "placeholder"
         self.__password = "placeholder"
         self.__health_info = "Healthy"
+        self.__payment_amount = None
+        self.__payment_duration = None
 
     @abstractmethod
     def get_member_type(self) -> str:
@@ -39,6 +41,12 @@ class MemberModel(ABC):
     def get_health_info(self) -> str:
         return self.__health_info
 
+    def get_payment_amount(self) -> str:
+        return self.__payment_amount
+
+    def get_payment_duration(self) -> str:
+        return self.__payment_duration
+
     def set_name(self, name: str):
         self.__name = name
 
@@ -56,4 +64,10 @@ class MemberModel(ABC):
 
     def set_health_info(self, health_info: str):
         self.__health_info = health_info
+
+    def set_payment_amount(self, amount: str):
+        self.__payment_amount = amount
+
+    def set_payment_duration(self, duration: str):
+        self.__payment_duration = duration
 

@@ -13,6 +13,8 @@ class SubscriptionWindow:
         self.gyms = gyms
         self.master.title("Gym Subscription")
         self.master.geometry("600x600")
+        self.amount = None
+        self.duration = None
         #self.master.configure(bg="#b0c4de") # for colour
 
         # Gym Selection Label and Dropdown
@@ -39,18 +41,19 @@ class SubscriptionWindow:
         self.payment_dropdown = tk.OptionMenu(master, self.payment_var, *self.payment_frequencies)
         self.payment_dropdown.pack(pady=5)
 
+        # Payment Amount for Duration Label
+        self.amount_label = tk.Label(master, text=f"Payment Amount: ")
+        self.amount_label.pack(pady=5)
+        self.duration_label = tk.Label(master, text=f"Subscription duration: ")
+        self.duration_label.pack(pady=5)
+        tk.Button(master, text="Reveal Payment", command=self.get_payment_amount_and_duration).pack(pady=10)
+
         # Confirm Button
         tk.Button(master, text="Confirm", command=self.confirm_subscription).pack(pady=10)
 
         # Back Button
         tk.Button(master, text="Back", command=self.go_back).pack(pady=5)
 
-        # Payment Amount for Duration Label
-        self.amount_label = tk.Label(master, text=f"Payment Amount: ")
-        self.amount_label.pack(pady=5)
-        self.duration_label = tk.Label(master, text=f"Subscription duration: ")
-        self.duration_label.pack(pady=5)
-        tk.Button(master, text="Reveal", command=self.get_payment_amount_and_duration).pack(pady=10)
 
     def confirm_subscription(self):
         selected_gym_str = self.gym_var.get()
@@ -70,6 +73,8 @@ class SubscriptionWindow:
             # Create member and add to the gym
             member = self.create_member_object(selected_subscription)
             selected_gym.create_member(member)
+            member.set_payment_amount(self.amount)
+            member.set_payment_duration(self.duration)
 
             selected_gym.read_gym()
 
@@ -139,3 +144,5 @@ class SubscriptionWindow:
 
         self.amount_label.config(text=f"Payment Amount: {amount}")
         self.duration_label.config(text=f"Subscription duration: {duration}")
+        self.amount = amount
+        self.duration = duration
