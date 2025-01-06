@@ -45,7 +45,7 @@ class DashboardWindow:
 
     def open_booking_management_window(self):
         messagebox.showinfo("Opening...", "Opening booking management window")
-        self.controller.show_booking_management_window()
+        self.controller.show_booking_management_window(self.selected_gym, self.member)
 
     def open_payment_information_window(self):
         messagebox.showinfo("Opening...", "Opening payment information window")

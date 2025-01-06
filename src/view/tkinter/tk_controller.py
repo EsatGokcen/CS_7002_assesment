@@ -3,6 +3,7 @@ import tkinter as tk
 from src.controller.gym_controller import GymController
 from src.model.member_model import MemberModel
 from src.view.tkinter.admin_dashboard_window import AdminDashboardWindow
+from src.view.tkinter.booking_management_window import BookingManagementWindow
 from src.view.tkinter.dashboard_window import DashboardWindow
 from src.view.tkinter.login_window import LoginWindow
 from src.view.tkinter.member_details_window import MemberDetailsWindow
@@ -37,9 +38,9 @@ class TkController:
         self.clear_window()
         DashboardWindow(self.root, self, selected_gym, member)
 
-    def show_booking_management_window(self):
+    def show_booking_management_window(self, selected_gym: GymController, member: MemberModel):
         self.clear_window()
-        # functionality for booking management window
+        BookingManagementWindow(self.root, self, selected_gym, member)
 
     def show_payment_information_window(self, selected_gym: GymController, member: MemberModel):
         self.clear_window()
