@@ -1,3 +1,6 @@
+from src.model.member_model import MemberModel
+
+
 class StaffModel:
 
     initial_staff_id = 12345
@@ -8,6 +11,7 @@ class StaffModel:
         self.__name = name
         self.__email = email
         self.__job_title = job_title
+        self.__booked_sessions = []
 
     def __repr__(self):
         return f"\nStaff ID: {self.__staff_id}, Name: {self.__name}, Email: {self.__email}, Job Title: {self.__job_title}"
@@ -27,6 +31,9 @@ class StaffModel:
     def get_job_title(self) -> str:
         return self.__job_title
 
+    def get_booked_sessions(self) -> list[MemberModel]:
+        return self.__booked_sessions
+
     def set_name(self, name: str):
         self.__name = name
 
@@ -35,3 +42,6 @@ class StaffModel:
 
     def set_job_title(self, job_title: str):
         self.__job_title = job_title
+
+    def add_member_to_session(self, member: MemberModel):
+        self.__booked_sessions.append(member)

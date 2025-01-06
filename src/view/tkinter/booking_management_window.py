@@ -55,7 +55,22 @@ class BookingManagementWindow:
             messagebox.showerror("Error", str(e))
 
     def book_session(self):
-        pass
+        try:
+            selected_index = self.sessions_listbox.curselection()
+            if not selected_index:
+                raise ValueError("No session selected.")
+            if selected_index[0] < len(self.nutritionists):
+                selected_staff = self.nutritionists[selected_index[0]]
+                session_type = "Nutritionist"
+            else:
+                adjusted_index = selected_index[0] - len(self.nutritionists)
+                selected_staff = self.personal_trainers[adjusted_index]
+                session_type = "Personal Trainer"
+            # Assuming a booking method exists for staff
+            selected_staff.add_member_to_session(self.member)
+            messagebox.showinfo("Success", f"{session_type} session with '{selected_staff}' booked successfully!")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
 
     def go_back(self):
         self.controller.show_dashboard_window(self.selected_gym, self.member)
