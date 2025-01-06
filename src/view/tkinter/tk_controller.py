@@ -1,6 +1,7 @@
 import tkinter as tk
 
 from src.controller.gym_controller import GymController
+from src.model.member_model import MemberModel
 from src.view.tkinter.admin_dashboard_window import AdminDashboardWindow
 from src.view.tkinter.dashboard_window import DashboardWindow
 from src.view.tkinter.login_window import LoginWindow
@@ -30,9 +31,9 @@ class TkController:
         self.clear_window()
         SubscriptionWindow(self.root, self, registration_details, self.gyms)
 
-    def show_dashboard_window(self, selected_gym: GymController, username: str, password: str):
+    def show_dashboard_window(self, selected_gym: GymController, member: MemberModel):
         self.clear_window()
-        DashboardWindow(self.root, self, selected_gym, username, password)
+        DashboardWindow(self.root, self, selected_gym, member)
 
     def show_booking_management_window(self):
         self.clear_window()
