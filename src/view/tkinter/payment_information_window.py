@@ -3,9 +3,10 @@ from tkinter import messagebox
 
 class PaymentInformationWindow:
 
-    def __init__(self, master, controller, member):
+    def __init__(self, master, controller, selected_gym, member):
         self.master = master
         self.controller = controller
+        self.selected_gym = selected_gym
         self.member = member
         self.master.title("Payment Information")
         self.master.geometry("600x600")
@@ -71,4 +72,4 @@ class PaymentInformationWindow:
         )
 
     def go_back(self):
-        self.controller.show_dashboard_window()
+        self.controller.show_dashboard_window(self.selected_gym, self.member)

@@ -41,9 +41,9 @@ class TkController:
         self.clear_window()
         # functionality for booking management window
 
-    def show_payment_information_window(self, member: MemberModel):
+    def show_payment_information_window(self, selected_gym: GymController, member: MemberModel):
         self.clear_window()
-        PaymentInformationWindow(self.root, self, member)
+        PaymentInformationWindow(self.root, self, selected_gym, member)
 
     def show_member_details_window(self, member: MemberModel):
         self.clear_window()
