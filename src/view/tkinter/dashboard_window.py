@@ -27,14 +27,21 @@ class DashboardWindow:
         # Back Button
         tk.Button(master, text="Back", command=self.go_back).pack(pady=5)
 
-    def get_name(self):
-        pass
+    def get_name(self) -> str:
+        return self.member.get_name()
 
-    def get_membership_status(self):
-        pass
+    def get_membership_status(self) -> str:
+        return f"{self.member.get_member_type()} member"
 
-    def get_booked_classes(self):
-        pass
+    def get_booked_classes(self) -> list:
+        list_of_classes = self.selected_gym.model.get_list_of_classes()
+        list_of_booked_classes = []
+        for a_class in list_of_classes:
+            list_of_attendees = a_class.get_attendees()
+            for attendee in list_of_attendees:
+                if attendee == self.member:
+                    list_of_booked_classes.append(a_class)
+        return list_of_booked_classes
 
     def open_booking_management_window(self):
         self.controller.show_booking_management_window()
