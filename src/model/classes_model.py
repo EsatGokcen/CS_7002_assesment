@@ -14,6 +14,9 @@ class ClassesModel:
         self.__teacher = None #: StaffModel
         self.__attendees = [] #: list[Type[MemberModel]]
 
+    def __repr__(self):
+        return f"{self.get_name()} at {self.get_date()}"
+
     def __str__(self):
         attendees = ", ".join(str(attendee) for attendee in self.__attendees)
         return (
