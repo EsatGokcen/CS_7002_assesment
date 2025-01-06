@@ -32,7 +32,10 @@ class DashboardWindow:
         return self.member.get_name()
 
     def get_membership_status(self) -> str:
-        return f"{self.member.get_member_type()} member"
+        if self.member.get_new_member_type() is None:
+            return f"{self.member.get_member_type()} member"
+        else:
+            return f"{self.member.get_new_member_type()} member"
 
     def get_booked_classes(self) -> list:
         list_of_classes = self.selected_gym.model.get_list_of_classes()

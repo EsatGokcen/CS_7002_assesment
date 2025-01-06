@@ -15,6 +15,7 @@ class MemberModel(ABC):
         self.__health_info = "Healthy"
         self.__payment_amount = None
         self.__payment_duration = None
+        self.__new_member_type = None # for updating payment info
 
     @abstractmethod
     def get_member_type(self) -> str:
@@ -47,6 +48,9 @@ class MemberModel(ABC):
     def get_payment_duration(self) -> str:
         return self.__payment_duration
 
+    def get_new_member_type(self) -> str:
+        return self.__new_member_type
+
     def set_name(self, name: str):
         self.__name = name
 
@@ -70,4 +74,7 @@ class MemberModel(ABC):
 
     def set_payment_duration(self, duration: str):
         self.__payment_duration = duration
+
+    def set_new_member_type(self, type: str):
+        self.__new_member_type = type
 

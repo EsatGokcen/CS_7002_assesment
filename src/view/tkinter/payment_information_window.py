@@ -13,7 +13,7 @@ class PaymentInformationWindow:
 
         # Show Payment Information
         tk.Label(master, text="Payment Information:", font=("Arial", 20)).pack(pady=10)
-        tk.Label(master, text=f"Subscription type: {self.member.get_member_type()}").pack(pady=5)
+        tk.Label(master, text=f"Subscription type: {self.get_member_type()}").pack(pady=5)
         tk.Label(master, text=f"Amount due: {self.member.get_payment_amount()}").pack(pady=5)
         tk.Label(master, text=f"Subscription duration: {self.member.get_payment_duration()}").pack(pady=5)
 
@@ -38,6 +38,12 @@ class PaymentInformationWindow:
         tk.Button(master, text="Submit", command=self.submit).pack(pady=15)
         # Back Button
         tk.Button(master, text="Back", command=self.go_back).pack(pady=5)
+
+    def get_member_type(self):
+        if self.member.get_new_member_type() is None:
+            return f"{self.member.get_member_type()} member"
+        else:
+            return f"{self.member.get_new_member_type()} member"
 
     def submit(self):
         amount = "£0"
@@ -66,6 +72,11 @@ class PaymentInformationWindow:
             elif selected_payment == "Annually":
                 amount = "£550"
                 duration = "12 months"
+
+        self.member.set_new_member_type(selected_subscription)
+        self.member.set_payment_amount(amount)
+        self.member.set_payment_duration(duration)
+
         return (
             messagebox.showinfo("Submit", "New payment information submitted successfully!"),
             messagebox.showinfo("Details", f"New amount due: {amount}, subscription duration: {duration}, subscription type: {selected_subscription}")
