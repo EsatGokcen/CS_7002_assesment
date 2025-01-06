@@ -14,7 +14,8 @@ class StaffModel:
         self.__booked_sessions = []
 
     def __repr__(self):
-        return f"\nStaff ID: {self.__staff_id}, Name: {self.__name}, Email: {self.__email}, Job Title: {self.__job_title}"
+        return f" Name:{self.__name}, Email: {self.__email}"
+        # return f"\nStaff ID: {self.__staff_id}, Name: {self.__name}, Email: {self.__email}, Job Title: {self.__job_title}"
 
     def __str__(self):
         return f" Name:{self.__name}, Email: {self.__email}" # Role: {self.__job_title}"
