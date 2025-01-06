@@ -15,16 +15,19 @@ class ClassesModel:
         self.__attendees = [] #: list[Type[MemberModel]]
 
     def __repr__(self):
-        return f"{self.get_name()} at {self.get_date()}"
+        return f"{self.get_name()} at {self.get_date()} with {self.__teacher}"
 
     def __str__(self):
-        attendees = ", ".join(str(attendee) for attendee in self.__attendees)
-        return (
-            f"{self.__name}"
-            f"\nClass Date: {self.__date}, Location: {self.__location}"
-            f"\nTeacher: {self.__teacher}, Capacity: {self.__capacity}"
-            f"\nAttendees:{attendees}"
-        )
+        return f" Class name: {self.__name}, Date: {self.__date}, Teacher: {self.__teacher}"
+
+        # Pre Tkinter __str__ method
+        #attendees = ", ".join(str(attendee) for attendee in self.__attendees)
+        #return (
+            #f"{self.__name}"
+            #f"\nClass Date: {self.__date}, Location: {self.__location}"
+            #f"\nTeacher: {self.__teacher}, Capacity: {self.__capacity}"
+            #f"\nAttendees:{attendees}"
+        #)
 
     def get_name(self) -> str:
         return self.__name
