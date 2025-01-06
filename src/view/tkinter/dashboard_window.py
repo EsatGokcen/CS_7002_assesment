@@ -50,7 +50,7 @@ class DashboardWindow:
         self.controller.show_payment_information_window()
 
     def open_edit_member_details_window(self):
-        self.controller.show_member_details_window()
+        self.controller.show_member_details_window(self.member)
 
     def go_back(self):
         self.controller.show_login_window()

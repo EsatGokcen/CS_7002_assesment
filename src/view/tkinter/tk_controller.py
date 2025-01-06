@@ -5,6 +5,7 @@ from src.model.member_model import MemberModel
 from src.view.tkinter.admin_dashboard_window import AdminDashboardWindow
 from src.view.tkinter.dashboard_window import DashboardWindow
 from src.view.tkinter.login_window import LoginWindow
+from src.view.tkinter.member_details_window import MemberDetailsWindow
 from src.view.tkinter.registration_window import RegistrationWindow
 from src.view.tkinter.staff_management_dashboard import StaffManagementWindow
 from src.view.tkinter.subscripiton_window import SubscriptionWindow
@@ -43,9 +44,9 @@ class TkController:
         self.clear_window()
         # functionality for payment information window
 
-    def show_member_details_window(self):
+    def show_member_details_window(self, member: MemberModel):
         self.clear_window()
-        # functionality for member details window
+        MemberDetailsWindow(self.root, self, member)
 
     def show_admin_dashboard_window(self, selected_gym: GymController):
         self.clear_window()
