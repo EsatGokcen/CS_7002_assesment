@@ -15,6 +15,7 @@ class DashboardWindow:
         tk.Label(master, text=f"Name: {self.get_name()}").pack(pady=5)
         tk.Label(master, text=f"Membership status: {self.get_membership_status()}").pack(pady=5)
         tk.Label(master, text=f"Booked classes: {self.get_booked_classes()}").pack(pady=5)
+        tk.Label(master, text=f"Booked sessions: {self.get_booked_sessions()}").pack(pady=5)
 
         # Navigation section
         tk.Label(master, text="Navigation Section:", font=("Arial", 24)).pack(pady=15)
@@ -42,6 +43,15 @@ class DashboardWindow:
                 if attendee == self.member:
                     list_of_booked_classes.append(a_class)
         return list_of_booked_classes
+
+    def get_booked_sessions(self) -> list:
+        list_of_booked_sessions = []
+        for staff in self.selected_gym.model.get_list_of_staff():
+            booked_sessions = staff.get_booked_sessions()
+            for session in booked_sessions:
+                if self.member == session:
+                    list_of_booked_sessions.append(staff)
+        return list_of_booked_sessions
 
     def open_booking_management_window(self):
         messagebox.showinfo("Opening...", "Opening booking management window")
