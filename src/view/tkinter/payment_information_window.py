@@ -13,9 +13,12 @@ class PaymentInformationWindow:
 
         # Show Payment Information
         tk.Label(master, text="Payment Information:", font=("Arial", 20)).pack(pady=10)
-        tk.Label(master, text=f"Subscription type: {self.get_member_type()}").pack(pady=5)
-        tk.Label(master, text=f"Amount due: {self.member.get_payment_amount()}").pack(pady=5)
-        tk.Label(master, text=f"Subscription duration: {self.member.get_payment_duration()}").pack(pady=5)
+        self.subscription_label = (tk.Label(master, text=f"Subscription type: {self.get_member_type()}"))
+        self.subscription_label.pack(pady=5)
+        self.amount_label = tk.Label(master, text=f"Amount due: {self.member.get_payment_amount()}")
+        self.amount_label.pack(pady=5)
+        self.duration_label = tk.Label(master, text=f"Subscription duration: {self.member.get_payment_duration()}")
+        self.duration_label.pack(pady=5)
 
         # Edit Payment Information
         tk.Label(master, text="Edit Payment Information:", font=("Arial", 20)).pack(pady=10)
@@ -73,9 +76,15 @@ class PaymentInformationWindow:
                 amount = "£550"
                 duration = "12 months"
 
+        # Update Member Object
         self.member.set_new_member_type(selected_subscription)
         self.member.set_payment_amount(amount)
         self.member.set_payment_duration(duration)
+
+        # Update Window Labels
+        self.subscription_label.config(text=f"Subscription type: {selected_subscription}")
+        self.amount_label.config(text=f"Amount due: {amount}")
+        self.duration_label.config(text=f"Subscription duration: {duration}")
 
         return (
             messagebox.showinfo("Submit", "New payment information submitted successfully!"),
