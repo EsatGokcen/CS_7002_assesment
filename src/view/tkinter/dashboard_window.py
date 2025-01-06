@@ -8,7 +8,7 @@ class DashboardWindow:
         self.selected_gym = selected_gym
         self.member = member
         self.master.title("Dashboard")
-        self.master.geometry("500x1000")
+        self.master.geometry("600x600")
 
         # Show Member Details
         tk.Label(master, text="Member Details:", font=("Arial", 24)).pack(pady=10)
@@ -17,7 +17,7 @@ class DashboardWindow:
         tk.Label(master, text=f"Booked classes: {self.get_booked_classes()}").pack(pady=5)
 
         # Navigation section
-        tk.Label(master, text="Navigation Section:", font=("Arial", 18)).pack(pady=15)
+        tk.Label(master, text="Navigation Section:", font=("Arial", 24)).pack(pady=15)
         # Booking Management section
         tk.Button(master, text="Booking Management", command=self.open_booking_management_window).pack(pady=5)
         # Edit Member Details section
