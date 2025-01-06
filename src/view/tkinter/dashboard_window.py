@@ -53,7 +53,7 @@ class DashboardWindow:
 
     def open_edit_member_details_window(self):
         messagebox.showinfo("Opening...", "Opening edit member details window")
-        self.controller.show_member_details_window(self.member)
+        self.controller.show_member_details_window(self.selected_gym, self.member)
 
     def go_back(self):
         self.controller.show_login_window()

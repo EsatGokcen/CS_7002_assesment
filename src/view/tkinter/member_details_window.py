@@ -2,9 +2,10 @@ import tkinter as tk
 from tkinter import messagebox
 
 class MemberDetailsWindow:
-    def __init__(self, master, controller, member):
+    def __init__(self, master, controller, selected_gym, member):
         self.master = master
         self.controller = controller
+        self.selected_gym = selected_gym
         self.member = member
         self.master.title("Member Details")
         self.master.geometry("600x600")
@@ -57,4 +58,4 @@ class MemberDetailsWindow:
         return messagebox.showinfo("Submit", "Member information submitted successfully!")
 
     def go_back(self):
-        self.controller.show_dashboard_window()
+        self.controller.show_dashboard_window(self.selected_gym, self.member)

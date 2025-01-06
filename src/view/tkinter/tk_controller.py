@@ -45,9 +45,9 @@ class TkController:
         self.clear_window()
         PaymentInformationWindow(self.root, self, selected_gym, member)
 
-    def show_member_details_window(self, member: MemberModel):
+    def show_member_details_window(self, selected_gym: GymController, member: MemberModel):
         self.clear_window()
-        MemberDetailsWindow(self.root, self, member)
+        MemberDetailsWindow(self.root, self, selected_gym, member)
 
     def show_admin_dashboard_window(self, selected_gym: GymController):
         self.clear_window()
