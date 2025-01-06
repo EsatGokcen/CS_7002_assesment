@@ -44,12 +44,15 @@ class DashboardWindow:
         return list_of_booked_classes
 
     def open_booking_management_window(self):
+        messagebox.showinfo("Opening...", "Opening booking management window")
         self.controller.show_booking_management_window()
 
     def open_payment_information_window(self):
+        messagebox.showinfo("Opening...", "Opening payment information window")
         self.controller.show_payment_information_window()
 
     def open_edit_member_details_window(self):
+        messagebox.showinfo("Opening...", "Opening edit member details window")
         self.controller.show_member_details_window(self.member)
 
     def go_back(self):
