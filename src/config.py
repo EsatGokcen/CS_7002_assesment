@@ -164,14 +164,33 @@ def create_member_data():
                                                               username="DavidMalt",
                                                               password="TechCEO!")
 
+    trial_member3 = member_controller.create_trial_member(name="Selim",
+                                                          email="selim@hotmail.com",
+                                                          phone_number="5423768567",
+                                                          username="GucluSelim",
+                                                          password="AnnemiSeverim!")
+
+    regular_member3 = member_controller.create_regular_member(name="Defne",
+                                                              email="defne@gmail.com",
+                                                              phone_number="5882543421",
+                                                              username="DefneAyranci",
+                                                              password="YogaQueen!")
+
+    premium_member3 = member_controller.create_premium_member(name="Mustafa",
+                                                              email="mustafa@outlook.com",
+                                                              phone_number="5649234581",
+                                                              username="MustafaAbi",
+                                                              password="BaskanMusti!")
+
     list_of_members1 = [trial_member1, regular_member1, premium_member1]
     list_of_members2 = [trial_member2, regular_member2, premium_member2]
+    list_of_members3 = [trial_member3, regular_member3, premium_member3]
 
-    return (list_of_members1, list_of_members2)
+    return (list_of_members1, list_of_members2, list_of_members3)
 
 def create_gym_data():
 
-    members1, members2 = create_member_data()
+    members1, members2, members3 = create_member_data()
     workout_zones = create_workout_zone_data()
 
     # GYM 1 DATA ; ===========================================================================
@@ -245,7 +264,8 @@ def create_gym_data():
     gym3.create_staff(name="Asli", email="asli@eathealthy.com", job_title="Nutritionist")
 
     # MEMBER ADDITION
-
+    for member3 in members3:
+        gym3.create_member(member3)
 
     # WORKOUT ZONE ADDITION
     gym2.add_workout_zone(copy.deepcopy(workout_zones[0]))
