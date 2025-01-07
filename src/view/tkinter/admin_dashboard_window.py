@@ -10,7 +10,7 @@ class AdminDashboardWindow:
         self.controller = controller
         self.selected_gym = selected_gym
         self.master.title("Admin Dashboard")
-        self.master.geometry("500x1000")
+        self.master.geometry("600x900")
 
         # Title Label
         tk.Label(master, text=f"Admin Dashboard - {str(selected_gym)}", font=("Arial", 24)).pack(pady=10)
@@ -75,6 +75,7 @@ class AdminDashboardWindow:
 
         # Logic to add class to the gym
         class_controller = ClassesController()
+        class_location.set_attendant(class_teacher)
         created_class = class_controller.create_class(name=class_name,date=class_schedule,capacity=int(class_capacity),
                                                       teacher=class_teacher,location=class_location)
         # Add created class to selected gym

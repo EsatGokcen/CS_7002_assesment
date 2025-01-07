@@ -8,7 +8,7 @@ class DashboardWindow:
         self.selected_gym = selected_gym
         self.member = member
         self.master.title("Dashboard")
-        self.master.geometry("600x600")
+        self.master.geometry("600x800")
 
         # Show Member Details
         tk.Label(master, text="Member Details:", font=("Arial", 24)).pack(pady=10)
