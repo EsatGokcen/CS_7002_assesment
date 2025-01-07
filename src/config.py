@@ -206,10 +206,6 @@ def create_gym_data():
     gym1.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")
     gym1.create_staff(name="Cameron", email="cameron@health.com", job_title="Nutritionist")
 
-    # MEMBER ADDITION
-    for member1 in members1:
-        gym1.create_member(member1)
-
     # WORKOUT ZONE ADDITION
     gym1.add_workout_zone(copy.deepcopy(workout_zones[0]))
     gym1.add_workout_zone(copy.deepcopy(workout_zones[1]))
@@ -238,6 +234,12 @@ def create_gym_data():
                                    teacher=personal_trainer3_gym1, location=workout_zones[1])
     gym1.create_class(cardio_class_gym1.model)
 
+    # MEMBER ADDITION
+    for member1 in members1:
+        gym1.create_member(member1)
+        # ADD MEMBERS TO A CLASS FOR ATTENDEE DATA
+        cardio_class_gym1.add_attendee(member1)
+
     # GYM 2 DATA ; ===========================================================================
 
     # GYM CREATION
@@ -250,10 +252,6 @@ def create_gym_data():
     personal_trainer2_gym2 = gym2.create_staff(name="Jocy", email="jocy@fitness.com", job_title="Personal Trainer")
     gym2.create_staff(name="Bob", email="bob@eathealthy.com", job_title="Nutritionist")
     gym2.create_staff(name="Lee", email="lee@nutrition.com", job_title="Nutritionist")
-
-    # MEMBER ADDITION
-    for member2 in members2:
-        gym2.create_member(member2)
 
     # WORKOUT ZONE ADDITION
     gym2.add_workout_zone(copy.deepcopy(workout_zones[0]))
@@ -288,6 +286,12 @@ def create_gym_data():
                                  teacher=personal_trainer2_gym2, location=workout_zones[3])
     gym2.create_class(yoga_class_gym2.model)
 
+    # MEMBER ADDITION
+    for member2 in members2:
+        gym2.create_member(member2)
+        # ADD MEMBERS TO A CLASS FOR ATTENDEE DATA
+        yoga_class_gym2.add_attendee(member2)
+
     # GYM 3 DATA ; ===========================================================================
 
     # GYM CREATION
@@ -301,10 +305,6 @@ def create_gym_data():
     personal_trainer3_gym3 = gym3.create_staff(name="Ali", email="ali@fitness.com", job_title="Personal Trainer")
     gym3.create_staff(name="Asli", email="asli@eathealthy.com", job_title="Nutritionist")
     gym3.create_staff(name="Eda", email="eda@gmail.com", job_title="Nutritionist")
-
-    # MEMBER ADDITION
-    for member3 in members3:
-        gym3.create_member(member3)
 
     # WORKOUT ZONE ADDITION
     gym3.add_workout_zone(copy.deepcopy(workout_zones[0]))
@@ -339,5 +339,11 @@ def create_gym_data():
     bench_press_class_gym3.create_class("Bench Press Class", "18/01/25", "15:15",10,
                                    teacher=personal_trainer1_gym3, location= workout_zones[0])
     gym3.create_class(bench_press_class_gym3.model)
+
+    # MEMBER ADDITION
+    for member3 in members3:
+        gym3.create_member(member3)
+        # ADD MEMBERS TO A CLASS FOR ATTENDEE DATA
+        bench_press_class_gym3.add_attendee(member3)
 
     return [gym1, gym2, gym3]
