@@ -282,8 +282,11 @@ def create_gym_data():
     gym3.create_manager(name="Kerem", username="Kerem", password="Admin1002!")
 
     # STAFF CREATION
+    personal_trainer1_gym3 = gym3.create_staff(name="Ozan", email="ozan@gmail.com", job_title="Personal Trainer")
+    personal_trainer2_gym3 = gym3.create_staff(name="Zeynep", email="zeynep@gym.com", job_title="Personal Trainer")
     personal_trainer3_gym3 = gym3.create_staff(name="Ali", email="ali@fitness.com", job_title="Personal Trainer")
     gym3.create_staff(name="Asli", email="asli@eathealthy.com", job_title="Nutritionist")
+    gym3.create_staff(name="Eda", email="eda@gmail.com", job_title="Nutritionist")
 
     # MEMBER ADDITION
     for member3 in members3:
@@ -299,11 +302,21 @@ def create_gym_data():
     # CLASS CREATION
     cardio_class_gym3 = ClassesController()
     cardio_class_gym3.create_class(name="Cardio Class",
-                              date="01/01/2025",
+                              date="12/01/2025",
                               capacity=15,
                               teacher=personal_trainer3_gym3,
                               location=workout_zones[1])
 
     gym3.create_class(cardio_class_gym3.model)
+
+    yoga_class_gym3 = ClassesController()
+    yoga_class_gym3.create_class(name="Yoga Class", date="15/01/25", capacity=8,
+                                 teacher=personal_trainer2_gym3, location=workout_zones[3])
+    gym3.create_class(yoga_class_gym3.model)
+
+    bench_press_class_gym3 = ClassesController()
+    bench_press_class_gym3.create_class("Bench Press Class", "18/01/25", 10,
+                                   teacher=personal_trainer1_gym3, location= workout_zones[0])
+    gym3.create_class(bench_press_class_gym3.model)
 
     return [gym1, gym2, gym3]
