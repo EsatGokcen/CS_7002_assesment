@@ -200,9 +200,9 @@ def create_gym_data():
     gym1.create_manager(name="Esat",username="AdminEsat", password="Admin1000!")
 
     # STAFF CREATION
-    personal_trainer1 = gym1.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
-    personal_trainer2 = gym1.create_staff(name="Tyson", email="tyson@fury.com", job_title="Personal Trainer")
-    personal_trainer3 = gym1.create_staff(name="Alice", email="alice@gmail.com", job_title="Personal Trainer")
+    personal_trainer1_gym1 = gym1.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
+    personal_trainer2_gym1 = gym1.create_staff(name="Tyson", email="tyson@fury.com", job_title="Personal Trainer")
+    personal_trainer3_gym1 = gym1.create_staff(name="Alice", email="alice@gmail.com", job_title="Personal Trainer")
     gym1.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")
     gym1.create_staff(name="Cameron", email="cameron@health.com", job_title="Nutritionist")
 
@@ -219,28 +219,30 @@ def create_gym_data():
     # CREATE CLASSES FOR GYM
     bench_press_class_gym1 = ClassesController()
     bench_press_class_gym1.create_class("Bench Press Class", "13/01/25", 10,
-                                   teacher=personal_trainer1, location= workout_zones[0])
+                                   teacher=personal_trainer1_gym1, location= workout_zones[0])
     gym1.create_class(bench_press_class_gym1.model)
 
     kickboxing_class_gym1 = ClassesController()
     kickboxing_class_gym1.create_class("Kickboxing Class", "15/01/25", 10,
-                                  teacher=personal_trainer2, location=workout_zones[4])
+                                  teacher=personal_trainer2_gym1, location=workout_zones[4])
     gym1.create_class(kickboxing_class_gym1.model)
 
     cardio_class_gym1 = ClassesController()
     cardio_class_gym1.create_class("Cardio Class", "17/01/25", 10,
-                                   teacher=personal_trainer3, location=workout_zones[1])
+                                   teacher=personal_trainer3_gym1, location=workout_zones[1])
 
     # GYM 2 DATA ; ===========================================================================
 
     # GYM CREATION
     gym2 = GymController()
     gym2.model.set_gym_city("Manchester")
-    gym2.create_manager(name="Zak", username="ZakAfron", password="KittyCat!")
+    gym2.create_manager(name="Zak", username="ZakAfron", password="Admin1001!")
 
     # STAFF CREATION
-    personal_trainer2 = gym2.create_staff(name="Jocy", email="jocy@fitness.com", job_title="Personal Trainer")
+    personal_trainer1_gym2 = gym2.create_staff(name="Alfie", email="alife@gmail.com", job_title="Personal Trainer")
+    personal_trainer2_gym2 = gym2.create_staff(name="Jocy", email="jocy@fitness.com", job_title="Personal Trainer")
     gym2.create_staff(name="Bob", email="bob@eathealthy.com", job_title="Nutritionist")
+    gym2.create_staff(name="Lee", email="lee@nutrition.com", job_title="Nutritionist")
 
     # MEMBER ADDITION
     for member2 in members2:
@@ -254,24 +256,33 @@ def create_gym_data():
     gym2.add_workout_zone(copy.deepcopy(workout_zones[5]))
 
     # CLASS CREATION
-    cardio_class = ClassesController()
-    cardio_class.create_class(name="Cardio Class",
-                              date="01/01/2025",
+    cardio_class_gym2 = ClassesController()
+    cardio_class_gym2.create_class(name="Cardio Class",
+                              date="11/01/25",
                               capacity=15,
-                              teacher=personal_trainer2,
+                              teacher=personal_trainer2_gym2,
                               location=workout_zones[1])
+    gym2.create_class(cardio_class_gym2.model)
 
-    gym2.create_class(cardio_class.model)
+    disco_bike_class_gym2 = ClassesController()
+    disco_bike_class_gym2.create_class(name="Disco Bike Class", date="12/01/25", capacity=15,
+                                       teacher=personal_trainer1_gym2, location=workout_zones[5])
+    gym2.create_class(disco_bike_class_gym2.model)
+
+    yoga_class_gym2 = ClassesController()
+    yoga_class_gym2.create_class(name="Yoga Class", date="15/01/25", capacity=10,
+                                 teacher=personal_trainer2_gym2, location=workout_zones[3])
+    gym2.create_class(yoga_class_gym2.model)
 
     # GYM 3 DATA ; ===========================================================================
 
     # GYM CREATION
     gym3 = GymController()
     gym3.model.set_gym_city("Istanbul")
-    gym3.create_manager(name="Kerem", username="Kerem", password="IstanbulGym!")
+    gym3.create_manager(name="Kerem", username="Kerem", password="Admin1002!")
 
     # STAFF CREATION
-    personal_trainer3 = gym3.create_staff(name="Ali", email="ali@fitness.com", job_title="Personal Trainer")
+    personal_trainer3_gym3 = gym3.create_staff(name="Ali", email="ali@fitness.com", job_title="Personal Trainer")
     gym3.create_staff(name="Asli", email="asli@eathealthy.com", job_title="Nutritionist")
 
     # MEMBER ADDITION
@@ -279,20 +290,20 @@ def create_gym_data():
         gym3.create_member(member3)
 
     # WORKOUT ZONE ADDITION
-    gym2.add_workout_zone(copy.deepcopy(workout_zones[0]))
-    gym2.add_workout_zone(copy.deepcopy(workout_zones[1]))
-    gym2.add_workout_zone(copy.deepcopy(workout_zones[2]))
-    gym2.add_workout_zone(copy.deepcopy(workout_zones[3]))
-    gym2.add_workout_zone(copy.deepcopy(workout_zones[5]))
+    gym3.add_workout_zone(copy.deepcopy(workout_zones[0]))
+    gym3.add_workout_zone(copy.deepcopy(workout_zones[1]))
+    gym3.add_workout_zone(copy.deepcopy(workout_zones[2]))
+    gym3.add_workout_zone(copy.deepcopy(workout_zones[3]))
+    gym3.add_workout_zone(copy.deepcopy(workout_zones[5]))
 
     # CLASS CREATION
-    cardio_class = ClassesController()
-    cardio_class.create_class(name="Cardio Class",
+    cardio_class_gym3 = ClassesController()
+    cardio_class_gym3.create_class(name="Cardio Class",
                               date="01/01/2025",
                               capacity=15,
-                              teacher=personal_trainer3,
+                              teacher=personal_trainer3_gym3,
                               location=workout_zones[1])
 
-    gym2.create_class(cardio_class.model)
+    gym3.create_class(cardio_class_gym3.model)
 
-    return [gym1, gym2]
+    return [gym1, gym2, gym3]
