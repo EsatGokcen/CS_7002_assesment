@@ -84,9 +84,50 @@ class StaffManagementWindow:
             messagebox.showerror("Error", f"Could not retrieve revenue data: {e}")
 
     def view_trainer_schedules(self):
-        # Logic to view trainer schedules
-        messagebox.showinfo("Trainer Schedules", "Displaying trainer schedules (placeholder).")
+        try:
+            list_of_staff = self.selected_gym.model.get_list_of_staff()
+            list_of_classes = self.selected_gym.model.get_list_of_classes()
 
+            # Get the list of trainers
+            list_of_trainers = [
+                staff for staff in list_of_staff if staff.get_job_title() == "Personal Trainer"
+            ]
+
+            if not list_of_trainers:
+                messagebox.showinfo("Trainer Schedules", "No trainer data available.")
+                return
+
+            # Prepare trainer schedules
+            schedules = {}
+
+            for trainer in list_of_trainers:
+                # Personal training sessions
+                num_of_sessions = len(trainer.get_booked_sessions())  # Assuming this returns an integer
+
+                # Classes assigned to the trainer
+                classes = [a_class for a_class in list_of_classes if a_class.get_teacher() == trainer]
+
+                # Schedule summary for the trainer
+                schedules[trainer.get_name()] = {
+                    "sessions": num_of_sessions,
+                    "classes": classes,
+                }
+
+            # Generate a readable report
+            report = "Trainer Schedules Report:\n\n"
+            for trainer_name, schedule in schedules.items():
+                report += f"Trainer: {trainer_name}\n"
+                report += f"  Personal Training Sessions: {schedule['sessions']}\n"
+                report += f"  Assigned Classes: {len(schedule['classes'])}\n"
+                for assigned_class in schedule['classes']:
+                    report += f"      - {assigned_class}\n"  # Assuming class objects have a meaningful __str__ method
+                report += "\n"
+
+            # Display the report
+            messagebox.showinfo("Trainer Schedules", report)
+
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not retrieve trainer data: {e}")
 
     def check_equipment_maintenance(self):
         # Logic to check equipment maintenance
