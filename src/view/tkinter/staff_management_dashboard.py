@@ -12,7 +12,7 @@ class StaffManagementWindow:
         # Staff Management Section
         tk.Label(master, text="Staff Management Dashboard:", font=("Arial", 24)).pack(pady=20)
         tk.Button(master, text="View Membership Growth", command=self.view_membership_growth).pack(pady=5)
-        tk.Button(master, text="View Revenue Trends", command=self.view_revenue_trends).pack(pady=5)
+        tk.Button(master, text="View Monthly Revenue Trends", command=self.view_monthly_revenue_trends).pack(pady=5)
         tk.Button(master, text="View Trainer Schedules", command=self.view_trainer_schedules).pack(pady=5)
         tk.Button(master, text="Check Equipment Maintenance", command=self.check_equipment_maintenance).pack(pady=5)
 
@@ -47,10 +47,41 @@ class StaffManagementWindow:
         except Exception as e:
             messagebox.showerror("Error", f"Could not retrieve membership data: {e}")
 
-    def view_revenue_trends(self):
-        # Logic to view revenue trends
-        messagebox.showinfo("Revenue Trends", "Displaying revenue trends (placeholder).")
+    def view_monthly_revenue_trends(self):
+        try:
+            # Get the list of members
+            members = self.selected_gym.model.get_list_of_members()
 
+            if not members:
+                messagebox.showinfo("Revenue Trends", "No revenue data available.")
+                return
+
+            # Calculate total revenue from memberships
+            total_revenue = 0
+            revenue_breakdown = {}
+
+            for member in members:
+                fee = member.get_member_fee()
+                member_type = member.get_member_type()
+
+                # Update total revenue
+                total_revenue += fee
+
+                # Update revenue breakdown by member type
+                if member_type not in revenue_breakdown:
+                    revenue_breakdown[member_type] = 0
+                revenue_breakdown[member_type] += fee
+
+            # Generate a summary report
+            report = f"Total Monthly Revenue: ${total_revenue:.2f}\n\nRevenue Breakdown:\n"
+            for member_type, revenue in revenue_breakdown.items():
+                report += f"{member_type}: ${revenue:.2f}\n"
+
+            # Display the report
+            messagebox.showinfo("Revenue Trends", report)
+
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not retrieve revenue data: {e}")
 
     def view_trainer_schedules(self):
         # Logic to view trainer schedules
