@@ -236,6 +236,7 @@ def create_gym_data():
     cardio_class_wz_gym1.set_attendant(personal_trainer3_gym1)
     cardio_class_gym1.create_class("Cardio Class", "17/01/25", 10,
                                    teacher=personal_trainer3_gym1, location=workout_zones[1])
+    gym1.create_class(cardio_class_gym1.model)
 
     # GYM 2 DATA ; ===========================================================================
 
@@ -313,6 +314,8 @@ def create_gym_data():
 
     # CLASS CREATION
     cardio_class_gym3 = ClassesController()
+    cardio_class_wz_gym3 = workout_zones[1]
+    cardio_class_wz_gym3.set_attendant(personal_trainer3_gym3)
     cardio_class_gym3.create_class(name="Cardio Class",
                               date="12/01/2025",
                               capacity=15,
@@ -322,11 +325,15 @@ def create_gym_data():
     gym3.create_class(cardio_class_gym3.model)
 
     yoga_class_gym3 = ClassesController()
+    yoga_wz_gym3 = workout_zones[3]
+    yoga_wz_gym3.set_attendant(personal_trainer2_gym3)
     yoga_class_gym3.create_class(name="Yoga Class", date="15/01/25", capacity=8,
                                  teacher=personal_trainer2_gym3, location=workout_zones[3])
     gym3.create_class(yoga_class_gym3.model)
 
     bench_press_class_gym3 = ClassesController()
+    bench_press_wz_gym3 = workout_zones[0]
+    bench_press_wz_gym3.set_attendant(personal_trainer1_gym3)
     bench_press_class_gym3.create_class("Bench Press Class", "18/01/25", 10,
                                    teacher=personal_trainer1_gym3, location= workout_zones[0])
     gym3.create_class(bench_press_class_gym3.model)
