@@ -84,13 +84,35 @@ class AdminDashboardWindow:
 
     def view_attendance(self):
         list_of_classes = self.selected_gym.model.get_list_of_classes()
+
+        if not list_of_classes:
+            messagebox.showinfo("Class Popularity Report", "No classes available to generate the report.")
+            return
+
+        # Get attendees for each class and display info
         for a_class in list_of_classes:
             attendees = a_class.get_attendees()
             messagebox.showinfo("Attendance Records", f"Class: {a_class}\nAttendees: {attendees}.")
 
     def generate_class_popularity_report(self):
-        # Logic to generate class popularity report
-        messagebox.showinfo("Class Popularity Report", "Generating class popularity report (placeholder).")
+        list_of_classes = self.selected_gym.model.get_list_of_classes()
+
+        if not list_of_classes:
+            messagebox.showinfo("Class Popularity Report", "No classes available to generate the report.")
+            return
+
+        # Find the class with the maximum attendees
+        most_popular_class = max(list_of_classes, key=lambda a_class: len(a_class.get_attendees()))
+        attendees_count = len(most_popular_class.get_attendees())
+
+        # Display the result
+        if attendees_count > 0:
+            messagebox.showinfo(
+                "Class Popularity Report",
+                f"The most popular class is '{most_popular_class}' with {attendees_count} attendees."
+            )
+        else:
+            messagebox.showinfo("Class Popularity Report", "No attendees for any class.")
 
     def analyze_peak_hours(self):
         # Logic to analyze peak hours
