@@ -6,6 +6,7 @@ class TrialMemberModel(MemberModel):
     def __init__(self, name: str, email: str, phone_number: str):
         super().__init__(name=name, email=email, phone_number=phone_number)
         self.__member_type = "trial"
+        self.__fee = 0.00 # £ per month
         self.__trial_period = 7 # DAYS
 
     def __str__(self):
@@ -14,8 +15,14 @@ class TrialMemberModel(MemberModel):
     def get_member_type(self) -> str:
         return self.__member_type
 
+    def get_member_fee(self) -> float:
+        return self.__fee
+
     def get_trial_period(self) -> int:
         return self.__trial_period
+
+    def set_member_fee(self, fee_amount: float):
+        self.__fee = fee_amount
 
     def set_trial_period(self, time_amount: int):
         self.__trial_period = time_amount
