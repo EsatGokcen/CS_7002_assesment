@@ -4,7 +4,7 @@ from src.view.tkinter.tk_controller import TkController
 
 def main():
 
-    # TKINTER
+    # TKINTER + CONFIG(APP DATA)
     app = TkController(create_gym_data())
     app.start()
 
