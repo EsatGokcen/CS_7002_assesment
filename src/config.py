@@ -263,6 +263,8 @@ def create_gym_data():
 
     # CLASS CREATION
     cardio_class_gym2 = ClassesController()
+    cardio_class_wz_gym2 = workout_zones[1]
+    cardio_class_wz_gym2.set_attendant(personal_trainer2_gym2)
     cardio_class_gym2.create_class(name="Cardio Class",
                               date="11/01/25",
                               capacity=15,
@@ -271,11 +273,15 @@ def create_gym_data():
     gym2.create_class(cardio_class_gym2.model)
 
     disco_bike_class_gym2 = ClassesController()
+    disco_bike_wz_gym2 = workout_zones[5]
+    disco_bike_wz_gym2.set_attendant(personal_trainer1_gym2)
     disco_bike_class_gym2.create_class(name="Disco Bike Class", date="12/01/25", capacity=15,
                                        teacher=personal_trainer1_gym2, location=workout_zones[5])
     gym2.create_class(disco_bike_class_gym2.model)
 
     yoga_class_gym2 = ClassesController()
+    yoga_wz_gym2 = workout_zones[3]
+    yoga_wz_gym2.set_attendant(personal_trainer2_gym2)
     yoga_class_gym2.create_class(name="Yoga Class", date="15/01/25", capacity=10,
                                  teacher=personal_trainer2_gym2, location=workout_zones[3])
     gym2.create_class(yoga_class_gym2.model)
