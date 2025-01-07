@@ -119,8 +119,36 @@ class AdminDashboardWindow:
             messagebox.showinfo("Class Popularity Report", "No attendees for any class.")
 
     def analyze_peak_hours(self):
-        # Logic to analyze peak hours
-        messagebox.showinfo("Peak Hours Analysis", "Analyzing peak hours (placeholder).")
+        list_of_classes = self.selected_gym.model.get_list_of_classes()
+
+        if not list_of_classes:
+            messagebox.showinfo("Peak Hours Analysis", "No classes available to analyze peak hours.")
+            return
+
+        # Dictionary to track attendance by hour
+        attendance_by_hour = {}
+
+        for a_class in list_of_classes:
+            class_time = a_class.get_hour()  # Returns the time of the class as a string like "14:00"
+            hour = class_time.split(":")[0]  # Extract the hour part
+            attendance_count = len(a_class.get_attendees())
+
+            if hour not in attendance_by_hour:
+                attendance_by_hour[hour] = 0
+            attendance_by_hour[hour] += attendance_count
+
+        # Find the peak hour(s)
+        if attendance_by_hour:
+            peak_hour = max(attendance_by_hour, key=attendance_by_hour.get)
+            peak_count = attendance_by_hour[peak_hour]
+
+            # Display the result
+            messagebox.showinfo(
+                "Peak Hours Analysis",
+                f"The peak hour is {peak_hour}:00 with {peak_count} attendees."
+            )
+        else:
+            messagebox.showinfo("Peak Hours Analysis", "No attendance data available to analyze peak hours.")
 
     def open_staff_management_dashboard(self):
         messagebox.showinfo("Open", "Opening staff management dashboard.")
