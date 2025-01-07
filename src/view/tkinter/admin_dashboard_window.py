@@ -20,9 +20,12 @@ class AdminDashboardWindow:
         tk.Label(master, text="Class Name:").pack(pady=5)
         self.class_name_entry = tk.Entry(master)
         self.class_name_entry.pack(pady=2)
-        tk.Label(master, text="Class Schedule (e.g., 13/01/25 - 6PM):").pack(pady=5)
+        tk.Label(master, text="Class Schedule (e.g., 13/01/25):").pack(pady=5)
         self.class_schedule_entry = tk.Entry(master)
         self.class_schedule_entry.pack(pady=2)
+        tk.Label(master, text="Class Hour (e.g., 12:15):").pack(pady=5)
+        self.class_hour_entry = tk.Entry(master)
+        self.class_hour_entry.pack(pady=5)
         tk.Label(master, text="Class Capacity:").pack(pady=5)
         self.class_capacity_entry = tk.Entry(master)
         self.class_capacity_entry.pack(pady=2)
@@ -61,6 +64,7 @@ class AdminDashboardWindow:
     def add_class(self):
         class_name = self.class_name_entry.get()
         class_schedule = self.class_schedule_entry.get()
+        class_hour = self.class_hour_entry.get()
         class_capacity = self.class_capacity_entry.get()
         class_teacher_str = self.teacher_var.get()
         class_location_str = self.location_var.get()
@@ -76,11 +80,11 @@ class AdminDashboardWindow:
         # Logic to add class to the gym
         class_controller = ClassesController()
         class_location.set_attendant(class_teacher)
-        created_class = class_controller.create_class(name=class_name,date=class_schedule,capacity=int(class_capacity),
-                                                      teacher=class_teacher,location=class_location)
+        created_class = class_controller.create_class(name=class_name,date=class_schedule, hour=class_hour,
+                                        capacity=int(class_capacity), teacher=class_teacher,location=class_location)
         # Add created class to selected gym
         self.selected_gym.create_class(created_class)
-        messagebox.showinfo("Success", f"Class '{class_name}' added successfully with schedule '{class_schedule}'.")
+        messagebox.showinfo("Success", f"Class '{class_name}' added successfully with schedule '{class_schedule}', {class_hour}.")
 
     def view_attendance(self):
         list_of_classes = self.selected_gym.model.get_list_of_classes()

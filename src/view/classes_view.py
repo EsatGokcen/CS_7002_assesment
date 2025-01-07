@@ -14,6 +14,7 @@ class ClassesView:
         return (
             f"\nClass Name: {self.__model.get_name()}"
             f"\nClass Date: {self.__model.get_date()}"
+            f"\nClass Hour: {self.__model.get_hour()}"
             f"\nClass Location: {self.__model.get_location()}"
             f"\nClass Teacher: {self.__model.get_teacher()}"
             f"\nClass Capacity: {self.__model.get_capacity()}"

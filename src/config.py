@@ -220,21 +220,21 @@ def create_gym_data():
     bench_press_class_gym1 = ClassesController()
     bench_press_wz_gym1 = workout_zones[0]
     bench_press_wz_gym1.set_attendant(personal_trainer1_gym1)
-    bench_press_class_gym1.create_class("Bench Press Class", "13/01/25", 10,
+    bench_press_class_gym1.create_class("Bench Press Class", "13/01/25", "14:30", 10,
                                    teacher=personal_trainer1_gym1, location= workout_zones[0])
     gym1.create_class(bench_press_class_gym1.model)
 
     kickboxing_class_gym1 = ClassesController()
     kickboxing_wz_gym1 = workout_zones[4]
     kickboxing_wz_gym1.set_attendant(personal_trainer2_gym1)
-    kickboxing_class_gym1.create_class("Kickboxing Class", "15/01/25", 10,
+    kickboxing_class_gym1.create_class("Kickboxing Class", "15/01/25", "18:00", 10,
                                   teacher=personal_trainer2_gym1, location=workout_zones[4])
     gym1.create_class(kickboxing_class_gym1.model)
 
     cardio_class_gym1 = ClassesController()
     cardio_class_wz_gym1 = workout_zones[1]
     cardio_class_wz_gym1.set_attendant(personal_trainer3_gym1)
-    cardio_class_gym1.create_class("Cardio Class", "17/01/25", 10,
+    cardio_class_gym1.create_class("Cardio Class", "17/01/25","10:00",10,
                                    teacher=personal_trainer3_gym1, location=workout_zones[1])
     gym1.create_class(cardio_class_gym1.model)
 
@@ -268,6 +268,7 @@ def create_gym_data():
     cardio_class_wz_gym2.set_attendant(personal_trainer2_gym2)
     cardio_class_gym2.create_class(name="Cardio Class",
                               date="11/01/25",
+                              hour="10:30",
                               capacity=15,
                               teacher=personal_trainer2_gym2,
                               location=workout_zones[1])
@@ -276,14 +277,14 @@ def create_gym_data():
     disco_bike_class_gym2 = ClassesController()
     disco_bike_wz_gym2 = workout_zones[5]
     disco_bike_wz_gym2.set_attendant(personal_trainer1_gym2)
-    disco_bike_class_gym2.create_class(name="Disco Bike Class", date="12/01/25", capacity=15,
+    disco_bike_class_gym2.create_class(name="Disco Bike Class", date="12/01/25", hour="18:00" ,capacity=15,
                                        teacher=personal_trainer1_gym2, location=workout_zones[5])
     gym2.create_class(disco_bike_class_gym2.model)
 
     yoga_class_gym2 = ClassesController()
     yoga_wz_gym2 = workout_zones[3]
     yoga_wz_gym2.set_attendant(personal_trainer2_gym2)
-    yoga_class_gym2.create_class(name="Yoga Class", date="15/01/25", capacity=10,
+    yoga_class_gym2.create_class(name="Yoga Class", date="15/01/25", hour="11:30", capacity=10,
                                  teacher=personal_trainer2_gym2, location=workout_zones[3])
     gym2.create_class(yoga_class_gym2.model)
 
@@ -318,6 +319,7 @@ def create_gym_data():
     cardio_class_wz_gym3.set_attendant(personal_trainer3_gym3)
     cardio_class_gym3.create_class(name="Cardio Class",
                               date="12/01/2025",
+                              hour="12:00",
                               capacity=15,
                               teacher=personal_trainer3_gym3,
                               location=workout_zones[1])
@@ -327,14 +329,14 @@ def create_gym_data():
     yoga_class_gym3 = ClassesController()
     yoga_wz_gym3 = workout_zones[3]
     yoga_wz_gym3.set_attendant(personal_trainer2_gym3)
-    yoga_class_gym3.create_class(name="Yoga Class", date="15/01/25", capacity=8,
+    yoga_class_gym3.create_class(name="Yoga Class", date="15/01/25", hour="10:30",capacity=8,
                                  teacher=personal_trainer2_gym3, location=workout_zones[3])
     gym3.create_class(yoga_class_gym3.model)
 
     bench_press_class_gym3 = ClassesController()
     bench_press_wz_gym3 = workout_zones[0]
     bench_press_wz_gym3.set_attendant(personal_trainer1_gym3)
-    bench_press_class_gym3.create_class("Bench Press Class", "18/01/25", 10,
+    bench_press_class_gym3.create_class("Bench Press Class", "18/01/25", "15:15",10,
                                    teacher=personal_trainer1_gym3, location= workout_zones[0])
     gym3.create_class(bench_press_class_gym3.model)
 

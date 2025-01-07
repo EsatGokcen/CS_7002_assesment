@@ -9,12 +9,13 @@ from typing import Type
 class ClassesController:
 
     def __init__(self):
-        self.model = ClassesModel(name="placeholder", date="00/00/00")
+        self.model = ClassesModel(name="placeholder", date="00/00/00", hour="12:00")
         self.__view = ClassesView(self.model)
 
-    def create_class(self, name: str, date: str, capacity: int, teacher: StaffModel, location: WorkoutZoneModel) -> ClassesModel:
+    def create_class(self, name: str, date: str, hour: str, capacity: int, teacher: StaffModel, location: WorkoutZoneModel) -> ClassesModel:
         self.model.set_name(name)
         self.model.set_date(date)
+        self.model.set_hour(hour)
         self.model.set_location(location)
         self.model.set_capacity(capacity)
         self.model.set_teacher(teacher)

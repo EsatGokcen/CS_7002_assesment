@@ -14,12 +14,12 @@ class TestClasses(unittest.TestCase):
 
         # EXAMPLE WORKOUT ZONE
         workoutzone = WorkoutZoneController()
-        workoutzone.create_workout_zone("Cardio", 20)
+        workoutzone.create_workout_zone("Cardio", 20, [])
         workoutzone.update_attendant(staff1.model)
 
         # CREATE CLASS
         cardio_class = ClassesController()
-        test_variable1 = cardio_class.create_class("Cardio Class", "28/12/24", 20, teacher=staff1.model, location=workoutzone.model)
+        test_variable1 = cardio_class.create_class("Cardio Class", "28/12/24", "11:15",20, teacher=staff1.model, location=workoutzone.model)
 
         self.assertEqual(cardio_class.model, test_variable1, "Class not created as expected!")
 

@@ -6,19 +6,20 @@ from typing import Type
 
 class ClassesModel:
 
-    def __init__(self, name: str, date: str):
+    def __init__(self, name: str, date: str, hour: str):
         self.__name = name
         self.__date = date
+        self.__hour = hour
         self.__location = None #: WorkoutZoneModel
         self.__capacity = None # < WorkoutZoneModel.get_capacity()
         self.__teacher = None #: StaffModel
         self.__attendees = [] #: list[Type[MemberModel]]
 
     def __repr__(self):
-        return f"{self.get_name()} at {self.get_date()} with {self.__teacher}"
+        return f"{self.get_name()} at {self.get_date()}, {self.get_hour()} with {self.__teacher}"
 
     def __str__(self):
-        return f" Class name: {self.__name}, Date: {self.__date}, Teacher: {self.__teacher}"
+        return f" Class name: {self.__name}, Date: {self.__date}, Hour: {self.__hour}, Teacher: {self.__teacher}"
 
         # Pre Tkinter __str__ method
         #attendees = ", ".join(str(attendee) for attendee in self.__attendees)
@@ -34,6 +35,9 @@ class ClassesModel:
 
     def get_date(self) -> str:
         return self.__date
+
+    def get_hour(self) -> str:
+        return self.__hour
 
     def get_location(self) -> WorkoutZoneModel:
         return self.__location
@@ -52,6 +56,9 @@ class ClassesModel:
 
     def set_date(self, date: str):
         self.__date = date
+
+    def set_hour(self, hour: str):
+        self.__hour = hour
 
     def set_location(self, location: WorkoutZoneModel):
         self.__location = location
