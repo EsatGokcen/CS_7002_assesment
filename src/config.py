@@ -218,16 +218,22 @@ def create_gym_data():
 
     # CREATE CLASSES FOR GYM
     bench_press_class_gym1 = ClassesController()
+    bench_press_wz_gym1 = workout_zones[0]
+    bench_press_wz_gym1.set_attendant(personal_trainer1_gym1)
     bench_press_class_gym1.create_class("Bench Press Class", "13/01/25", 10,
                                    teacher=personal_trainer1_gym1, location= workout_zones[0])
     gym1.create_class(bench_press_class_gym1.model)
 
     kickboxing_class_gym1 = ClassesController()
+    kickboxing_wz_gym1 = workout_zones[4]
+    kickboxing_wz_gym1.set_attendant(personal_trainer2_gym1)
     kickboxing_class_gym1.create_class("Kickboxing Class", "15/01/25", 10,
                                   teacher=personal_trainer2_gym1, location=workout_zones[4])
     gym1.create_class(kickboxing_class_gym1.model)
 
     cardio_class_gym1 = ClassesController()
+    cardio_class_wz_gym1 = workout_zones[1]
+    cardio_class_wz_gym1.set_attendant(personal_trainer3_gym1)
     cardio_class_gym1.create_class("Cardio Class", "17/01/25", 10,
                                    teacher=personal_trainer3_gym1, location=workout_zones[1])
 

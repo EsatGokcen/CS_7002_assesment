@@ -25,7 +25,7 @@ class BookingManagementWindow:
         tk.Button(master, text="Book Selected Class", command=self.book_class).pack(pady=5)
 
         # Available Nutritionists and Personal Trainers Section
-        tk.Label(master, text="Available Nutritionists and Personal Trainers:", font=("Arial", 18)).pack(pady=10)
+        tk.Label(master, text="Available Staff:", font=("Arial", 18)).pack(pady=10)
         self.sessions_listbox = tk.Listbox(master, width=50, height=10)
         self.sessions_listbox.pack(pady=5)
         self.staff_list = self.selected_gym.model.get_list_of_staff()
