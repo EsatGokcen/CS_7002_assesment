@@ -120,7 +120,7 @@ class StaffManagementWindow:
                 report += f"  Personal Training Sessions: {schedule['sessions']}\n"
                 report += f"  Assigned Classes: {len(schedule['classes'])}\n"
                 for assigned_class in schedule['classes']:
-                    report += f"      - {assigned_class}\n"  # Assuming class objects have a meaningful __str__ method
+                    report += f"      - {assigned_class}\n"
                 report += "\n"
 
             # Display the report
@@ -130,8 +130,24 @@ class StaffManagementWindow:
             messagebox.showerror("Error", f"Could not retrieve trainer data: {e}")
 
     def check_equipment_maintenance(self):
-        # Logic to check equipment maintenance
-        messagebox.showinfo("Equipment Maintenance", "Checking equipment maintenance (placeholder).")
+        try:
+            # Get the list of equipments from each workout zone in selected gym
+            equipments = self.selected_gym.model.get_equipments_for_workout_zones()
+
+            if not equipments:
+                messagebox.showinfo("Equipment Maintenance", "No equipment available for maintenance check.")
+                return
+
+            # Generate a maintenance report
+            report = "Equipment Maintenance Report:\n\n"
+            for equipment in equipments:
+                report += f"{equipment}: maintained\n"
+
+            # Display the report
+            messagebox.showinfo("Equipment Maintenance", report)
+
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not retrieve equipment data: {e}")
 
     def go_back(self):
         self.controller.show_admin_dashboard_window(self.selected_gym)
