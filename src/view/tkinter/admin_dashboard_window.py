@@ -151,7 +151,7 @@ class AdminDashboardWindow:
             messagebox.showinfo("Peak Hours Analysis", "No attendance data available to analyze peak hours.")
 
     def open_staff_management_dashboard(self):
-        messagebox.showinfo("Open", "Opening staff management dashboard.")
+        messagebox.showinfo("Navigating...", "Opening staff management dashboard.")
         self.controller.show_staff_management_dashboard(self.selected_gym)
 
     def go_back(self):

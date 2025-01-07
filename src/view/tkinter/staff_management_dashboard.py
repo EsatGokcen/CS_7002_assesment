@@ -19,11 +19,33 @@ class StaffManagementWindow:
         # Back Button
         tk.Button(master, text="Back", command=self.go_back).pack(pady=20)
 
-
     def view_membership_growth(self):
-        # Logic to view membership growth
-        messagebox.showinfo("Membership Growth", "Displaying membership growth (placeholder).")
+        try:
+            # Get the list of members
+            members = self.selected_gym.model.get_list_of_members()
 
+            if not members:
+                messagebox.showinfo("Membership Growth", "No members available to analyze growth.")
+                return
+
+            # Count members by type
+            membership_summary = {}
+            for member in members:
+                member_type = member.get_member_type()
+                if member_type not in membership_summary:
+                    membership_summary[member_type] = 0
+                membership_summary[member_type] += 1
+
+            # Create a summary report
+            report = "Membership Growth Analysis:\n\n"
+            for member_type, count in membership_summary.items():
+                report += f"{member_type}: {count} members\n"
+
+            # Display the report
+            messagebox.showinfo("Membership Growth", report)
+
+        except Exception as e:
+            messagebox.showerror("Error", f"Could not retrieve membership data: {e}")
 
     def view_revenue_trends(self):
         # Logic to view revenue trends
