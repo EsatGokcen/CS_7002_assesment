@@ -200,8 +200,11 @@ def create_gym_data():
     gym1.create_manager(name="Esat",username="AdminEsat", password="Admin1000!")
 
     # STAFF CREATION
-    personal_trainer = gym1.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
+    personal_trainer1 = gym1.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
+    personal_trainer2 = gym1.create_staff(name="Tyson", email="tyson@fury.com", job_title="Personal Trainer")
+    personal_trainer3 = gym1.create_staff(name="Alice", email="alice@gmail.com", job_title="Personal Trainer")
     gym1.create_staff(name="Rosa", email="rosa@gmail.com", job_title="Nutritionist")
+    gym1.create_staff(name="Cameron", email="cameron@health.com", job_title="Nutritionist")
 
     # MEMBER ADDITION
     for member1 in members1:
@@ -213,12 +216,20 @@ def create_gym_data():
     gym1.add_workout_zone(copy.deepcopy(workout_zones[2]))
     gym1.add_workout_zone(copy.deepcopy(workout_zones[4]))
 
-    # CREATE A CLASS FOR GYM
-    bench_press_class = ClassesController()
-    bench_press_class.create_class("Bench Press Class", "28/12/24", 10,
-                                   teacher=personal_trainer, location= workout_zones[0])
+    # CREATE CLASSES FOR GYM
+    bench_press_class_gym1 = ClassesController()
+    bench_press_class_gym1.create_class("Bench Press Class", "13/01/25", 10,
+                                   teacher=personal_trainer1, location= workout_zones[0])
+    gym1.create_class(bench_press_class_gym1.model)
 
-    gym1.create_class(bench_press_class.model)
+    kickboxing_class_gym1 = ClassesController()
+    kickboxing_class_gym1.create_class("Kickboxing Class", "15/01/25", 10,
+                                  teacher=personal_trainer2, location=workout_zones[4])
+    gym1.create_class(kickboxing_class_gym1.model)
+
+    cardio_class_gym1 = ClassesController()
+    cardio_class_gym1.create_class("Cardio Class", "17/01/25", 10,
+                                   teacher=personal_trainer3, location=workout_zones[1])
 
     # GYM 2 DATA ; ===========================================================================
 
