@@ -83,8 +83,10 @@ class AdminDashboardWindow:
         messagebox.showinfo("Success", f"Class '{class_name}' added successfully with schedule '{class_schedule}'.")
 
     def view_attendance(self):
-        # Logic to view attendance records
-        messagebox.showinfo("Attendance Records", "Displaying attendance records (placeholder).")
+        list_of_classes = self.selected_gym.model.get_list_of_classes()
+        for a_class in list_of_classes:
+            attendees = a_class.get_attendees()
+            messagebox.showinfo("Attendance Records", f"Class: {a_class}\nAttendees: {attendees}.")
 
     def generate_class_popularity_report(self):
         # Logic to generate class popularity report

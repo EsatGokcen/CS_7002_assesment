@@ -17,6 +17,9 @@ class MemberModel(ABC):
         self.__payment_duration = None
         self.__new_member_type = None # for updating payment info
 
+    def __repr__(self):
+        return f"{self.get_name()}"
+
     @abstractmethod
     def get_member_type(self) -> str:
         pass
