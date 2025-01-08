@@ -30,7 +30,7 @@ class GymController:
 
         # CREATE WORKOUT ZONE
         workout_zone_controller = WorkoutZoneController()
-        workout_zone = workout_zone_controller.create_workout_zone(type, capacity)
+        workout_zone = workout_zone_controller.create_workout_zone(type, capacity, attendant, list_of_equipments)
         workout_zone.set_attendant(attendant)
 
         self.model.add_workout_zone(workout_zone)
