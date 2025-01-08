@@ -8,7 +8,7 @@ class TestWorkoutZone(unittest.TestCase):
 
     def test_create_workout_zone(self):
         workout_zone_controller = WorkoutZoneController()
-        workout_zone = workout_zone_controller.create_workout_zone(type="cardio", capacity=20)
+        workout_zone = workout_zone_controller.create_workout_zone(type="cardio", capacity=20, list_of_equipments=[])
 
         # Validate that workout zone creation was successful
 
@@ -20,7 +20,7 @@ class TestWorkoutZone(unittest.TestCase):
 
     def test_create_equipment(self):
         workout_zone_controller = WorkoutZoneController()
-        workout_zone = workout_zone_controller.create_workout_zone(type="cardio", capacity=20)
+        workout_zone = workout_zone_controller.create_workout_zone(type="cardio", capacity=20, list_of_equipments=[])
 
         equipment_controller = EquipmentController()
         equipment = workout_zone_controller.create_equipment(connection=equipment_controller ,name="Treadmill", type="cardio")
