@@ -30,7 +30,8 @@ class TestGym(unittest.TestCase):
 
         # Create Workout Zone for gym
         gym_controller = GymController()
-        workout_zones = gym_controller.create_workout_zone("Strength Training", 15, list_of_equipments)
+        personal_trainer = gym_controller.create_staff(name="Joey", email="joey@gmail.com", job_title="Personal Trainer")
+        workout_zones = gym_controller.create_workout_zone("Strength Training", 15, attendant=personal_trainer, list_of_equipments= list_of_equipments)
 
         # CHECKS IF GYM CONTROLLER HAS A WORKOUT ZONE IN ITS LIST
         self.assertEqual(len(gym_controller.model.get_gym_workout_zones()), 1, "Gym workout zone is not created!" )
