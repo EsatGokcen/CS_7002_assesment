@@ -41,4 +41,4 @@ class TestGym(unittest.TestCase):
         self.assertEqual(workout_zones, workout_zone, "gym workout zone does not have suspected values")
 
         # CHECKS IF LIST OF EQUIPMENTS IS IN WORKOUT ZONE OBJECT
-        self.assertEqual(len(workout_zone.get_list_of_equipments()), 3, "List of equipments not created as expected")
+        self.assertEqual(len(workout_zone.get_list_of_equipments()), 6, "List of equipments not created as expected")
