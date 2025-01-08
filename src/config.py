@@ -23,6 +23,7 @@ def create_workout_zone_data():
     strength_zone = WorkoutZoneController()
     strength_zone.create_workout_zone(type="Strength Training",
                                       capacity=10,
+                                      attendant= None,
                                       list_of_equipments=list_of_equipments)
 
     # WORKOUT ZONE 2 - Cardio
@@ -42,6 +43,7 @@ def create_workout_zone_data():
     cardio_zone = WorkoutZoneController()
     cardio_zone.create_workout_zone(type="Cardio",
                                     capacity=20,
+                                    attendant=None,
                                     list_of_equipments= list_of_equipments2)
 
     # WORKOUT ZONE 3 - Free Weights
@@ -61,6 +63,7 @@ def create_workout_zone_data():
     free_weights_zone = WorkoutZoneController()
     free_weights_zone.create_workout_zone(type="Free Weights",
                                           capacity=25,
+                                          attendant=None,
                                           list_of_equipments=list_of_equipments3)
 
     # WORKOUT ZONE 4 - Stretching
@@ -80,6 +83,7 @@ def create_workout_zone_data():
     stretching_zone = WorkoutZoneController()
     stretching_zone.create_workout_zone(type="Stretching",
                                         capacity=15,
+                                        attendant=None,
                                         list_of_equipments=list_of_equipments4)
 
     # WORKOUT ZONE 5 - Combat Zone
@@ -99,6 +103,7 @@ def create_workout_zone_data():
     combat_zone = WorkoutZoneController()
     combat_zone.create_workout_zone(type="Combat Zone",
                                     capacity=10,
+                                    attendant=None,
                                     list_of_equipments=list_of_equipments5)
 
     # WORKOUT ZONE 6 - Group Fitness
@@ -118,6 +123,7 @@ def create_workout_zone_data():
     group_fitness_zone = WorkoutZoneController()
     group_fitness_zone.create_workout_zone(type="Group Fitness",
                                            capacity=15,
+                                           attendant=None,
                                            list_of_equipments=list_of_equipments6)
 
     list_of_workout_zones = [strength_zone.model, cardio_zone.model, free_weights_zone.model,
